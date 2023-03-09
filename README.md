@@ -6,7 +6,6 @@
 [![Tests](https://github.com/eliashaeussler/rector-config/actions/workflows/tests.yaml/badge.svg)](https://github.com/eliashaeussler/rector-config/actions/workflows/tests.yaml)
 [![Release](https://github.com/eliashaeussler/rector-config/actions/workflows/release.yaml/badge.svg)](https://github.com/eliashaeussler/rector-config/actions/workflows/release.yaml)
 [![Latest Stable Version](http://poser.pugx.org/eliashaeussler/rector-config/v)](https://packagist.org/packages/eliashaeussler/rector-config)
-[![PHP Version Require](http://poser.pugx.org/eliashaeussler/rector-config/require/php)](https://packagist.org/packages/eliashaeussler/rector-config)
 [![License](http://poser.pugx.org/eliashaeussler/rector-config/license)](LICENSE)
 
 </div>
