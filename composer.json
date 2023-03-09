@@ -1,0 +1,46 @@
+{
+	"name": "eliashaeussler/rector-config",
+	"description": "My personal configuration for Rector",
+	"license": "GPL-3.0-or-later",
+	"type": "library",
+	"authors": [
+		{
+			"name": "Elias Häußler",
+			"email": "elias@haeussler.dev",
+			"homepage": "https://haeussler.dev",
+			"role": "Maintainer"
+		}
+	],
+	"require": {
+		"php": "~8.1.0 || ~8.2.0",
+		"rector/rector": "^0.15.21"
+	},
+	"require-dev": {
+		"armin/editorconfig-cli": "^1.5",
+		"eliashaeussler/php-cs-fixer-config": "^1.1",
+		"ergebnis/composer-normalize": "^2.30"
+	},
+	"config": {
+		"allow-plugins": {
+			"ergebnis/composer-normalize": true
+		},
+		"sort-packages": true
+	},
+	"scripts": {
+		"lint": [
+			"@lint:composer:fix",
+			"@lint:editorconfig:fix",
+			"@lint:php:fix"
+		],
+		"lint:composer": "@lint:composer:fix --dry-run",
+		"lint:composer:fix": "@composer normalize",
+		"lint:editorconfig": "ec",
+		"lint:editorconfig:fix": "@lint:editorconfig --fix",
+		"lint:php": "@lint:php:fix --dry-run",
+		"lint:php:fix": "php-cs-fixer fix",
+		"test": [
+			"@composer -d tests/test-application install",
+			"@composer -d tests/test-application test"
+		]
+	}
+}

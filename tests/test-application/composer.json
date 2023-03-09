@@ -1,0 +1,39 @@
+{
+	"name": "eliashaeussler/rector-config-test-application",
+	"require-dev": {
+		"eliashaeussler/rector-config": "*@dev",
+		"ergebnis/composer-normalize": "^2.30"
+	},
+	"repositories": [
+		{
+			"type": "path",
+			"url": "../../",
+			"options": {
+				"symlink": false
+			}
+		}
+	],
+	"config": {
+		"allow-plugins": {
+			"ergebnis/composer-normalize": true
+		},
+		"sort-packages": true
+	},
+	"scripts": {
+		"lint": [
+			"@lint:composer:fix",
+			"@lint:php:fix"
+		],
+		"lint:composer": "@lint:composer:fix --dry-run",
+		"lint:composer:fix": "@composer normalize",
+		"migration": [
+			"@migration:rector"
+		],
+		"migration:rector": "rector process -c rector.php",
+		"test": [
+			"src/test.sh privatization-set",
+			"src/test.sh phpunit-sets",
+			"src/test.sh symfony-sets"
+		]
+	}
+}
