@@ -31,9 +31,9 @@
 		],
 		"migration:rector": "rector process -c rector.php",
 		"test": [
-			"src/test.sh privatization-set",
-			"src/test.sh phpunit-sets",
-			"src/test.sh symfony-sets"
+			"src/test.sh default-set",
+			"src/test.sh phpunit-set",
+			"src/test.sh symfony-set"
 		]
 	}
 }
