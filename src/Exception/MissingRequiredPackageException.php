@@ -21,11 +21,23 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+namespace EliasHaeussler\RectorConfig\Exception;
+
+use function sprintf;
+
 /**
- * This class should be made final by Rector.
+ * MissingRequiredPackageException.
  *
- * @see \Rector\Set\ValueObject\SetList::PRIVATIZATION
+ * @author Elias Häußler <elias@haeussler.dev>
+ * @license GPL-3.0-or-later
  */
-class PrivatizationSetTestClass
+final class MissingRequiredPackageException extends Exception
 {
+    public static function create(string $packageName): self
+    {
+        return new self(
+            sprintf('The package "%s" is required. Please install it with Composer.', $packageName),
+            1678630702,
+        );
+    }
 }

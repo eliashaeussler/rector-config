@@ -2,11 +2,11 @@
 
 # Rector config
 
-[![CGL](https://github.com/eliashaeussler/rector-config/actions/workflows/cgl.yaml/badge.svg)](https://github.com/eliashaeussler/rector-config/actions/workflows/cgl.yaml)
-[![Tests](https://github.com/eliashaeussler/rector-config/actions/workflows/tests.yaml/badge.svg)](https://github.com/eliashaeussler/rector-config/actions/workflows/tests.yaml)
-[![Release](https://github.com/eliashaeussler/rector-config/actions/workflows/release.yaml/badge.svg)](https://github.com/eliashaeussler/rector-config/actions/workflows/release.yaml)
-[![Latest Stable Version](http://poser.pugx.org/eliashaeussler/rector-config/v)](https://packagist.org/packages/eliashaeussler/rector-config)
-[![License](http://poser.pugx.org/eliashaeussler/rector-config/license)](LICENSE)
+[![Coverage](https://img.shields.io/codecov/c/github/eliashaeussler/rector-config?logo=codecov&token=YcuK5zoSWw)](https://codecov.io/gh/eliashaeussler/rector-config)
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/eliashaeussler/rector-config?logo=codeclimate)](https://codeclimate.com/github/eliashaeussler/rector-config/maintainability)
+[![CGL](https://img.shields.io/github/actions/workflow/status/eliashaeussler/rector-config/cgl.yaml?label=cgl&logo=github)](https://github.com/eliashaeussler/rector-config/actions/workflows/cgl.yaml)
+[![Tests](https://img.shields.io/github/actions/workflow/status/eliashaeussler/rector-config/tests.yaml?label=tests&logo=github)](https://github.com/eliashaeussler/rector-config/actions/workflows/tests.yaml)
+[![Supported PHP Versions](https://img.shields.io/packagist/dependency-v/eliashaeussler/rector-config/php?logo=php)](https://packagist.org/packages/eliashaeussler/rector-config)
 
 </div>
 
@@ -15,6 +15,9 @@ config for use in my personal projects. It is not meant to be used anywhere else
 I won't provide support and don't accept pull requests for this repo.
 
 ## 🔥 Installation
+
+[![Packagist](https://img.shields.io/packagist/v/eliashaeussler/rector-config?label=version&logo=packagist)](https://packagist.org/packages/eliashaeussler/rector-config)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/eliashaeussler/rector-config?color=brightgreen)](https://packagist.org/packages/eliashaeussler/rector-config)
 
 ```bash
 composer require --dev eliashaeussler/rector-config
@@ -25,23 +28,32 @@ composer require --dev eliashaeussler/rector-config
 ```php
 # rector.php
 
+use EliasHaeussler\RectorConfig\Config\Config;
 use Rector\Config\RectorConfig;
-use Rector\Core\ValueObject\PhpVersion;
-use Rector\Set\ValueObject\LevelSetList;
+use Rector\Php80\Rector\Class_\AnnotationToAttributeRector;
 
 return static function (RectorConfig $rectorConfig): void {
-    $rectorConfig->import('vendor/eliashaeussler/rector-config/rector.dist.php');
-
-    $rectorConfig->paths([
+    $config = Config::create($rectorConfig)->in(
         __DIR__.'/src',
         __DIR__.'/tests',
-    ]);
+    );
 
-    $rectorConfig->phpVersion(PhpVersion::PHP_81);
+    // Include default PHPUnit sets
+    $config->withPHPUnit();
 
-    $rectorConfig->sets([
-        LevelSetList::UP_TO_PHP_81,
-    ]);
+    // Include default Symfony sets
+    $config->withSymfony();
+
+    // Skip specific rectors
+    $config->skip(
+        AnnotationToAttributeRector::class,
+        [
+            __DIR__.'/src/Some/File.php',
+        ],
+    );
+
+    // Apply configuration
+    $config->apply();
 };
 ```
 

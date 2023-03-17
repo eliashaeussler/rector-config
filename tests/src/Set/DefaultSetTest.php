@@ -21,20 +21,32 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-use Rector\Config\RectorConfig;
-use Rector\Core\ValueObject\PhpVersion;
-use Rector\Set\ValueObject\LevelSetList;
+namespace EliasHaeussler\RectorConfig\Tests\Set;
 
-return static function (RectorConfig $rectorConfig): void {
-    $rectorConfig->import('vendor/eliashaeussler/rector-config/rector.dist.php');
+use EliasHaeussler\RectorConfig as Src;
+use PHPUnit\Framework;
 
-    $rectorConfig->paths([
-        __DIR__.'/src/test-files',
-    ]);
+/**
+ * DefaultSetTest.
+ *
+ * @author Elias Häußler <elias@haeussler.dev>
+ * @license GPL-3.0-or-later
+ */
+final class DefaultSetTest extends Framework\TestCase
+{
+    private Src\Set\DefaultSet $subject;
 
-    $rectorConfig->phpVersion(PhpVersion::PHP_81);
+    protected function setUp(): void
+    {
+        $this->subject = new Src\Set\DefaultSet();
+    }
 
-    $rectorConfig->sets([
-        LevelSetList::UP_TO_PHP_81,
-    ]);
-};
+    #[Framework\Attributes\Test]
+    public function getReturnsDefaultSetWithLevelSetList(): void
+    {
+        $actual = $this->subject->get();
+
+        self::assertCount(2, $actual);
+        self::assertMatchesRegularExpression('/config\\/set\\/level\\/up-to-php8\\d+\\.php$/', $actual[1]);
+    }
+}

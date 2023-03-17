@@ -21,32 +21,14 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+use EliasHaeussler\RectorConfig\Config\Config;
 use Rector\Config\RectorConfig;
-use Rector\Php73\Rector\FuncCall\JsonThrowOnErrorRector;
-use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
-use Rector\PHPUnit\Set\PHPUnitSetList;
-use Rector\Set\ValueObject\SetList;
-use Rector\Symfony\Set\SymfonySetList;
 
 return static function (RectorConfig $rectorConfig): void {
-    $rectorConfig->skip([
-        AddLiteralSeparatorToNumberRector::class,
-        JsonThrowOnErrorRector::class,
-    ]);
-
-    $rectorConfig->sets([
-        // PHP
-        SetList::PRIVATIZATION,
-
-        // PHPUnit
-        PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES,
-        PHPUnitSetList::PHPUNIT_EXCEPTION,
-        PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD,
-        PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER,
-
-        // Symfony
-        SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES,
-        SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
-        SymfonySetList::SYMFONY_50_TYPES,
-    ]);
+    Config::create($rectorConfig)
+        ->in(__DIR__.'/src', __DIR__.'/tests/src')
+        ->withPHPUnit()
+        ->withSymfony()
+        ->apply()
+    ;
 };
