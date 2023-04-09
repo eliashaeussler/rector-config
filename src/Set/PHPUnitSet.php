@@ -27,6 +27,8 @@ use EliasHaeussler\RectorConfig\Exception;
 use EliasHaeussler\RectorConfig\Helper;
 use Rector\PHPUnit;
 
+use function version_compare;
+
 /**
  * PHPUnitSet.
  *
@@ -48,11 +50,15 @@ final class PHPUnitSet implements Set
     public function get(): array
     {
         $set = [
-            PHPUnit\Set\PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES,
             PHPUnit\Set\PHPUnitSetList::PHPUNIT_EXCEPTION,
             PHPUnit\Set\PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD,
             PHPUnit\Set\PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER,
         ];
+
+        // Add PHPUnit 10.x sets
+        if (version_compare($this->phpUnitVersion, '10.0.0', '>=')) {
+            $set[] = PHPUnit\Set\PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES;
+        }
 
         // Determine level set list
         $levelSetList = Helper\VersionHelper::getRectorLevelSetListForPackage(
