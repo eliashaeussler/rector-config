@@ -48,7 +48,7 @@ final class VersionHelperTest extends Framework\TestCase
     {
         $actual = Src\Helper\VersionHelper::getPackageVersion('phpunit/phpunit');
 
-        self::assertMatchesRegularExpression('/^10\\.0\\.\\d+$/', $actual);
+        self::assertMatchesRegularExpression('/^10\\.1\\.\\d+$/', $actual);
     }
 
     #[Framework\Attributes\Test]

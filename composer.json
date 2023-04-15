@@ -23,7 +23,7 @@
 		"eliashaeussler/phpstan-config": "^1.0",
 		"ergebnis/composer-normalize": "^2.30",
 		"phpstan/extension-installer": "^1.2",
-		"phpunit/phpunit": "^10.0.7",
+		"phpunit/phpunit": "^10.1",
 		"symfony/config": "^5.4 || ^6.0",
 		"symfony/dependency-injection": "^5.4 || ^6.0"
 	},
