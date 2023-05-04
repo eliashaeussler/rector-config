@@ -21,35 +21,17 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace EliasHaeussler\RectorConfig\Tests\Set;
-
-use EliasHaeussler\RectorConfig as Src;
-use PHPUnit\Framework;
+namespace EliasHaeussler\RectorConfig\Enums;
 
 /**
- * SymfonySetTest.
+ * VersionRange.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class SymfonySetTest extends Framework\TestCase
+enum VersionRange
 {
-    private Src\Set\SymfonySet $subject;
-
-    protected function setUp(): void
-    {
-        $this->subject = new Src\Set\SymfonySet();
-    }
-
-    #[Framework\Attributes\Test]
-    public function getReturnsSymfonySetWithLevelSetList(): void
-    {
-        $actual = $this->subject->get();
-
-        self::assertCount(4, $actual);
-        self::assertMatchesRegularExpression(
-            '/config\\/sets\\/symfony\\/level\\/up-to-symfony-6\\d+\\.php$/',
-            $actual[3],
-        );
-    }
+    case MajorMinor;
+    case MajorDotZero;
+    case MajorOnly;
 }

@@ -29,6 +29,7 @@ return static function (RectorConfig $rectorConfig): void {
         ->in(__DIR__.'/src/test-files')
         ->withPHPUnit()
         ->withSymfony()
+        ->withTYPO3()
         ->apply()
     ;
 };

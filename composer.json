@@ -24,8 +24,13 @@
 		"ergebnis/composer-normalize": "^2.30",
 		"phpstan/extension-installer": "^1.2",
 		"phpunit/phpunit": "^10.1",
+		"ssch/typo3-rector": "^1.2",
 		"symfony/config": "^5.4 || ^6.0",
-		"symfony/dependency-injection": "^5.4 || ^6.0"
+		"symfony/dependency-injection": "^5.4 || ^6.0",
+		"typo3/cms-core": "^12.4"
+	},
+	"suggest": {
+		"ssch/typo3-rector": "Configures additional Rector rules for TYPO3 CMS projects"
 	},
 	"autoload": {
 		"psr-4": {
@@ -40,7 +45,9 @@
 	"config": {
 		"allow-plugins": {
 			"ergebnis/composer-normalize": true,
-			"phpstan/extension-installer": true
+			"phpstan/extension-installer": true,
+			"typo3/class-alias-loader": false,
+			"typo3/cms-composer-installers": false
 		},
 		"sort-packages": true
 	},

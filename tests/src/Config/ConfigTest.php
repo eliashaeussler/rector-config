@@ -34,6 +34,7 @@ use Rector\Php74;
 use Rector\PHPUnit;
 use Rector\Set;
 use Rector\Symfony;
+use Ssch\TYPO3Rector;
 
 /**
  * ConfigTest.
@@ -132,6 +133,21 @@ final class ConfigTest extends Framework\TestCase
 
         /* @see Symfony\Set\SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION */
         self::assertTrue($this->container?->has(Symfony\Rector\MethodCall\ContainerGetToConstructorInjectionRector::class));
+    }
+
+    #[Framework\Attributes\Test]
+    public function withTYPO3AddsAdditionalTYPO3RulesToRectorConfig(): void
+    {
+        $this->createRectorConfig(
+            static function (Config\RectorConfig $rectorConfig) {
+                $subject = Src\Config\Config::create($rectorConfig);
+                $subject->withTYPO3();
+                $subject->apply();
+            },
+        );
+
+        /* @see TYPO3Rector\Set\Typo3LevelSetList::UP_TO_TYPO3_12 */
+        self::assertTrue($this->container?->has(TYPO3Rector\FileProcessor\Resources\Files\Rector\v12\v0\RenameExtTypoScriptFilesFileRector::class));
     }
 
     #[Framework\Attributes\Test]

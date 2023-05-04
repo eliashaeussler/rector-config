@@ -26,47 +26,46 @@ namespace EliasHaeussler\RectorConfig\Set;
 use EliasHaeussler\RectorConfig\Enums;
 use EliasHaeussler\RectorConfig\Exception;
 use EliasHaeussler\RectorConfig\Helper;
-use Rector\PHPUnit;
-
-use function version_compare;
+use Ssch\TYPO3Rector;
+use TYPO3\CMS\Core;
 
 /**
- * PHPUnitSet.
+ * TYPO3Set.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class PHPUnitSet implements Set
+final class TYPO3Set implements Set
 {
-    private readonly string $phpUnitVersion;
+    private readonly string $typo3Version;
 
     /**
      * @throws Exception\MissingRequiredPackageException
      */
     public function __construct()
     {
-        $this->phpUnitVersion = Helper\VersionHelper::getPackageVersion('phpunit/phpunit');
+        // @codeCoverageIgnoreStart
+        if (!class_exists(Core\Information\Typo3Version::class)) {
+            throw Exception\MissingRequiredPackageException::create('typo3/cms-core');
+        }
+        if (!class_exists(TYPO3Rector\Set\Typo3LevelSetList::class)) {
+            throw Exception\MissingRequiredPackageException::create('ssch/typo3-rector');
+        }
+        // @codeCoverageIgnoreEnd
+
+        $this->typo3Version = (new Core\Information\Typo3Version())->getVersion();
     }
 
     public function get(): array
     {
-        $set = [
-            PHPUnit\Set\PHPUnitSetList::PHPUNIT_EXCEPTION,
-            PHPUnit\Set\PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD,
-            PHPUnit\Set\PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER,
-        ];
-
-        // Add PHPUnit 10.x sets
-        if (version_compare($this->phpUnitVersion, '10.0.0', '>=')) {
-            $set[] = PHPUnit\Set\PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES;
-        }
+        $set = [];
 
         // Determine level set list
         $levelSetList = Helper\VersionHelper::getRectorLevelSetListForPackage(
-            $this->phpUnitVersion,
-            PHPUnit\Set\PHPUnitLevelSetList::class,
-            'UP_TO_PHPUNIT_%d',
-            Enums\VersionRange::MajorDotZero,
+            $this->typo3Version,
+            TYPO3Rector\Set\Typo3LevelSetList::class,
+            'UP_TO_TYPO3_%d',
+            Enums\VersionRange::MajorOnly,
         );
 
         // Add level set list, if available
