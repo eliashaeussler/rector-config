@@ -29,7 +29,7 @@
 		"migration": [
 			"@migration:rector"
 		],
-		"migration:rector": "rector process -c rector.php",
+		"migration:rector": "rector process -c rector.php -a ../../vendor/autoload.php",
 		"test": [
 			"src/test.sh default-set",
 			"src/test.sh phpunit-set",
