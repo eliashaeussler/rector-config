@@ -26,11 +26,13 @@ namespace EliasHaeussler\RectorConfig\Tests\Config;
 use EliasHaeussler\RectorConfig as Src;
 use EliasHaeussler\RectorConfig\Tests;
 use PHPUnit\Framework;
+use Rector\CodeQuality;
 use Rector\Config;
 use Rector\Core;
 use Rector\Php73;
 use Rector\Php74;
 use Rector\PHPUnit;
+use Rector\Set;
 use Rector\Symfony;
 
 /**
@@ -130,6 +132,25 @@ final class ConfigTest extends Framework\TestCase
 
         /* @see Symfony\Set\SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION */
         self::assertTrue($this->container?->has(Symfony\Rector\MethodCall\ContainerGetToConstructorInjectionRector::class));
+    }
+
+    #[Framework\Attributes\Test]
+    public function withSetsAddsCustomSetsToRectorConfig(): void
+    {
+        $this->createRectorConfig(
+            static function (Config\RectorConfig $rectorConfig) {
+                $subject = Src\Config\Config::create($rectorConfig);
+                $subject->withSets(
+                    new Src\Set\CustomSet(
+                        Set\ValueObject\SetList::CODE_QUALITY,
+                    ),
+                );
+                $subject->apply();
+            },
+        );
+
+        /* @see Set\ValueObject\SetList::CODE_QUALITY */
+        self::assertTrue($this->container?->has(CodeQuality\Rector\BooleanAnd\SimplifyEmptyArrayCheckRector::class));
     }
 
     #[Framework\Attributes\Test]

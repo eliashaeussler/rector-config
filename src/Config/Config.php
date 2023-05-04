@@ -80,6 +80,15 @@ final class Config
         return $this;
     }
 
+    public function withSets(Set\Set ...$sets): self
+    {
+        foreach ($sets as $set) {
+            $this->sets[] = $set;
+        }
+
+        return $this;
+    }
+
     /**
      * @param non-empty-string ...$paths
      */

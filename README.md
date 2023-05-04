@@ -29,8 +29,10 @@ composer require --dev eliashaeussler/rector-config
 # rector.php
 
 use EliasHaeussler\RectorConfig\Config\Config;
+use EliasHaeussler\RectorConfig\Set\CustomSet;
 use Rector\Config\RectorConfig;
 use Rector\Php80\Rector\Class_\AnnotationToAttributeRector;
+use Rector\Set\ValueObject\SetList;
 
 return static function (RectorConfig $rectorConfig): void {
     $config = Config::create($rectorConfig)->in(
@@ -43,6 +45,14 @@ return static function (RectorConfig $rectorConfig): void {
 
     // Include default Symfony sets
     $config->withSymfony();
+
+    // Include custom sets
+    $config->withSets(
+        new CustomSet(
+            SetList::CODE_QUALITY,
+            SetList::CODING_STYLE,
+        ),
+    );
 
     // Skip specific rectors
     $config->skip(
