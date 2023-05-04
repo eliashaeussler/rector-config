@@ -80,6 +80,13 @@ final class Config
         return $this;
     }
 
+    public function withTYPO3(): self
+    {
+        $this->sets[] = new Set\TYPO3Set();
+
+        return $this;
+    }
+
     public function withSets(Set\Set ...$sets): self
     {
         foreach ($sets as $set) {

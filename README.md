@@ -46,6 +46,9 @@ return static function (RectorConfig $rectorConfig): void {
     // Include default Symfony sets
     $config->withSymfony();
 
+    // Include default TYPO3 sets
+    $config->withTYPO3();
+
     // Include custom sets
     $config->withSets(
         new CustomSet(

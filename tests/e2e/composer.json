@@ -33,7 +33,8 @@
 		"test": [
 			"src/test.sh default-set",
 			"src/test.sh phpunit-set",
-			"src/test.sh symfony-set"
+			"src/test.sh symfony-set",
+			"src/test.sh typo3-set"
 		]
 	}
 }

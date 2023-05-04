@@ -24,9 +24,9 @@ declare(strict_types=1);
 namespace EliasHaeussler\RectorConfig\Helper;
 
 use Composer\InstalledVersions;
+use EliasHaeussler\RectorConfig\Enums;
 use EliasHaeussler\RectorConfig\Exception;
 use OutOfBoundsException;
-use Rector\Set;
 
 use function defined;
 use function explode;
@@ -61,23 +61,21 @@ final class VersionHelper
     }
 
     /**
-     * @template T of Set\Contract\SetListInterface
-     *
-     * @param class-string<T> $levelSetList
+     * @param class-string $levelSetList
      */
     public static function getRectorLevelSetListForPackage(
         string $packageVersion,
         string $levelSetList,
         string $constantPattern,
-        bool $includeMinor = true,
+        Enums\VersionRange $versionRange = Enums\VersionRange::MajorMinor,
     ): ?string {
         [$major, $minor] = explode('.', $packageVersion, 3);
 
-        if ($includeMinor) {
-            $versionPattern = $major.$minor;
-        } else {
-            $versionPattern = $major.'0';
-        }
+        $versionPattern = match ($versionRange) {
+            Enums\VersionRange::MajorMinor => $major.$minor,
+            Enums\VersionRange::MajorDotZero => $major.'0',
+            Enums\VersionRange::MajorOnly => $major,
+        };
 
         $constant = sprintf('%s::%s', $levelSetList, sprintf($constantPattern, ltrim($versionPattern, 'v')));
         $value = defined($constant) ? constant($constant) : null;

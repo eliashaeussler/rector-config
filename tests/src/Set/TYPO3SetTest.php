@@ -27,29 +27,29 @@ use EliasHaeussler\RectorConfig as Src;
 use PHPUnit\Framework;
 
 /**
- * SymfonySetTest.
+ * TYPO3SetTest.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class SymfonySetTest extends Framework\TestCase
+final class TYPO3SetTest extends Framework\TestCase
 {
-    private Src\Set\SymfonySet $subject;
+    private Src\Set\TYPO3Set $subject;
 
     protected function setUp(): void
     {
-        $this->subject = new Src\Set\SymfonySet();
+        $this->subject = new Src\Set\TYPO3Set();
     }
 
     #[Framework\Attributes\Test]
-    public function getReturnsSymfonySetWithLevelSetList(): void
+    public function getReturnsTYPO3SetWithLevelSetList(): void
     {
         $actual = $this->subject->get();
 
-        self::assertCount(4, $actual);
+        self::assertCount(1, $actual);
         self::assertMatchesRegularExpression(
-            '/config\\/sets\\/symfony\\/level\\/up-to-symfony-6\\d+\\.php$/',
-            $actual[3],
+            '/config\\/level\\/up-to-typo3-12\\.php$/',
+            $actual[0],
         );
     }
 }
