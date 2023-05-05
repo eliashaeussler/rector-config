@@ -44,6 +44,9 @@ final class SymfonySet implements Set
         'symfony/runtime',
     ];
 
+    /**
+     * @var non-empty-string
+     */
     private readonly string $symfonyVersion;
 
     /**
@@ -78,6 +81,8 @@ final class SymfonySet implements Set
     }
 
     /**
+     * @return non-empty-string
+     *
      * @throws Exception\MissingRequiredPackageException
      */
     private function determineSymfonyVersion(): string

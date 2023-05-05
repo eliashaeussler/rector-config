@@ -43,6 +43,8 @@ use function sprintf;
 final class VersionHelper
 {
     /**
+     * @return non-empty-string
+     *
      * @throws Exception\MissingRequiredPackageException
      */
     public static function getPackageVersion(string $packageName): string
@@ -53,7 +55,7 @@ final class VersionHelper
             $version = null;
         }
 
-        if (null === $version) {
+        if (null === $version || '' === $version) {
             throw Exception\MissingRequiredPackageException::create($packageName);
         }
 
@@ -61,7 +63,11 @@ final class VersionHelper
     }
 
     /**
-     * @param class-string $levelSetList
+     * @param non-empty-string $packageVersion
+     * @param class-string     $levelSetList
+     * @param non-empty-string $constantPattern
+     *
+     * @return non-empty-string|null
      */
     public static function getRectorLevelSetListForPackage(
         string $packageVersion,
@@ -80,7 +86,7 @@ final class VersionHelper
         $constant = sprintf('%s::%s', $levelSetList, sprintf($constantPattern, ltrim($versionPattern, 'v')));
         $value = defined($constant) ? constant($constant) : null;
 
-        if (is_string($value)) {
+        if (is_string($value) && '' !== $value) {
             return $value;
         }
 

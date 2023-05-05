@@ -37,6 +37,9 @@ use TYPO3\CMS\Core;
  */
 final class TYPO3Set implements Set
 {
+    /**
+     * @var non-empty-string
+     */
     private readonly string $typo3Version;
 
     /**
@@ -53,6 +56,7 @@ final class TYPO3Set implements Set
         }
         // @codeCoverageIgnoreEnd
 
+        /* @phpstan-ignore-next-line */
         $this->typo3Version = (new Core\Information\Typo3Version())->getVersion();
     }
 
