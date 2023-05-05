@@ -36,6 +36,8 @@ use Rector\Set;
 use Rector\Symfony;
 use Ssch\TYPO3Rector;
 
+use function count;
+
 /**
  * ConfigTest.
  *
@@ -181,6 +183,25 @@ final class ConfigTest extends Framework\TestCase
         );
 
         self::assertSame(['foo', 'baz'], $this->container?->getParameter(Core\Configuration\Option::PATHS));
+    }
+
+    #[Framework\Attributes\Test]
+    public function notSkipsAllGivenPathsInRectorConfig(): void
+    {
+        $this->createRectorConfig(
+            static function (Config\RectorConfig $rectorConfig) {
+                $subject = Src\Config\Config::create($rectorConfig);
+                $subject->not('foo', 'baz');
+                $subject->apply();
+            },
+        );
+
+        $actual = $this->container?->getParameter(Core\Configuration\Option::SKIP);
+
+        self::assertIsArray($actual);
+        self::assertGreaterThanOrEqual(2, count($actual));
+        self::assertSame('foo', $actual[0]);
+        self::assertSame('baz', $actual[1]);
     }
 
     #[Framework\Attributes\Test]

@@ -40,6 +40,12 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__.'/tests',
     );
 
+    // Skip specific paths
+    $config->not(
+        __DIR__.'/src/lib',
+        __DIR__.'/tests/test-application/vendor',
+    );
+
     // Include default PHPUnit sets
     $config->withPHPUnit();
 
