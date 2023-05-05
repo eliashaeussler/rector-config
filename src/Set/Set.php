@@ -32,7 +32,7 @@ namespace EliasHaeussler\RectorConfig\Set;
 interface Set
 {
     /**
-     * @return list<string>
+     * @return list<non-empty-string>
      */
     public function get(): array;
 }

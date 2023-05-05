@@ -24,7 +24,6 @@ declare(strict_types=1);
 namespace EliasHaeussler\RectorConfig\Set;
 
 use function array_diff;
-use function array_filter;
 use function array_values;
 
 /**
@@ -36,25 +35,34 @@ use function array_values;
 final class CustomSet implements Set
 {
     /**
-     * @var array<string>
+     * @var list<non-empty-string>
      */
     private array $sets = [];
 
+    /**
+     * @param non-empty-string ...$sets
+     */
     public function __construct(string ...$sets)
     {
         $this->add(...$sets);
     }
 
+    /**
+     * @param non-empty-string ...$sets
+     */
     public function add(string ...$sets): self
     {
-        $this->sets = [...$this->sets, ...array_filter($sets)];
+        $this->sets = array_values([...$this->sets, ...$sets]);
 
         return $this;
     }
 
+    /**
+     * @param non-empty-string ...$sets
+     */
     public function remove(string ...$sets): self
     {
-        $this->sets = array_diff($this->sets, $sets);
+        $this->sets = array_values(array_diff($this->sets, $sets));
 
         return $this;
     }

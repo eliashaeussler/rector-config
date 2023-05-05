@@ -38,6 +38,9 @@ use function version_compare;
  */
 final class PHPUnitSet implements Set
 {
+    /**
+     * @var non-empty-string
+     */
     private readonly string $phpUnitVersion;
 
     /**

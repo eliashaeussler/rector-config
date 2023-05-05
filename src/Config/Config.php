@@ -45,7 +45,7 @@ final class Config
     private array $paths = [];
 
     /**
-     * @var array<class-string<Core\Contract\Rector\RectorInterface>, list<string>>
+     * @var array<class-string<Core\Contract\Rector\RectorInterface>, list<non-empty-string>>
      */
     private array $skippedRectors = [
         Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class => [],
@@ -108,7 +108,7 @@ final class Config
 
     /**
      * @param class-string<Core\Contract\Rector\RectorInterface> $rector
-     * @param list<string>                                       $paths
+     * @param list<non-empty-string>                             $paths
      */
     public function skip(string $rector, array $paths = [], bool $mergePaths = true): self
     {
