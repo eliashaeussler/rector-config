@@ -45,6 +45,11 @@ final class Config
     private array $paths = [];
 
     /**
+     * @var list<non-empty-string>
+     */
+    private array $skipPaths = [];
+
+    /**
      * @var array<class-string<Core\Contract\Rector\RectorInterface>, list<non-empty-string>>
      */
     private array $skippedRectors = [
@@ -107,6 +112,16 @@ final class Config
     }
 
     /**
+     * @param non-empty-string ...$paths
+     */
+    public function not(string ...$paths): self
+    {
+        $this->skipPaths = array_values($paths);
+
+        return $this;
+    }
+
+    /**
      * @param class-string<Core\Contract\Rector\RectorInterface> $rector
      * @param list<non-empty-string>                             $paths
      */
@@ -135,7 +150,7 @@ final class Config
      */
     public function apply(): void
     {
-        $skip = [];
+        $skip = $this->skipPaths;
 
         // Transform skipped rectors for Rector config
         foreach ($this->skippedRectors as $skippedRector => $paths) {
