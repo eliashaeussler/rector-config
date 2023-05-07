@@ -4338,23 +4338,23 @@
         },
         {
             "name": "react/promise",
-            "version": "v2.9.0",
+            "version": "v2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "234f8fd1023c9158e2314fa9d7d0e6a83db42910"
+                "reference": "f913fb8cceba1e6644b7b90c4bfb678ed8a3ef38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/234f8fd1023c9158e2314fa9d7d0e6a83db42910",
-                "reference": "234f8fd1023c9158e2314fa9d7d0e6a83db42910",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/f913fb8cceba1e6644b7b90c4bfb678ed8a3ef38",
+                "reference": "f913fb8cceba1e6644b7b90c4bfb678ed8a3ef38",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^9.3 || ^5.7 || ^4.8.36"
+                "phpunit/phpunit": "^9.5 || ^5.7 || ^4.8.36"
             },
             "type": "library",
             "autoload": {
@@ -4398,19 +4398,15 @@
             ],
             "support": {
                 "issues": "https://github.com/reactphp/promise/issues",
-                "source": "https://github.com/reactphp/promise/tree/v2.9.0"
+                "source": "https://github.com/reactphp/promise/tree/v2.10.0"
             },
             "funding": [
                 {
-                    "url": "https://github.com/WyriHaximus",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/clue",
-                    "type": "github"
+                    "url": "https://opencollective.com/reactphp",
+                    "type": "open_collective"
                 }
             ],
-            "time": "2022-02-11T10:27:51+00:00"
+            "time": "2023-05-02T15:15:43+00:00"
         },
         {
             "name": "scssphp/scssphp",
@@ -4794,16 +4790,16 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "5.0.1",
+            "version": "5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "aae9a0a43bff37bd5d8d0311426c87bf36153f02"
+                "reference": "912dc2fbe3e3c1e7873313cc801b100b6c68c87b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/aae9a0a43bff37bd5d8d0311426c87bf36153f02",
-                "reference": "aae9a0a43bff37bd5d8d0311426c87bf36153f02",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/912dc2fbe3e3c1e7873313cc801b100b6c68c87b",
+                "reference": "912dc2fbe3e3c1e7873313cc801b100b6c68c87b",
                 "shasum": ""
             },
             "require": {
@@ -4849,7 +4845,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/diff/issues",
                 "security": "https://github.com/sebastianbergmann/diff/security/policy",
-                "source": "https://github.com/sebastianbergmann/diff/tree/5.0.1"
+                "source": "https://github.com/sebastianbergmann/diff/tree/5.0.3"
             },
             "funding": [
                 {
@@ -4857,7 +4853,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-03-23T05:12:41+00:00"
+            "time": "2023-05-01T07:48:21+00:00"
         },
         {
             "name": "sebastian/environment",
@@ -9509,28 +9505,28 @@
         },
         {
             "name": "typo3fluid/fluid",
-            "version": "2.7.4",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/Fluid.git",
-                "reference": "24f4494083c8d304680e4c9c38667dff33720dd4"
+                "reference": "ac1aaa6548ddca663c11f165fe4e2c2ef51c3e38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/Fluid/zipball/24f4494083c8d304680e4c9c38667dff33720dd4",
-                "reference": "24f4494083c8d304680e4c9c38667dff33720dd4",
+                "url": "https://api.github.com/repos/TYPO3/Fluid/zipball/ac1aaa6548ddca663c11f165fe4e2c2ef51c3e38",
+                "reference": "ac1aaa6548ddca663c11f165fe4e2c2ef51c3e38",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2 || ^8.0"
+                "ext-mbstring": "*",
+                "php": "^8.1"
             },
             "require-dev": {
                 "ext-json": "*",
-                "ext-mbstring": "*",
-                "friendsofphp/php-cs-fixer": "^3.4",
-                "phpstan/phpstan": "^1.7",
-                "phpstan/phpstan-phpunit": "^1.1",
-                "phpunit/phpunit": "^8.5.33 || ^9.5.28 || ^10.0.16"
+                "friendsofphp/php-cs-fixer": "^3.16.0",
+                "phpstan/phpstan": "^1.10.14",
+                "phpstan/phpstan-phpunit": "^1.3.11",
+                "phpunit/phpunit": "^10.1.2"
             },
             "suggest": {
                 "ext-json": "PHP JSON is needed when using JSONVariableProvider: A relatively rare use case"
@@ -9555,7 +9551,7 @@
                 "issues": "https://github.com/TYPO3/Fluid/issues",
                 "source": "https://github.com/TYPO3/Fluid"
             },
-            "time": "2023-03-23T12:04:09+00:00"
+            "time": "2023-05-04T21:36:43+00:00"
         },
         {
             "name": "webmozart/assert",
