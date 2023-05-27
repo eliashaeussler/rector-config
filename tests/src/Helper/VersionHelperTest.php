@@ -27,6 +27,8 @@ use EliasHaeussler\RectorConfig as Src;
 use PHPUnit\Framework;
 use Rector\PHPUnit;
 
+use function explode;
+
 /**
  * VersionHelperTest.
  *
@@ -76,5 +78,17 @@ final class VersionHelperTest extends Framework\TestCase
                 'UP_TO_PHPUNIT_%d',
             ),
         );
+    }
+
+    #[Framework\Attributes\Test]
+    public function getVersionFromIntegerConvertsVersionIdToVersion(): void
+    {
+        $actual = Src\Helper\VersionHelper::getVersionFromInteger(PHP_VERSION_ID);
+        $versionNumbers = explode('.', $actual);
+
+        self::assertCount(3, $versionNumbers);
+        self::assertSame(PHP_MAJOR_VERSION, (int) $versionNumbers[0]);
+        self::assertSame(PHP_MINOR_VERSION, (int) $versionNumbers[1]);
+        self::assertSame(PHP_RELEASE_VERSION, (int) $versionNumbers[2]);
     }
 }

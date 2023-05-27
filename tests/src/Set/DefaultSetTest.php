@@ -26,6 +26,8 @@ namespace EliasHaeussler\RectorConfig\Tests\Set;
 use EliasHaeussler\RectorConfig as Src;
 use PHPUnit\Framework;
 
+use function sprintf;
+
 /**
  * DefaultSetTest.
  *
@@ -42,11 +44,25 @@ final class DefaultSetTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
+    public function constructorAllowsConfiguringPHPVersion(): void
+    {
+        $subject = new Src\Set\DefaultSet('8.2.0');
+
+        $actual = $subject->get();
+
+        self::assertCount(2, $actual);
+        self::assertMatchesRegularExpression('/config\\/set\\/level\\/up-to-php82\\.php$/', $actual[1]);
+    }
+
+    #[Framework\Attributes\Test]
     public function getReturnsDefaultSetWithLevelSetList(): void
     {
         $actual = $this->subject->get();
 
         self::assertCount(2, $actual);
-        self::assertMatchesRegularExpression('/config\\/set\\/level\\/up-to-php8\\d+\\.php$/', $actual[1]);
+        self::assertMatchesRegularExpression(
+            sprintf('/config\\/set\\/level\\/up-to-php%d%d\\.php$/', PHP_MAJOR_VERSION, PHP_MINOR_VERSION),
+            $actual[1],
+        );
     }
 }

@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\RectorConfig\Config;
 
+use EliasHaeussler\RectorConfig\Helper\VersionHelper;
 use EliasHaeussler\RectorConfig\Set;
 use Rector\Config as RectorConfig;
 use Rector\Core;
@@ -30,6 +31,7 @@ use Rector\Php73;
 use Rector\Php74;
 
 use function array_values;
+use function is_int;
 
 /**
  * Config.
@@ -66,9 +68,20 @@ final class Config
     ) {
     }
 
-    public static function create(RectorConfig\RectorConfig $rectorConfig): self
-    {
-        return new self($rectorConfig, [new Set\DefaultSet()]);
+    /**
+     * @param non-empty-string|positive-int|null $phpVersion
+     */
+    public static function create(
+        RectorConfig\RectorConfig $rectorConfig,
+        string|int $phpVersion = null,
+    ): self {
+        $phpVersion ??= PHP_VERSION;
+
+        if (is_int($phpVersion)) {
+            $phpVersion = VersionHelper::getVersionFromInteger($phpVersion);
+        }
+
+        return new self($rectorConfig, [new Set\DefaultSet($phpVersion)]);
     }
 
     public function withPHPUnit(): self

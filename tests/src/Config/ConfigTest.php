@@ -25,6 +25,7 @@ namespace EliasHaeussler\RectorConfig\Tests\Config;
 
 use EliasHaeussler\RectorConfig as Src;
 use EliasHaeussler\RectorConfig\Tests;
+use Generator;
 use PHPUnit\Framework;
 use Rector\CodeQuality;
 use Rector\Config;
@@ -56,6 +57,27 @@ final class ConfigTest extends Framework\TestCase
         Src\Config\Config::create($rectorConfig);
 
         self::assertSame([], $this->container?->getParameter(Core\Configuration\Option::SKIP));
+    }
+
+    /**
+     * @param non-empty-string|positive-int $phpVersion
+     * @param positive-int                  $expected
+     */
+    #[Framework\Attributes\Test]
+    #[Framework\Attributes\DataProvider('createCanHandleCustomPHPVersionDataProvider')]
+    public function createCanHandleCustomPHPVersion(string|int $phpVersion, int $expected): void
+    {
+        $this->createRectorConfig(
+            static function (Config\RectorConfig $rectorConfig) use ($phpVersion) {
+                $subject = Src\Config\Config::create($rectorConfig, $phpVersion);
+                $subject->apply();
+            },
+        );
+
+        self::assertSame(
+            $expected,
+            $this->container?->getParameter(Core\Configuration\Option::PHP_VERSION_FEATURES),
+        );
     }
 
     #[Framework\Attributes\Test]
@@ -288,6 +310,15 @@ final class ConfigTest extends Framework\TestCase
             ],
             $this->container?->getParameter(Core\Configuration\Option::SKIP),
         );
+    }
+
+    /**
+     * @return Generator<string, array{non-empty-string|positive-int, positive-int}>
+     */
+    public static function createCanHandleCustomPHPVersionDataProvider(): Generator
+    {
+        yield 'version string' => ['8.2.0', Core\ValueObject\PhpVersion::PHP_82];
+        yield 'version id' => [Core\ValueObject\PhpVersion::PHP_82, Core\ValueObject\PhpVersion::PHP_82];
     }
 
     protected function tearDown(): void
