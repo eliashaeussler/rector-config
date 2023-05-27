@@ -34,6 +34,14 @@ use Rector\Set as RectorSet;
  */
 final class DefaultSet implements Set
 {
+    /**
+     * @param non-empty-string $phpVersion
+     */
+    public function __construct(
+        private readonly string $phpVersion = PHP_VERSION,
+    ) {
+    }
+
     public function get(): array
     {
         $set = [
@@ -42,7 +50,7 @@ final class DefaultSet implements Set
 
         // Determine level set list
         $levelSetList = Helper\VersionHelper::getRectorLevelSetListForPackage(
-            PHP_VERSION,
+            $this->phpVersion,
             RectorSet\ValueObject\LevelSetList::class,
             'UP_TO_PHP_%d',
         );

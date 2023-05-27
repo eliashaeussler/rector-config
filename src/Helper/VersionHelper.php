@@ -32,6 +32,7 @@ use function defined;
 use function explode;
 use function is_string;
 use function ltrim;
+use function round;
 use function sprintf;
 
 /**
@@ -91,5 +92,19 @@ final class VersionHelper
         }
 
         return null;
+    }
+
+    /**
+     * @param positive-int $versionId
+     *
+     * @return non-empty-string
+     */
+    public static function getVersionFromInteger(int $versionId): string
+    {
+        $major = round($versionId / 10000, 0, PHP_ROUND_HALF_DOWN);
+        $minor = round(($versionId - $major * 10000) / 100, 0, PHP_ROUND_HALF_DOWN);
+        $patch = ($versionId - $major * 10000 - $minor * 100);
+
+        return sprintf('%d.%d.%d', $major, $minor, $patch);
     }
 }
