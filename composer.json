@@ -20,7 +20,7 @@
 		"armin/editorconfig-cli": "^1.5",
 		"composer/composer": "^2.0",
 		"eliashaeussler/php-cs-fixer-config": "^1.1",
-		"eliashaeussler/phpstan-config": "^1.0",
+		"eliashaeussler/phpstan-config": "^2.0",
 		"ergebnis/composer-normalize": "^2.30",
 		"phpstan/extension-installer": "^1.2",
 		"phpunit/phpunit": "^10.1",
@@ -70,7 +70,7 @@
 		"sca": [
 			"@sca:php"
 		],
-		"sca:php": "phpstan analyse -c phpstan.neon",
+		"sca:php": "phpstan analyse -c phpstan.php",
 		"test": [
 			"@test:e2e",
 			"@test:unit"
