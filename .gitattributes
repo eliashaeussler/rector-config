@@ -9,7 +9,6 @@
 /composer.lock            export-ignore
 /CODEOWNERS               export-ignore
 /phpstan.neon             export-ignore
-/phpunit.coverage.xml     export-ignore
 /phpunit.xml              export-ignore
 /rector.php               export-ignore
 /renovate.json            export-ignore

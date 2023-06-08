@@ -79,7 +79,7 @@
 			"@composer -d tests/e2e install",
 			"@composer -d tests/e2e test"
 		],
-		"test:unit": "phpunit -c phpunit.xml",
-		"test:unit:coverage": "phpunit -c phpunit.coverage.xml"
+		"test:unit": "@test:unit:coverage --no-coverage",
+		"test:unit:coverage": "phpunit -c phpunit.xml"
 	}
 }
