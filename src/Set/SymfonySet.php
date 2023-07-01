@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\RectorConfig\Set;
 
+use EliasHaeussler\RectorConfig\Enums;
 use EliasHaeussler\RectorConfig\Exception;
 use EliasHaeussler\RectorConfig\Helper;
 use Rector\Symfony;
@@ -70,6 +71,8 @@ final class SymfonySet implements Set
             $this->symfonyVersion,
             Symfony\Set\SymfonyLevelSetList::class,
             'UP_TO_SYMFONY_%d',
+            Enums\VersionRange::MajorMinor,
+            true,
         );
 
         // Add level set list, if available

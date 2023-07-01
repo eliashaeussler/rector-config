@@ -43,6 +43,8 @@ use function sprintf;
  */
 final class VersionHelper
 {
+    private const VERSION_PATTERN = '/^v?(?P<major>\\d+)\\.(?P<minor>\\d+)\\./';
+
     /**
      * @return non-empty-string
      *
@@ -75,8 +77,15 @@ final class VersionHelper
         string $levelSetList,
         string $constantPattern,
         Enums\VersionRange $versionRange = Enums\VersionRange::MajorMinor,
+        bool $fallBackToPreviousVersions = false,
     ): ?string {
-        [$major, $minor] = explode('.', $packageVersion, 3);
+        if (1 !== preg_match(self::VERSION_PATTERN, $packageVersion, $matches)) {
+            return null;
+        }
+
+        $major = $matches['major'];
+        $minor = $matches['minor'];
+        $normalizedVersion = $major.'.'.$minor.'.0';
 
         $versionPattern = match ($versionRange) {
             Enums\VersionRange::MajorMinor => $major.$minor,
@@ -91,7 +100,39 @@ final class VersionHelper
             return $value;
         }
 
+        if (!$fallBackToPreviousVersions) {
+            return null;
+        }
+
+        $previousVersion = self::resolvePreviousVersion($normalizedVersion, $versionRange);
+
+        if ($normalizedVersion !== $previousVersion) {
+            return self::getRectorLevelSetListForPackage(
+                $previousVersion,
+                $levelSetList,
+                $constantPattern,
+                $versionRange,
+                true,
+            );
+        }
+
         return null;
+    }
+
+    /**
+     * @param non-empty-string $packageVersion
+     *
+     * @return non-empty-string
+     */
+    private static function resolvePreviousVersion(string $packageVersion, Enums\VersionRange $versionRange): string
+    {
+        [$major, $minor] = explode('.', $packageVersion, 3);
+
+        return match ($versionRange) {
+            Enums\VersionRange::MajorMinor => $major.'.'.max($minor - 1, 0).'.0',
+            Enums\VersionRange::MajorDotZero,
+            Enums\VersionRange::MajorOnly => max($major - 1, 0).'.'.$minor.'.0',
+        };
     }
 
     /**

@@ -26,6 +26,7 @@ namespace EliasHaeussler\RectorConfig\Tests\Helper;
 use EliasHaeussler\RectorConfig as Src;
 use PHPUnit\Framework;
 use Rector\PHPUnit;
+use Rector\Symfony;
 
 use function explode;
 
@@ -54,6 +55,18 @@ final class VersionHelperTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
+    public function getRectorLevelSetListForPackageReturnsNullOnInvalidPackageVersion(): void
+    {
+        self::assertNull(
+            Src\Helper\VersionHelper::getRectorLevelSetListForPackage(
+                'foo',
+                PHPUnit\Set\PHPUnitLevelSetList::class,
+                'UP_TO_PHPUNIT_%d',
+            ),
+        );
+    }
+
+    #[Framework\Attributes\Test]
     public function getRectorLevelSetListForPackageReturnsLevelSetList(): void
     {
         $expected = PHPUnit\Set\PHPUnitLevelSetList::UP_TO_PHPUNIT_100;
@@ -76,6 +89,37 @@ final class VersionHelperTest extends Framework\TestCase
                 '1.0.0',
                 PHPUnit\Set\PHPUnitLevelSetList::class,
                 'UP_TO_PHPUNIT_%d',
+            ),
+        );
+    }
+
+    #[Framework\Attributes\Test]
+    public function getRectorLevelSetListForPackageReturnsLevelSetListForPreviousVersion(): void
+    {
+        $expected = Symfony\Set\SymfonyLevelSetList::UP_TO_SYMFONY_54;
+
+        self::assertSame(
+            $expected,
+            Src\Helper\VersionHelper::getRectorLevelSetListForPackage(
+                '5.99.99',
+                Symfony\Set\SymfonyLevelSetList::class,
+                'UP_TO_SYMFONY_%d',
+                Src\Enums\VersionRange::MajorMinor,
+                true,
+            ),
+        );
+    }
+
+    #[Framework\Attributes\Test]
+    public function getRectorLevelSetListForPackageReturnsNUllIfNoPreviousVersionExists(): void
+    {
+        self::assertNull(
+            Src\Helper\VersionHelper::getRectorLevelSetListForPackage(
+                '2.1.0',
+                PHPUnit\Set\PHPUnitLevelSetList::class,
+                'UP_TO_PHPUNIT_%d',
+                Src\Enums\VersionRange::MajorMinor,
+                true,
             ),
         );
     }
