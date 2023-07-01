@@ -56,7 +56,6 @@ final class PHPUnitSet implements Set
         $set = [
             PHPUnit\Set\PHPUnitSetList::PHPUNIT_EXCEPTION,
             PHPUnit\Set\PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD,
-            PHPUnit\Set\PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER,
         ];
 
         // Add PHPUnit 10.x sets

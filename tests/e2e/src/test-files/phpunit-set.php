@@ -21,7 +21,6 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
@@ -69,27 +68,5 @@ final class PHPUnitSpecificMethodSetListTestClass extends TestCase
         $foo = false;
 
         self::assertTrue(!$foo);
-    }
-}
-
-/**
- * This class should convert array data providers to yield data providers.
- *
- * @see \Rector\PHPUnit\Set\PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER
- */
-final class PHPUnitYieldDataProviderSetListTestClass extends TestCase
-{
-    #[Test]
-    #[DataProvider('provider')]
-    public function testCase(string $foo): void
-    {
-    }
-
-    /**
-     * @return array<string, array{string}>
-     */
-    public static function provider(): array
-    {
-        return ['foo' => ['baz']];
     }
 }
