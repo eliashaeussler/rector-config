@@ -46,10 +46,10 @@ final class PHPUnitSetTest extends Framework\TestCase
     {
         $actual = $this->subject->get();
 
-        self::assertCount(5, $actual);
+        self::assertCount(4, $actual);
         self::assertMatchesRegularExpression(
             '/config\\/sets\\/level\\/up-to-phpunit-10\\d+\\.php$/',
-            $actual[4],
+            $actual[3],
         );
     }
 }
