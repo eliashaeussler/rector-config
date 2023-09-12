@@ -9498,16 +9498,16 @@
         },
         {
             "name": "typo3/cms-core",
-            "version": "v12.4.5",
+            "version": "v12.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/core.git",
-                "reference": "18f2a1c5278ce5c1a0e0c8267c7d9ca5b7bb2d90"
+                "reference": "4a56eab217c708602bbb69ce93be7210bedafbb0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/18f2a1c5278ce5c1a0e0c8267c7d9ca5b7bb2d90",
-                "reference": "18f2a1c5278ce5c1a0e0c8267c7d9ca5b7bb2d90",
+                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/4a56eab217c708602bbb69ce93be7210bedafbb0",
+                "reference": "4a56eab217c708602bbb69ce93be7210bedafbb0",
                 "shasum": ""
             },
             "require": {
@@ -9565,7 +9565,7 @@
                 "typo3/class-alias-loader": "^1.1.4",
                 "typo3/cms-cli": "^3.1",
                 "typo3/cms-composer-installers": "^5.0",
-                "typo3/html-sanitizer": "^2.1.2",
+                "typo3/html-sanitizer": "^2.1.3",
                 "typo3fluid/fluid": "^2.9.2"
             },
             "conflict": {
@@ -9635,7 +9635,7 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2023-08-08T06:25:16+00:00"
+            "time": "2023-09-12T06:54:01+00:00"
         },
         {
             "name": "typo3/html-sanitizer",
