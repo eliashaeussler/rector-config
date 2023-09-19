@@ -31,7 +31,5 @@ final class SymfonyAnnotationToAttributesSetListTestClass
     /**
      * @required
      */
-    public function setDependency(): void
-    {
-    }
+    public function setDependency(): void {}
 }

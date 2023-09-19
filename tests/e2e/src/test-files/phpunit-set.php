@@ -34,9 +34,7 @@ final class PHPUnitAnnotationToAttributesSetListTestClass extends TestCase
     /**
      * @test
      */
-    public function testCase(): void
-    {
-    }
+    public function testCase(): void {}
 }
 
 /**
@@ -50,9 +48,7 @@ final class PHPUnitExceptionSetListTestClass extends TestCase
      * @expectedException \Exception
      */
     #[Test]
-    public function testCase(): void
-    {
-    }
+    public function testCase(): void {}
 }
 
 /**

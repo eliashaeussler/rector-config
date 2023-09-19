@@ -39,8 +39,7 @@ final class DefaultSet implements Set
      */
     public function __construct(
         private readonly string $phpVersion = PHP_VERSION,
-    ) {
-    }
+    ) {}
 
     public function get(): array
     {
