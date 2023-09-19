@@ -65,8 +65,7 @@ final class Config
     private function __construct(
         private readonly RectorConfig\RectorConfig $rectorConfig,
         private array $sets,
-    ) {
-    }
+    ) {}
 
     /**
      * @param non-empty-string|positive-int|null $phpVersion

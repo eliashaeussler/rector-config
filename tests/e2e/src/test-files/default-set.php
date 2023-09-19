@@ -26,6 +26,4 @@ declare(strict_types=1);
  *
  * @see \Rector\Set\ValueObject\SetList::PRIVATIZATION
  */
-class DefaultPrivatizationSetTestClass
-{
-}
+class DefaultPrivatizationSetTestClass {}
