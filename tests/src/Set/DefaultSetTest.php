@@ -25,7 +25,9 @@ namespace EliasHaeussler\RectorConfig\Tests\Set;
 
 use EliasHaeussler\RectorConfig as Src;
 use PHPUnit\Framework;
+use Rector\Set;
 
+use function defined;
 use function sprintf;
 
 /**
@@ -57,6 +59,17 @@ final class DefaultSetTest extends Framework\TestCase
     #[Framework\Attributes\Test]
     public function getReturnsDefaultSetWithLevelSetList(): void
     {
+        $levelSetList = sprintf(
+            '%s::UP_TO_PHP_%d%d',
+            Set\ValueObject\LevelSetList::class,
+            PHP_MAJOR_VERSION,
+            PHP_MINOR_VERSION,
+        );
+
+        if (!defined($levelSetList)) {
+            self::markTestSkipped('Level set list does not exist for this PHP version.');
+        }
+
         $actual = $this->subject->get();
 
         self::assertCount(2, $actual);
