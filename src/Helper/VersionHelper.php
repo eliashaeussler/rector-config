@@ -23,16 +23,11 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\RectorConfig\Helper;
 
-use Composer\InstalledVersions;
+use EliasHaeussler\RectorConfig\Entity;
 use EliasHaeussler\RectorConfig\Enums;
-use EliasHaeussler\RectorConfig\Exception;
-use OutOfBoundsException;
 
 use function defined;
-use function explode;
 use function is_string;
-use function ltrim;
-use function round;
 use function sprintf;
 
 /**
@@ -43,57 +38,26 @@ use function sprintf;
  */
 final class VersionHelper
 {
-    private const VERSION_PATTERN = '/^v?(?P<major>\\d+)\\.(?P<minor>\\d+)\\./';
-
     /**
-     * @return non-empty-string
-     *
-     * @throws Exception\MissingRequiredPackageException
-     */
-    public static function getPackageVersion(string $packageName): string
-    {
-        try {
-            $version = InstalledVersions::getPrettyVersion($packageName);
-        } catch (OutOfBoundsException) {
-            $version = null;
-        }
-
-        if (null === $version || '' === $version) {
-            throw Exception\MissingRequiredPackageException::create($packageName);
-        }
-
-        return $version;
-    }
-
-    /**
-     * @param non-empty-string $packageVersion
      * @param class-string     $levelSetList
      * @param non-empty-string $constantPattern
      *
      * @return non-empty-string|null
      */
     public static function getRectorLevelSetListForPackage(
-        string $packageVersion,
+        Entity\Version $packageVersion,
         string $levelSetList,
         string $constantPattern,
         Enums\VersionRange $versionRange = Enums\VersionRange::MajorMinor,
         bool $fallBackToPreviousVersions = false,
     ): ?string {
-        if (1 !== preg_match(self::VERSION_PATTERN, $packageVersion, $matches)) {
-            return null;
-        }
+        $normalizedVersion = Entity\Version::createMinor($packageVersion->major, $packageVersion->minor);
 
-        $major = $matches['major'];
-        $minor = $matches['minor'];
-        $normalizedVersion = $major.'.'.$minor.'.0';
-
-        $versionPattern = match ($versionRange) {
-            Enums\VersionRange::MajorMinor => $major.$minor,
-            Enums\VersionRange::MajorDotZero => $major.'0',
-            Enums\VersionRange::MajorOnly => $major,
-        };
-
-        $constant = sprintf('%s::%s', $levelSetList, sprintf($constantPattern, ltrim($versionPattern, 'v')));
+        $constant = sprintf(
+            '%s::%s',
+            $levelSetList,
+            sprintf($constantPattern, $normalizedVersion->range($versionRange)),
+        );
         $value = defined($constant) ? constant($constant) : null;
 
         if (is_string($value) && '' !== $value) {
@@ -106,7 +70,7 @@ final class VersionHelper
 
         $previousVersion = self::resolvePreviousVersion($normalizedVersion, $versionRange);
 
-        if ($normalizedVersion !== $previousVersion) {
+        if (!$normalizedVersion->equals($previousVersion)) {
             return self::getRectorLevelSetListForPackage(
                 $previousVersion,
                 $levelSetList,
@@ -119,33 +83,19 @@ final class VersionHelper
         return null;
     }
 
-    /**
-     * @param non-empty-string $packageVersion
-     *
-     * @return non-empty-string
-     */
-    private static function resolvePreviousVersion(string $packageVersion, Enums\VersionRange $versionRange): string
-    {
-        [$major, $minor] = explode('.', $packageVersion, 3);
-
+    private static function resolvePreviousVersion(
+        Entity\Version $packageVersion,
+        Enums\VersionRange $versionRange,
+    ): Entity\Version {
         return match ($versionRange) {
-            Enums\VersionRange::MajorMinor => $major.'.'.max($minor - 1, 0).'.0',
-            Enums\VersionRange::MajorDotZero,
-            Enums\VersionRange::MajorOnly => max($major - 1, 0).'.'.$minor.'.0',
+            Enums\VersionRange::MajorMinor => Entity\Version::createMinor(
+                $packageVersion->major,
+                max($packageVersion->minor - 1, 0),
+            ),
+            Enums\VersionRange::MajorDotZero, Enums\VersionRange::MajorOnly => Entity\Version::createMinor(
+                max($packageVersion->major - 1, 0),
+                $packageVersion->minor,
+            ),
         };
-    }
-
-    /**
-     * @param positive-int $versionId
-     *
-     * @return non-empty-string
-     */
-    public static function getVersionFromInteger(int $versionId): string
-    {
-        $major = round($versionId / 10000, 0, PHP_ROUND_HALF_DOWN);
-        $minor = round(($versionId - $major * 10000) / 100, 0, PHP_ROUND_HALF_DOWN);
-        $patch = ($versionId - $major * 10000 - $minor * 100);
-
-        return sprintf('%d.%d.%d', $major, $minor, $patch);
     }
 }

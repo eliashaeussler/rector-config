@@ -21,47 +21,25 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace EliasHaeussler\RectorConfig\Tests\Set;
+namespace EliasHaeussler\RectorConfig\Tests\Exception;
 
 use EliasHaeussler\RectorConfig as Src;
 use PHPUnit\Framework;
 
 /**
- * SymfonySetTest.
+ * VersionStringIsInvalidTest.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class SymfonySetTest extends Framework\TestCase
+final class VersionStringIsInvalidTest extends Framework\TestCase
 {
-    private Src\Set\SymfonySet $subject;
-
-    protected function setUp(): void
-    {
-        $this->subject = new Src\Set\SymfonySet();
-    }
-
     #[Framework\Attributes\Test]
-    public function constructorAllowsConfiguringSymfonyVersion(): void
+    public function constructorReturnsExceptionForGivenPackageName(): void
     {
-        $version = Src\Entity\Version::createFromVersionString('5.4.0');
-        $subject = new Src\Set\SymfonySet($version);
+        $actual = new Src\Exception\VersionStringIsInvalid('foo');
 
-        $actual = $subject->get();
-
-        self::assertCount(4, $actual);
-        self::assertStringEndsWith('/config/sets/symfony/level/up-to-symfony-54.php', $actual[3]);
-    }
-
-    #[Framework\Attributes\Test]
-    public function getReturnsSymfonySetWithLevelSetList(): void
-    {
-        $actual = $this->subject->get();
-
-        self::assertCount(4, $actual);
-        self::assertMatchesRegularExpression(
-            '/config\\/sets\\/symfony\\/level\\/up-to-symfony-6\\d+\\.php$/',
-            $actual[3],
-        );
+        self::assertSame('The string "foo" is not a valid version string.', $actual->getMessage());
+        self::assertSame(1700235101, $actual->getCode());
     }
 }

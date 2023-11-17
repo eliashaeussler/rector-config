@@ -23,7 +23,8 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\RectorConfig\Config;
 
-use EliasHaeussler\RectorConfig\Helper\VersionHelper;
+use EliasHaeussler\RectorConfig\Entity;
+use EliasHaeussler\RectorConfig\Exception;
 use EliasHaeussler\RectorConfig\Set;
 use Rector\Config as RectorConfig;
 use Rector\Core;
@@ -32,6 +33,7 @@ use Rector\Php74;
 
 use function array_values;
 use function is_int;
+use function is_string;
 
 /**
  * Config.
@@ -68,38 +70,54 @@ final class Config
     ) {}
 
     /**
-     * @param non-empty-string|positive-int|null $phpVersion
+     * @param Entity\Version|non-empty-string|positive-int|null $phpVersion
+     *
+     * @throws Exception\VersionStringIsInvalid
      */
     public static function create(
         RectorConfig\RectorConfig $rectorConfig,
-        string|int $phpVersion = null,
+        Entity\Version|string|int $phpVersion = null,
     ): self {
         $phpVersion ??= PHP_VERSION;
 
+        if (is_string($phpVersion)) {
+            $phpVersion = Entity\Version::createFromVersionString($phpVersion);
+        }
+
         if (is_int($phpVersion)) {
-            $phpVersion = VersionHelper::getVersionFromInteger($phpVersion);
+            $phpVersion = Entity\Version::createFromVersionId($phpVersion);
         }
 
         return new self($rectorConfig, [new Set\DefaultSet($phpVersion)]);
     }
 
-    public function withPHPUnit(): self
+    /**
+     * @throws Exception\RequiredPackageIsMissing
+     */
+    public function withPHPUnit(Entity\Version $version = null): self
     {
-        $this->sets[] = new Set\PHPUnitSet();
+        $this->sets[] = new Set\PHPUnitSet($version);
 
         return $this;
     }
 
-    public function withSymfony(): self
+    /**
+     * @throws Exception\RequiredPackageIsMissing
+     */
+    public function withSymfony(Entity\Version $version = null): self
     {
-        $this->sets[] = new Set\SymfonySet();
+        $this->sets[] = new Set\SymfonySet($version);
 
         return $this;
     }
 
-    public function withTYPO3(): self
+    /**
+     * @throws Exception\RequiredPackageIsMissing
+     * @throws Exception\VersionStringIsInvalid
+     */
+    public function withTYPO3(Entity\Version $version = null): self
     {
-        $this->sets[] = new Set\TYPO3Set();
+        $this->sets[] = new Set\TYPO3Set($version);
 
         return $this;
     }

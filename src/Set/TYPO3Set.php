@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\RectorConfig\Set;
 
+use EliasHaeussler\RectorConfig\Entity;
 use EliasHaeussler\RectorConfig\Enums;
 use EliasHaeussler\RectorConfig\Exception;
 use EliasHaeussler\RectorConfig\Helper;
@@ -37,27 +38,26 @@ use TYPO3\CMS\Core;
  */
 final class TYPO3Set implements Set
 {
-    /**
-     * @var non-empty-string
-     */
-    private readonly string $typo3Version;
+    private readonly Entity\Version $typo3Version;
 
     /**
-     * @throws Exception\MissingRequiredPackageException
+     * @throws Exception\RequiredPackageIsMissing
+     * @throws Exception\VersionStringIsInvalid
      */
-    public function __construct()
+    public function __construct(Entity\Version $version = null)
     {
         // @codeCoverageIgnoreStart
         if (!class_exists(Core\Information\Typo3Version::class)) {
-            throw Exception\MissingRequiredPackageException::create('typo3/cms-core');
+            throw new Exception\RequiredPackageIsMissing('typo3/cms-core');
         }
         if (!class_exists(TYPO3Rector\Set\Typo3LevelSetList::class)) {
-            throw Exception\MissingRequiredPackageException::create('ssch/typo3-rector');
+            throw new Exception\RequiredPackageIsMissing('ssch/typo3-rector');
         }
         // @codeCoverageIgnoreEnd
 
-        /* @phpstan-ignore-next-line */
-        $this->typo3Version = (new Core\Information\Typo3Version())->getVersion();
+        $this->typo3Version = $version ?? Entity\Version::createFromVersionString(
+            (new Core\Information\Typo3Version())->getVersion(),
+        );
     }
 
     public function get(): array

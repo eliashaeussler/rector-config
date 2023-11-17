@@ -48,7 +48,8 @@ final class DefaultSetTest extends Framework\TestCase
     #[Framework\Attributes\Test]
     public function constructorAllowsConfiguringPHPVersion(): void
     {
-        $subject = new Src\Set\DefaultSet('8.2.0');
+        $version = Src\Entity\Version::createFromVersionString('8.2.0');
+        $subject = new Src\Set\DefaultSet($version);
 
         $actual = $subject->get();
 

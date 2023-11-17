@@ -42,6 +42,18 @@ final class TYPO3SetTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
+    public function constructorAllowsConfiguringSymfonyVersion(): void
+    {
+        $version = Src\Entity\Version::createFromVersionString('11.5');
+        $subject = new Src\Set\TYPO3Set($version);
+
+        $actual = $subject->get();
+
+        self::assertCount(1, $actual);
+        self::assertStringEndsWith('/config/level/up-to-typo3-11.php', $actual[0]);
+    }
+
+    #[Framework\Attributes\Test]
     public function getReturnsTYPO3SetWithLevelSetList(): void
     {
         $actual = $this->subject->get();

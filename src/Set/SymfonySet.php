@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\RectorConfig\Set;
 
+use EliasHaeussler\RectorConfig\Entity;
 use EliasHaeussler\RectorConfig\Enums;
 use EliasHaeussler\RectorConfig\Exception;
 use EliasHaeussler\RectorConfig\Helper;
@@ -45,17 +46,15 @@ final class SymfonySet implements Set
         'symfony/runtime',
     ];
 
-    /**
-     * @var non-empty-string
-     */
-    private readonly string $symfonyVersion;
+    private readonly Entity\Version $symfonyVersion;
 
     /**
-     * @throws Exception\MissingRequiredPackageException
+     * @throws Exception\RequiredPackageIsMissing
+     * @throws Exception\VersionStringIsInvalid
      */
-    public function __construct()
+    public function __construct(Entity\Version $version = null)
     {
-        $this->symfonyVersion = $this->determineSymfonyVersion();
+        $this->symfonyVersion = $version ?? $this->determineSymfonyVersion();
     }
 
     public function get(): array
@@ -84,22 +83,21 @@ final class SymfonySet implements Set
     }
 
     /**
-     * @return non-empty-string
-     *
-     * @throws Exception\MissingRequiredPackageException
+     * @throws Exception\RequiredPackageIsMissing
+     * @throws Exception\VersionStringIsInvalid
      */
-    private function determineSymfonyVersion(): string
+    private function determineSymfonyVersion(): Entity\Version
     {
         foreach (self::POSSIBLE_PACKAGES as $packageName) {
             try {
-                return Helper\VersionHelper::getPackageVersion($packageName);
-            } catch (Exception\MissingRequiredPackageException) {
+                return Entity\Version::createFromInstalledPackage($packageName);
+            } catch (Exception\RequiredPackageIsMissing) {
                 // Continue with next package.
             }
         }
 
         // @codeCoverageIgnoreStart
-        throw Exception\MissingRequiredPackageException::create('Symfony');
+        throw new Exception\RequiredPackageIsMissing('Symfony');
         // @codeCoverageIgnoreEnd
     }
 }

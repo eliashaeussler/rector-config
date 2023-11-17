@@ -23,12 +23,11 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\RectorConfig\Set;
 
+use EliasHaeussler\RectorConfig\Entity;
 use EliasHaeussler\RectorConfig\Enums;
 use EliasHaeussler\RectorConfig\Exception;
 use EliasHaeussler\RectorConfig\Helper;
 use Rector\PHPUnit;
-
-use function version_compare;
 
 /**
  * PHPUnitSet.
@@ -38,28 +37,27 @@ use function version_compare;
  */
 final class PHPUnitSet implements Set
 {
-    /**
-     * @var non-empty-string
-     */
-    private readonly string $phpUnitVersion;
+    private readonly Entity\Version $phpUnitVersion;
 
     /**
-     * @throws Exception\MissingRequiredPackageException
+     * @throws Exception\RequiredPackageIsMissing
+     * @throws Exception\VersionStringIsInvalid
      */
-    public function __construct()
+    public function __construct(Entity\Version $version = null)
     {
-        $this->phpUnitVersion = Helper\VersionHelper::getPackageVersion('phpunit/phpunit');
+        $this->phpUnitVersion = $version ?? Entity\Version::createFromInstalledPackage('phpunit/phpunit');
     }
 
     public function get(): array
     {
+        $phpUnit10 = Entity\Version::createMajor(10);
         $set = [
             PHPUnit\Set\PHPUnitSetList::PHPUNIT_EXCEPTION,
             PHPUnit\Set\PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD,
         ];
 
         // Add PHPUnit 10.x sets
-        if (version_compare($this->phpUnitVersion, '10.0.0', '>=')) {
+        if ($this->phpUnitVersion->isGreaterThan($phpUnit10) || $this->phpUnitVersion->equals($phpUnit10)) {
             $set[] = PHPUnit\Set\PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES;
         }
 

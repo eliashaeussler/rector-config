@@ -21,15 +21,23 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-use EliasHaeussler\RectorConfig\Config\Config;
-use Rector\Config\RectorConfig;
-use Rector\Core\ValueObject\PhpVersion;
+namespace EliasHaeussler\RectorConfig\Exception;
 
-return static function (RectorConfig $rectorConfig): void {
-    Config::create($rectorConfig, PhpVersion::PHP_81)
-        ->in(__DIR__.'/src', __DIR__.'/tests/src')
-        ->withPHPUnit()
-        ->withSymfony()
-        ->apply()
-    ;
-};
+use function sprintf;
+
+/**
+ * VersionStringIsInvalid.
+ *
+ * @author Elias Häußler <elias@haeussler.dev>
+ * @license GPL-3.0-or-later
+ */
+final class VersionStringIsInvalid extends Exception
+{
+    public function __construct(string $versionString)
+    {
+        parent::__construct(
+            sprintf('The string "%s" is not a valid version string.', $versionString),
+            1700235101,
+        );
+    }
+}
