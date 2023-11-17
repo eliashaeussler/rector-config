@@ -36,6 +36,7 @@ use function sprintf;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
+#[Framework\Attributes\CoversClass(Src\Set\DefaultSet::class)]
 final class DefaultSetTest extends Framework\TestCase
 {
     private Src\Set\DefaultSet $subject;

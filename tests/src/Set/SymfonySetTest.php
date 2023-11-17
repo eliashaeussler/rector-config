@@ -32,6 +32,7 @@ use PHPUnit\Framework;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
+#[Framework\Attributes\CoversClass(Src\Set\SymfonySet::class)]
 final class SymfonySetTest extends Framework\TestCase
 {
     private Src\Set\SymfonySet $subject;

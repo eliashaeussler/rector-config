@@ -33,6 +33,7 @@ use PHPUnit\Framework;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
+#[Framework\Attributes\CoversClass(Src\Entity\Version::class)]
 final class VersionTest extends Framework\TestCase
 {
     private Src\Entity\Version $subject;

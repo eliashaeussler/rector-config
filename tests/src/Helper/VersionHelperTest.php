@@ -34,6 +34,7 @@ use Rector\Symfony;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
+#[Framework\Attributes\CoversClass(Src\Helper\VersionHelper::class)]
 final class VersionHelperTest extends Framework\TestCase
 {
     #[Framework\Attributes\Test]
