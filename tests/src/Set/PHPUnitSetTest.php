@@ -42,6 +42,18 @@ final class PHPUnitSetTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
+    public function constructorAllowsConfiguringPHPUnitVersion(): void
+    {
+        $version = Src\Entity\Version::createFromVersionString('9.5.0');
+        $subject = new Src\Set\PHPUnitSet($version);
+
+        $actual = $subject->get();
+
+        self::assertCount(3, $actual);
+        self::assertStringEndsWith('/config/sets/level/up-to-phpunit-90.php', $actual[2]);
+    }
+
+    #[Framework\Attributes\Test]
     public function getReturnsPHPUnitSetWithLevelSetList(): void
     {
         $actual = $this->subject->get();

@@ -28,8 +28,6 @@ use PHPUnit\Framework;
 use Rector\PHPUnit;
 use Rector\Symfony;
 
-use function explode;
-
 /**
  * VersionHelperTest.
  *
@@ -39,34 +37,6 @@ use function explode;
 final class VersionHelperTest extends Framework\TestCase
 {
     #[Framework\Attributes\Test]
-    public function getPackageVersionThrowsExceptionIfPackageIsNotInstalled(): void
-    {
-        $this->expectExceptionObject(Src\Exception\MissingRequiredPackageException::create('foo'));
-
-        Src\Helper\VersionHelper::getPackageVersion('foo');
-    }
-
-    #[Framework\Attributes\Test]
-    public function getPackageVersionReturnsInstalledPackageVersion(): void
-    {
-        $actual = Src\Helper\VersionHelper::getPackageVersion('phpunit/phpunit');
-
-        self::assertMatchesRegularExpression('/^10\\.\\d+\\.\\d+$/', $actual);
-    }
-
-    #[Framework\Attributes\Test]
-    public function getRectorLevelSetListForPackageReturnsNullOnInvalidPackageVersion(): void
-    {
-        self::assertNull(
-            Src\Helper\VersionHelper::getRectorLevelSetListForPackage(
-                'foo',
-                PHPUnit\Set\PHPUnitLevelSetList::class,
-                'UP_TO_PHPUNIT_%d',
-            ),
-        );
-    }
-
-    #[Framework\Attributes\Test]
     public function getRectorLevelSetListForPackageReturnsLevelSetList(): void
     {
         $expected = PHPUnit\Set\PHPUnitLevelSetList::UP_TO_PHPUNIT_100;
@@ -74,7 +44,7 @@ final class VersionHelperTest extends Framework\TestCase
         self::assertSame(
             $expected,
             Src\Helper\VersionHelper::getRectorLevelSetListForPackage(
-                '10.0.13',
+                Src\Entity\Version::createFromVersionString('10.0.13'),
                 PHPUnit\Set\PHPUnitLevelSetList::class,
                 'UP_TO_PHPUNIT_%d',
             ),
@@ -86,7 +56,7 @@ final class VersionHelperTest extends Framework\TestCase
     {
         self::assertNull(
             Src\Helper\VersionHelper::getRectorLevelSetListForPackage(
-                '1.0.0',
+                Src\Entity\Version::createFromVersionString('1.0.0'),
                 PHPUnit\Set\PHPUnitLevelSetList::class,
                 'UP_TO_PHPUNIT_%d',
             ),
@@ -101,7 +71,7 @@ final class VersionHelperTest extends Framework\TestCase
         self::assertSame(
             $expected,
             Src\Helper\VersionHelper::getRectorLevelSetListForPackage(
-                '5.99.99',
+                Src\Entity\Version::createFromVersionString('5.99.99'),
                 Symfony\Set\SymfonyLevelSetList::class,
                 'UP_TO_SYMFONY_%d',
                 Src\Enums\VersionRange::MajorMinor,
@@ -115,24 +85,12 @@ final class VersionHelperTest extends Framework\TestCase
     {
         self::assertNull(
             Src\Helper\VersionHelper::getRectorLevelSetListForPackage(
-                '2.1.0',
+                Src\Entity\Version::createFromVersionString('2.1.0'),
                 PHPUnit\Set\PHPUnitLevelSetList::class,
                 'UP_TO_PHPUNIT_%d',
                 Src\Enums\VersionRange::MajorMinor,
                 true,
             ),
         );
-    }
-
-    #[Framework\Attributes\Test]
-    public function getVersionFromIntegerConvertsVersionIdToVersion(): void
-    {
-        $actual = Src\Helper\VersionHelper::getVersionFromInteger(PHP_VERSION_ID);
-        $versionNumbers = explode('.', $actual);
-
-        self::assertCount(3, $versionNumbers);
-        self::assertSame(PHP_MAJOR_VERSION, (int) $versionNumbers[0]);
-        self::assertSame(PHP_MINOR_VERSION, (int) $versionNumbers[1]);
-        self::assertSame(PHP_RELEASE_VERSION, (int) $versionNumbers[2]);
     }
 }

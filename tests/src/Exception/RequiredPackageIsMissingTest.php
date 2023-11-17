@@ -27,17 +27,17 @@ use EliasHaeussler\RectorConfig as Src;
 use PHPUnit\Framework;
 
 /**
- * MissingRequiredPackageExceptionTest.
+ * RequiredPackageIsMissingTest.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class MissingRequiredPackageExceptionTest extends Framework\TestCase
+final class RequiredPackageIsMissingTest extends Framework\TestCase
 {
     #[Framework\Attributes\Test]
-    public function createReturnsExceptionForGivenPackageName(): void
+    public function constructorReturnsExceptionForGivenPackageName(): void
     {
-        $actual = Src\Exception\MissingRequiredPackageException::create('foo');
+        $actual = new Src\Exception\RequiredPackageIsMissing('foo');
 
         self::assertSame('The package "foo" is required. Please install it with Composer.', $actual->getMessage());
         self::assertSame(1678630702, $actual->getCode());

@@ -100,6 +100,23 @@ final class ConfigTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
+    public function withPHPUnitRespectsGivenVersion(): void
+    {
+        $this->createRectorConfig(
+            static function (Config\RectorConfig $rectorConfig) {
+                $subject = Src\Config\Config::create($rectorConfig);
+                $subject->withPHPUnit(Src\Entity\Version::createMinor(9, 5));
+                $subject->apply();
+            },
+        );
+
+        /* @see PHPUnit\Set\PHPUnitLevelSetList::UP_TO_PHPUNIT_90 */
+        self::assertTrue($this->container?->has(PHPUnit\Rector\Class_\TestListenerToHooksRector::class));
+        /* @see PHPUnit\Set\PHPUnitLevelSetList::UP_TO_PHPUNIT_100 */
+        self::assertFalse($this->container->has(PHPUnit\Rector\Class_\StaticDataProviderClassMethodRector::class));
+    }
+
+    #[Framework\Attributes\Test]
     public function withPHPUnitImportsPHPUnitLevelSetListInRectorConfig(): void
     {
         $this->createRectorConfig(
@@ -130,6 +147,23 @@ final class ConfigTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
+    public function withSymfonyRespectsGivenVersion(): void
+    {
+        $this->createRectorConfig(
+            static function (Config\RectorConfig $rectorConfig) {
+                $subject = Src\Config\Config::create($rectorConfig);
+                $subject->withSymfony(Src\Entity\Version::createMajor(6));
+                $subject->apply();
+            },
+        );
+
+        /* @see Symfony\Set\SymfonyLevelSetList::UP_TO_SYMFONY_60 */
+        self::assertTrue($this->container?->has(Symfony\Rector\MethodCall\GetHelperControllerToServiceRector::class));
+        /* @see Symfony\Set\SymfonyLevelSetList::UP_TO_SYMFONY_62 */
+        self::assertFalse($this->container->has(Symfony\Rector\MethodCall\SimplifyFormRenderingRector::class));
+    }
+
+    #[Framework\Attributes\Test]
     public function withSymfonyImportsSymfonyLevelSetListInRectorConfig(): void
     {
         $this->createRectorConfig(
@@ -157,6 +191,23 @@ final class ConfigTest extends Framework\TestCase
 
         /* @see Symfony\Set\SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION */
         self::assertTrue($this->container?->has(Symfony\Rector\MethodCall\ContainerGetToConstructorInjectionRector::class));
+    }
+
+    #[Framework\Attributes\Test]
+    public function withTYPO3RespectsGivenVersion(): void
+    {
+        $this->createRectorConfig(
+            static function (Config\RectorConfig $rectorConfig) {
+                $subject = Src\Config\Config::create($rectorConfig);
+                $subject->withTYPO3(Src\Entity\Version::createMajor(11));
+                $subject->apply();
+            },
+        );
+
+        /* @see TYPO3Rector\Set\Typo3LevelSetList::UP_TO_TYPO3_11 */
+        self::assertTrue($this->container?->has(TYPO3Rector\Rector\v11\v0\ForwardResponseInsteadOfForwardMethodRector::class));
+        /* @see TYPO3Rector\Set\Typo3LevelSetList::UP_TO_TYPO3_12 */
+        self::assertFalse($this->container->has(TYPO3Rector\FileProcessor\Resources\Files\Rector\v12\v0\RenameExtTypoScriptFilesFileRector::class));
     }
 
     #[Framework\Attributes\Test]

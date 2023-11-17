@@ -26,16 +26,16 @@ namespace EliasHaeussler\RectorConfig\Exception;
 use function sprintf;
 
 /**
- * MissingRequiredPackageException.
+ * RequiredPackageIsMissing.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class MissingRequiredPackageException extends Exception
+final class RequiredPackageIsMissing extends Exception
 {
-    public static function create(string $packageName): self
+    public function __construct(string $packageName)
     {
-        return new self(
+        parent::__construct(
             sprintf('The package "%s" is required. Please install it with Composer.', $packageName),
             1678630702,
         );

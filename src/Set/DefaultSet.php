@@ -23,6 +23,8 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\RectorConfig\Set;
 
+use EliasHaeussler\RectorConfig\Entity;
+use EliasHaeussler\RectorConfig\Exception;
 use EliasHaeussler\RectorConfig\Helper;
 use Rector\Set as RectorSet;
 
@@ -34,12 +36,15 @@ use Rector\Set as RectorSet;
  */
 final class DefaultSet implements Set
 {
+    private readonly Entity\Version $phpVersion;
+
     /**
-     * @param non-empty-string $phpVersion
+     * @throws Exception\VersionStringIsInvalid
      */
-    public function __construct(
-        private readonly string $phpVersion = PHP_VERSION,
-    ) {}
+    public function __construct(Entity\Version $version = null)
+    {
+        $this->phpVersion = $version ?? Entity\Version::createFromVersionString(PHP_VERSION);
+    }
 
     public function get(): array
     {
