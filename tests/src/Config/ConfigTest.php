@@ -45,6 +45,7 @@ use function count;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
+#[Framework\Attributes\CoversClass(Src\Config\Config::class)]
 final class ConfigTest extends Framework\TestCase
 {
     use Tests\RectorConfigTrait;
