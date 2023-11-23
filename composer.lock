@@ -5573,16 +5573,16 @@
         },
         {
             "name": "ssch/typo3-rector",
-            "version": "v1.5.1",
+            "version": "v1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3-rector.git",
-                "reference": "3e9263ba7a89217c3a34b6a24151ceb3af87a2ef"
+                "reference": "988df0f47098ae8c8046448049a4ae30233764e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/3e9263ba7a89217c3a34b6a24151ceb3af87a2ef",
-                "reference": "3e9263ba7a89217c3a34b6a24151ceb3af87a2ef",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/988df0f47098ae8c8046448049a4ae30233764e6",
+                "reference": "988df0f47098ae8c8046448049a4ae30233764e6",
                 "shasum": ""
             },
             "require": {
@@ -5666,7 +5666,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-20T10:40:03+00:00"
+            "time": "2023-11-23T11:21:13+00:00"
         },
         {
             "name": "symfony/cache",
