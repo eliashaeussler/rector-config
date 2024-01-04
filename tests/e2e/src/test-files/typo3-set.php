@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the Composer package "eliashaeussler/rector-config".
  *
- * Copyright (C) 2023 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ use TYPO3\CMS\Core;
 /**
  * This class should convert a class constant usage.
  *
- * @see \Ssch\TYPO3Rector\Set\Typo3LevelSetList::UP_TO_TYPO3_12
+ * @see Ssch\TYPO3Rector\Set\Typo3LevelSetList::UP_TO_TYPO3_12
  */
 final class UpToTYPO3v12SetListTestClass
 {

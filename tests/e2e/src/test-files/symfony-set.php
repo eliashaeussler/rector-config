@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the Composer package "eliashaeussler/rector-config".
  *
- * Copyright (C) 2023 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ declare(strict_types=1);
 /**
  * This class should convert annotations to attributes.
  *
- * @see \Rector\Symfony\Set\SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES
+ * @see Rector\Symfony\Set\SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES
  */
 final class SymfonyAnnotationToAttributesSetListTestClass
 {
