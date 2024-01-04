@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the Composer package "eliashaeussler/rector-config".
  *
- * Copyright (C) 2023 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,6 +24,6 @@ declare(strict_types=1);
 /**
  * This class should be made final by Rector.
  *
- * @see \Rector\Set\ValueObject\SetList::PRIVATIZATION
+ * @see Rector\Set\ValueObject\SetList::PRIVATIZATION
  */
 class DefaultPrivatizationSetTestClass {}

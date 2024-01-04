@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the Composer package "eliashaeussler/rector-config".
  *
- * Copyright (C) 2023 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * This class should convert annotations to attributes.
  *
- * @see \Rector\PHPUnit\Set\PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES
+ * @see Rector\PHPUnit\Set\PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES
  */
 final class PHPUnitAnnotationToAttributesSetListTestClass extends TestCase
 {
@@ -40,7 +40,7 @@ final class PHPUnitAnnotationToAttributesSetListTestClass extends TestCase
 /**
  * This class should convert exception annotations to methods.
  *
- * @see \Rector\PHPUnit\Set\PHPUnitSetList::PHPUNIT_EXCEPTION
+ * @see Rector\PHPUnit\Set\PHPUnitSetList::PHPUNIT_EXCEPTION
  */
 final class PHPUnitExceptionSetListTestClass extends TestCase
 {
@@ -54,7 +54,7 @@ final class PHPUnitExceptionSetListTestClass extends TestCase
 /**
  * This class should convert specific PHPUnit methods.
  *
- * @see \Rector\PHPUnit\Set\PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD
+ * @see Rector\PHPUnit\Set\PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD
  */
 final class PHPUnitSpecificMethodSetListTestClass extends TestCase
 {
