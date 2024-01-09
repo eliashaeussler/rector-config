@@ -25,12 +25,12 @@
 		"illuminate/container": "^10.39",
 		"phpstan/extension-installer": "^1.2",
 		"phpunit/phpunit": "^10.1",
-		"ssch/typo3-rector": "^1.2",
+		"ssch/typo3-rector": "^2.0@dev",
 		"symfony/config": "^5.4 || ^6.0 || ^7.0",
 		"typo3/cms-core": "^12.4"
 	},
 	"suggest": {
-		"ssch/typo3-rector": "Configures additional Rector rules for TYPO3 CMS projects"
+		"ssch/typo3-rector": "Configures additional Rector rules for TYPO3 CMS projects (^2.0)"
 	},
 	"autoload": {
 		"psr-4": {
