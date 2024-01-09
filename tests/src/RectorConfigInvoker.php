@@ -24,6 +24,8 @@ declare(strict_types=1);
 namespace EliasHaeussler\RectorConfig\Tests;
 
 use Rector\Config;
+use Rector\Configuration;
+use ReflectionClass;
 
 use function array_pop;
 
@@ -60,5 +62,9 @@ final class RectorConfigInvoker
     public static function reset(): void
     {
         self::$callables = [];
+
+        // Reset container parameters
+        $reflection = new ReflectionClass(Configuration\Parameter\SimpleParameterProvider::class);
+        $reflection->setStaticPropertyValue('parameters', []);
     }
 }

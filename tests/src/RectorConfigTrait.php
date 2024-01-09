@@ -23,9 +23,10 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\RectorConfig\Tests;
 
+use Illuminate\Container;
 use Rector\Config;
-use Rector\Core;
-use Symfony\Component\DependencyInjection;
+use Rector\DependencyInjection;
+use Rector\ValueObject;
 
 /**
  * RectorConfigTrait.
@@ -36,7 +37,7 @@ use Symfony\Component\DependencyInjection;
 trait RectorConfigTrait
 {
     /**
-     * @var DependencyInjection\ContainerInterface|null
+     * @var Container\Container|null
      */
     private ?object $container = null;
 
@@ -55,13 +56,10 @@ trait RectorConfigTrait
             RectorConfigInvoker::push($configCallable);
         }
 
-        $rectorKernel = new Core\Kernel\RectorKernel();
-        $rectorKernel->createFromConfigs([
-            __DIR__.'/Fixtures/rector.php',
-        ]);
+        $bootstrapConfigs = new ValueObject\Bootstrap\BootstrapConfigs(__DIR__.'/Fixtures/rector.php', []);
+        $containerFactory = new DependencyInjection\RectorContainerFactory();
 
-        /* @phpstan-ignore-next-line */
-        $this->container = $rectorKernel->getContainer();
+        $this->container = $containerFactory->createFromBootstrapConfigs($bootstrapConfigs);
 
         self::assertInstanceOf(Config\RectorConfig::class, $rectorConfig);
 

@@ -31,9 +31,9 @@ composer require --dev eliashaeussler/rector-config
 use EliasHaeussler\RectorConfig\Config\Config;
 use EliasHaeussler\RectorConfig\Set\CustomSet;
 use Rector\Config\RectorConfig;
-use Rector\Core\ValueObject\PhpVersion;
 use Rector\Php80\Rector\Class_\AnnotationToAttributeRector;
 use Rector\Set\ValueObject\SetList;
+use Rector\ValueObject\PhpVersion;
 
 return static function (RectorConfig $rectorConfig): void {
     // Optional: Configure PHP version explicitly

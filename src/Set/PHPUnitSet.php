@@ -52,8 +52,8 @@ final class PHPUnitSet implements Set
     {
         $phpUnit10 = Entity\Version::createMajor(10);
         $set = [
-            PHPUnit\Set\PHPUnitSetList::PHPUNIT_EXCEPTION,
-            PHPUnit\Set\PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD,
+            PHPUnit\Set\PHPUnitSetList::PHPUNIT_60,
+            PHPUnit\Set\PHPUnitSetList::PHPUNIT_CODE_QUALITY,
         ];
 
         // Add PHPUnit 10.x sets
