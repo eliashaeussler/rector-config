@@ -26,4 +26,4 @@ declare(strict_types=1);
 // of nikic/php-parser. Can be removed once Rector includes a
 // more recent version of nikic/php-parser.
 $classLoader = require dirname(__DIR__).'/vendor/autoload.php';
-$classLoader->loadClass(\PhpParser\ParserFactory::class);
+$classLoader->loadClass(PhpParser\ParserFactory::class);
