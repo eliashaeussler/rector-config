@@ -110,9 +110,14 @@ final class Version implements Stringable
         return new self($major, $minor, $patch);
     }
 
-    public function get(): string
+    public function toString(): string
     {
         return sprintf('%d.%d.%d', $this->major, $this->minor, $this->patch);
+    }
+
+    public function toVersionId(): int
+    {
+        return ($this->major * 10000) + ($this->minor * 100) + $this->patch;
     }
 
     public function range(Enums\VersionRange $range): string
@@ -126,7 +131,7 @@ final class Version implements Stringable
 
     public function compareTo(self $other): int
     {
-        return version_compare($this->get(), $other->get());
+        return version_compare($this->toString(), $other->toString());
     }
 
     public function isLowerThan(self $other): bool
@@ -146,6 +151,6 @@ final class Version implements Stringable
 
     public function __toString(): string
     {
-        return $this->get();
+        return $this->toString();
     }
 }
