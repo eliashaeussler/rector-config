@@ -21,10 +21,12 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+use Rector\Symfony;
+
 /**
  * This class should convert annotations to attributes.
  *
- * @see Rector\Symfony\Set\SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES
+ * @see Symfony\Set\SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES
  */
 final class SymfonyAnnotationToAttributesSetListTestClass
 {

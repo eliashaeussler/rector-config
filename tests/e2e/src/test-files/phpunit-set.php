@@ -21,15 +21,15 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-use PHPUnit\Framework\Attributes\Test;
-use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework;
+use Rector\PHPUnit;
 
 /**
  * This class should convert annotations to attributes.
  *
- * @see Rector\PHPUnit\Set\PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES
+ * @see PHPUnit\Set\PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES
  */
-final class PHPUnitAnnotationToAttributesSetListTestClass extends TestCase
+final class PHPUnitAnnotationToAttributesSetListTestClass extends Framework\TestCase
 {
     /**
      * @test
@@ -40,14 +40,14 @@ final class PHPUnitAnnotationToAttributesSetListTestClass extends TestCase
 /**
  * This class should convert exception annotations to methods.
  *
- * @see Rector\PHPUnit\Set\PHPUnitSetList::PHPUNIT_EXCEPTION
+ * @see PHPUnit\Set\PHPUnitSetList::PHPUNIT_EXCEPTION
  */
-final class PHPUnitExceptionSetListTestClass extends TestCase
+final class PHPUnitExceptionSetListTestClass extends Framework\TestCase
 {
     /**
      * @expectedException \Exception
      */
-    #[Test]
+    #[Framework\Attributes\Test]
     public function testCase(): void {}
 }
 
@@ -56,9 +56,9 @@ final class PHPUnitExceptionSetListTestClass extends TestCase
  *
  * @see Rector\PHPUnit\Set\PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD
  */
-final class PHPUnitSpecificMethodSetListTestClass extends TestCase
+final class PHPUnitSpecificMethodSetListTestClass extends Framework\TestCase
 {
-    #[Test]
+    #[Framework\Attributes\Test]
     public function testCase(): void
     {
         $foo = false;
