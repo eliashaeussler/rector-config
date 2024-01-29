@@ -30,6 +30,7 @@ use Rector\Config as RectorConfig;
 use Rector\Contract;
 use Rector\Php73;
 use Rector\Php74;
+use Rector\ValueObject;
 
 use function array_values;
 use function is_int;
@@ -43,6 +44,11 @@ use function is_string;
  */
 final class Config
 {
+    /**
+     * @var list<Set\Set>
+     */
+    private array $sets;
+
     /**
      * @var list<non-empty-string>
      */
@@ -61,13 +67,14 @@ final class Config
         Php73\Rector\FuncCall\JsonThrowOnErrorRector::class => [],
     ];
 
-    /**
-     * @param list<Set\Set> $sets
-     */
     private function __construct(
         private readonly RectorConfig\RectorConfig $rectorConfig,
-        private array $sets,
-    ) {}
+        private readonly Entity\Version $phpVersion,
+    ) {
+        $this->sets = [
+            new Set\DefaultSet($this->phpVersion),
+        ];
+    }
 
     /**
      * @param Entity\Version|non-empty-string|positive-int|null $phpVersion
@@ -88,7 +95,7 @@ final class Config
             $phpVersion = Entity\Version::createFromVersionId($phpVersion);
         }
 
-        return new self($rectorConfig, [new Set\DefaultSet($phpVersion)]);
+        return new self($rectorConfig, $phpVersion);
     }
 
     /**
@@ -191,6 +198,10 @@ final class Config
             }
         }
 
+        /** @var ValueObject\PhpVersion::* $phpVersionId */
+        $phpVersionId = $this->phpVersion->toVersionId();
+
+        $this->rectorConfig->phpVersion($phpVersionId);
         $this->rectorConfig->paths($this->paths);
         $this->rectorConfig->skip($skip);
 
