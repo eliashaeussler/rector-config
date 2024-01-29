@@ -96,6 +96,8 @@ final class ConfigTest extends Framework\TestCase
             [
                 Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
                 Php73\Rector\FuncCall\JsonThrowOnErrorRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
             ],
             Configuration\Parameter\SimpleParameterProvider::provideArrayParameter(Configuration\Option::SKIP),
         );
@@ -296,6 +298,8 @@ final class ConfigTest extends Framework\TestCase
             [
                 Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
                 Php73\Rector\FuncCall\JsonThrowOnErrorRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 Php74\Rector\Closure\ClosureToArrowFunctionRector::class,
             ],
             Configuration\Parameter\SimpleParameterProvider::provideArrayParameter(Configuration\Option::SKIP),
@@ -317,6 +321,8 @@ final class ConfigTest extends Framework\TestCase
             [
                 Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
                 Php73\Rector\FuncCall\JsonThrowOnErrorRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 Php74\Rector\Closure\ClosureToArrowFunctionRector::class => ['foo', 'baz'],
             ],
             Configuration\Parameter\SimpleParameterProvider::provideArrayParameter(Configuration\Option::SKIP),
@@ -339,6 +345,8 @@ final class ConfigTest extends Framework\TestCase
             [
                 Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
                 Php73\Rector\FuncCall\JsonThrowOnErrorRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 Php74\Rector\Closure\ClosureToArrowFunctionRector::class => ['foo', 'baz'],
             ],
             Configuration\Parameter\SimpleParameterProvider::provideArrayParameter(Configuration\Option::SKIP),
@@ -361,6 +369,8 @@ final class ConfigTest extends Framework\TestCase
             [
                 Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
                 Php73\Rector\FuncCall\JsonThrowOnErrorRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 Php74\Rector\Closure\ClosureToArrowFunctionRector::class => ['baz'],
             ],
             Configuration\Parameter\SimpleParameterProvider::provideArrayParameter(Configuration\Option::SKIP),

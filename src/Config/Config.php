@@ -30,6 +30,7 @@ use Rector\Config as RectorConfig;
 use Rector\Contract;
 use Rector\Php73;
 use Rector\Php74;
+use Rector\PHPUnit;
 use Rector\ValueObject;
 
 use function array_values;
@@ -65,6 +66,8 @@ final class Config
     private array $skippedRectors = [
         Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class => [],
         Php73\Rector\FuncCall\JsonThrowOnErrorRector::class => [],
+        PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class => [],
+        PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class => [],
     ];
 
     private function __construct(
