@@ -65,18 +65,18 @@ final class SymfonySet implements Set
             Symfony\Set\SymfonySetList::SYMFONY_50_TYPES,
         ];
 
-        // Determine level set list
-        $levelSetList = Helper\VersionHelper::getRectorLevelSetListForPackage(
+        // Determine set list
+        $setList = Helper\VersionHelper::getRectorSetListForPackage(
             $this->symfonyVersion,
-            Symfony\Set\SymfonyLevelSetList::class,
-            'UP_TO_SYMFONY_%d',
+            Symfony\Set\SymfonySetList::class,
+            'SYMFONY_%d',
             Enums\VersionRange::MajorMinor,
             true,
         );
 
         // Add level set list, if available
-        if (null !== $levelSetList) {
-            $set[] = $levelSetList;
+        if (null !== $setList) {
+            $set[] = $setList;
         }
 
         return $set;

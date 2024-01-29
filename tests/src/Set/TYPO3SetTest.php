@@ -51,17 +51,17 @@ final class TYPO3SetTest extends Framework\TestCase
         $actual = $subject->get();
 
         self::assertCount(1, $actual);
-        self::assertStringEndsWith('/config/level/up-to-typo3-11.php', $actual[0]);
+        self::assertStringEndsWith('/config/typo3-11.php', $actual[0]);
     }
 
     #[Framework\Attributes\Test]
-    public function getReturnsTYPO3SetWithLevelSetList(): void
+    public function getReturnsTYPO3SetWithSetList(): void
     {
         $actual = $this->subject->get();
 
         self::assertCount(1, $actual);
         self::assertMatchesRegularExpression(
-            '/config\\/level\\/up-to-typo3-12\\.php$/',
+            '/config\\/typo3-12\\.php$/',
             $actual[0],
         );
     }

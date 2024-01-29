@@ -38,43 +38,43 @@ use Rector\Symfony;
 final class VersionHelperTest extends Framework\TestCase
 {
     #[Framework\Attributes\Test]
-    public function getRectorLevelSetListForPackageReturnsLevelSetList(): void
+    public function getRectorSetListForPackageForPackageReturnsSetList(): void
     {
-        $expected = PHPUnit\Set\PHPUnitLevelSetList::UP_TO_PHPUNIT_100;
+        $expected = PHPUnit\Set\PHPUnitSetList::PHPUNIT_100;
 
         self::assertSame(
             $expected,
-            Src\Helper\VersionHelper::getRectorLevelSetListForPackage(
+            Src\Helper\VersionHelper::getRectorSetListForPackage(
                 Src\Entity\Version::createFromVersionString('10.0.13'),
-                PHPUnit\Set\PHPUnitLevelSetList::class,
-                'UP_TO_PHPUNIT_%d',
+                PHPUnit\Set\PHPUnitSetList::class,
+                'PHPUNIT_%d',
             ),
         );
     }
 
     #[Framework\Attributes\Test]
-    public function getRectorLevelSetListForPackageReturnsNullOnInvalidSetList(): void
+    public function getRectorSetListForPackageForPackageReturnsNullOnInvalidSetList(): void
     {
         self::assertNull(
-            Src\Helper\VersionHelper::getRectorLevelSetListForPackage(
+            Src\Helper\VersionHelper::getRectorSetListForPackage(
                 Src\Entity\Version::createFromVersionString('1.0.0'),
-                PHPUnit\Set\PHPUnitLevelSetList::class,
-                'UP_TO_PHPUNIT_%d',
+                PHPUnit\Set\PHPUnitSetList::class,
+                'PHPUNIT_%d',
             ),
         );
     }
 
     #[Framework\Attributes\Test]
-    public function getRectorLevelSetListForPackageReturnsLevelSetListForPreviousVersion(): void
+    public function getRectorSetListForPackageForPackageReturnsSetListForPreviousVersion(): void
     {
-        $expected = Symfony\Set\SymfonyLevelSetList::UP_TO_SYMFONY_54;
+        $expected = Symfony\Set\SymfonySetList::SYMFONY_54;
 
         self::assertSame(
             $expected,
-            Src\Helper\VersionHelper::getRectorLevelSetListForPackage(
+            Src\Helper\VersionHelper::getRectorSetListForPackage(
                 Src\Entity\Version::createFromVersionString('5.99.99'),
-                Symfony\Set\SymfonyLevelSetList::class,
-                'UP_TO_SYMFONY_%d',
+                Symfony\Set\SymfonySetList::class,
+                'SYMFONY_%d',
                 Src\Enums\VersionRange::MajorMinor,
                 true,
             ),
@@ -82,13 +82,13 @@ final class VersionHelperTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
-    public function getRectorLevelSetListForPackageReturnsNUllIfNoPreviousVersionExists(): void
+    public function getRectorSetListForPackageForPackageReturnsNUllIfNoPreviousVersionExists(): void
     {
         self::assertNull(
-            Src\Helper\VersionHelper::getRectorLevelSetListForPackage(
+            Src\Helper\VersionHelper::getRectorSetListForPackage(
                 Src\Entity\Version::createFromVersionString('2.1.0'),
-                PHPUnit\Set\PHPUnitLevelSetList::class,
-                'UP_TO_PHPUNIT_%d',
+                PHPUnit\Set\PHPUnitSetList::class,
+                'PHPUNIT_%d',
                 Src\Enums\VersionRange::MajorMinor,
                 true,
             ),

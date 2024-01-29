@@ -51,17 +51,17 @@ final class SymfonySetTest extends Framework\TestCase
         $actual = $subject->get();
 
         self::assertCount(4, $actual);
-        self::assertStringEndsWith('/config/sets/symfony/level/up-to-symfony-54.php', $actual[3]);
+        self::assertStringEndsWith('/config/sets/symfony/symfony54.php', $actual[3]);
     }
 
     #[Framework\Attributes\Test]
-    public function getReturnsSymfonySetWithLevelSetList(): void
+    public function getReturnsSymfonySetWithSetList(): void
     {
         $actual = $this->subject->get();
 
         self::assertCount(4, $actual);
         self::assertMatchesRegularExpression(
-            '/config\\/sets\\/symfony\\/level\\/up-to-symfony-6\\d+\\.php$/',
+            '/config\\/sets\\/symfony\\/symfony6\\d+\\.php$/',
             $actual[3],
         );
     }

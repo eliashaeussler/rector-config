@@ -52,16 +52,16 @@ final class DefaultSet implements Set
             RectorSet\ValueObject\SetList::PRIVATIZATION,
         ];
 
-        // Determine level set list
-        $levelSetList = Helper\VersionHelper::getRectorLevelSetListForPackage(
+        // Determine set list
+        $setList = Helper\VersionHelper::getRectorSetListForPackage(
             $this->phpVersion,
-            RectorSet\ValueObject\LevelSetList::class,
-            'UP_TO_PHP_%d',
+            RectorSet\ValueObject\SetList::class,
+            'PHP_%d',
         );
 
         // Add level set list, if available
-        if (null !== $levelSetList) {
-            $set[] = $levelSetList;
+        if (null !== $setList) {
+            $set[] = $setList;
         }
 
         return $set;

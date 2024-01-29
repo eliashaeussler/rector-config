@@ -55,20 +55,20 @@ final class DefaultSetTest extends Framework\TestCase
         $actual = $subject->get();
 
         self::assertCount(2, $actual);
-        self::assertMatchesRegularExpression('/config\\/set\\/level\\/up-to-php82\\.php$/', $actual[1]);
+        self::assertMatchesRegularExpression('/config\\/set\\/php82\\.php$/', $actual[1]);
     }
 
     #[Framework\Attributes\Test]
-    public function getReturnsDefaultSetWithLevelSetList(): void
+    public function getReturnsDefaultSetWithSetList(): void
     {
-        $levelSetList = sprintf(
-            '%s::UP_TO_PHP_%d%d',
-            Set\ValueObject\LevelSetList::class,
+        $setList = sprintf(
+            '%s::PHP_%d%d',
+            Set\ValueObject\SetList::class,
             PHP_MAJOR_VERSION,
             PHP_MINOR_VERSION,
         );
 
-        if (!defined($levelSetList)) {
+        if (!defined($setList)) {
             self::markTestSkipped('Level set list does not exist for this PHP version.');
         }
 
@@ -76,7 +76,7 @@ final class DefaultSetTest extends Framework\TestCase
 
         self::assertCount(2, $actual);
         self::assertMatchesRegularExpression(
-            sprintf('/config\\/set\\/level\\/up-to-php%d%d\\.php$/', PHP_MAJOR_VERSION, PHP_MINOR_VERSION),
+            sprintf('/config\\/set\\/php%d%d\\.php$/', PHP_MAJOR_VERSION, PHP_MINOR_VERSION),
             $actual[1],
         );
     }
