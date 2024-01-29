@@ -121,9 +121,15 @@ final class VersionTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
-    public function getReturnsFullVersion(): void
+    public function toStringReturnsFullVersion(): void
     {
-        self::assertSame('1.2.3', $this->subject->get());
+        self::assertSame('1.2.3', $this->subject->toString());
+    }
+
+    #[Framework\Attributes\Test]
+    public function toVersionIdReturnsVersionId(): void
+    {
+        self::assertSame(10203, $this->subject->toVersionId());
     }
 
     #[Framework\Attributes\Test]
