@@ -112,14 +112,14 @@ final class ConfigTest extends Framework\TestCase
             },
         );
 
-        /* @see PHPUnit\Set\PHPUnitLevelSetList::UP_TO_PHPUNIT_90 */
+        /* @see PHPUnit\Set\PHPUnitSetList::PHPUNIT_90 */
         self::assertTrue($this->container?->has(PHPUnit\PHPUnit90\Rector\Class_\TestListenerToHooksRector::class));
-        /* @see PHPUnit\Set\PHPUnitLevelSetList::UP_TO_PHPUNIT_100 */
+        /* @see PHPUnit\Set\PHPUnitSetList::PHPUNIT_100 */
         self::assertFalse($this->container->has(PHPUnit\PHPUnit100\Rector\Class_\StaticDataProviderClassMethodRector::class));
     }
 
     #[Framework\Attributes\Test]
-    public function withPHPUnitImportsPHPUnitLevelSetListInRectorConfig(): void
+    public function withPHPUnitImportsPHPUnitSetListInRectorConfig(): void
     {
         $this->createRectorConfig(
             static function (Config\RectorConfig $rectorConfig) {
@@ -129,7 +129,7 @@ final class ConfigTest extends Framework\TestCase
             },
         );
 
-        /* @see PHPUnit\Set\PHPUnitLevelSetList::UP_TO_PHPUNIT_100 */
+        /* @see PHPUnit\Set\PHPUnitSetList::PHPUNIT_100 */
         self::assertTrue($this->container?->has(PHPUnit\PHPUnit100\Rector\Class_\StaticDataProviderClassMethodRector::class));
     }
 
@@ -159,24 +159,24 @@ final class ConfigTest extends Framework\TestCase
             },
         );
 
-        /* @see Symfony\Set\SymfonyLevelSetList::UP_TO_SYMFONY_60 */
+        /* @see Symfony\Set\SymfonySetList::SYMFONY_60 */
         self::assertTrue($this->container?->has(Symfony\Symfony60\Rector\MethodCall\GetHelperControllerToServiceRector::class));
-        /* @see Symfony\Set\SymfonyLevelSetList::UP_TO_SYMFONY_62 */
+        /* @see Symfony\Set\SymfonySetList::SYMFONY_62 */
         self::assertFalse($this->container->has(Symfony\Symfony62\Rector\MethodCall\SimplifyFormRenderingRector::class));
     }
 
     #[Framework\Attributes\Test]
-    public function withSymfonyImportsSymfonyLevelSetListInRectorConfig(): void
+    public function withSymfonyImportsSymfonySetListInRectorConfig(): void
     {
         $this->createRectorConfig(
             static function (Config\RectorConfig $rectorConfig) {
                 $subject = Src\Config\Config::create($rectorConfig);
-                $subject->withSymfony();
+                $subject->withSymfony(Src\Entity\Version::createMinor(6, 2));
                 $subject->apply();
             },
         );
 
-        /* @see Symfony\Set\SymfonyLevelSetList::UP_TO_SYMFONY_62 */
+        /* @see Symfony\Set\SymfonySetList::SYMFONY_62 */
         self::assertTrue($this->container?->has(Symfony\Symfony62\Rector\MethodCall\SimplifyFormRenderingRector::class));
     }
 
@@ -209,7 +209,7 @@ final class ConfigTest extends Framework\TestCase
         /* @see TYPO3Rector\Set\Typo3LevelSetList::UP_TO_TYPO3_11 */
         self::assertTrue($this->container?->has(TYPO3Rector\Rector\v11\v0\ForwardResponseInsteadOfForwardMethodRector::class));
         /* @see TYPO3Rector\Set\Typo3LevelSetList::UP_TO_TYPO3_12 */
-        self::assertFalse($this->container->has(TYPO3Rector\FileProcessor\Resources\Files\Rector\v12\v0\RenameExtTypoScriptFilesFileRector::class));
+        self::assertFalse($this->container->has(TYPO3Rector\Rector\v12\v0\tca\MigrateColsToSizeForTcaTypeNoneRector::class));
     }
 
     #[Framework\Attributes\Test]
@@ -224,7 +224,7 @@ final class ConfigTest extends Framework\TestCase
         );
 
         /* @see TYPO3Rector\Set\Typo3LevelSetList::UP_TO_TYPO3_12 */
-        self::assertTrue($this->container?->has(TYPO3Rector\FileProcessor\Resources\Files\Rector\v12\v0\RenameExtTypoScriptFilesFileRector::class));
+        self::assertTrue($this->container?->has(TYPO3Rector\Rector\v12\v0\tca\MigrateColsToSizeForTcaTypeNoneRector::class));
     }
 
     #[Framework\Attributes\Test]

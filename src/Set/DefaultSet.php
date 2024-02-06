@@ -53,7 +53,7 @@ final class DefaultSet implements Set
         ];
 
         // Determine level set list
-        $levelSetList = Helper\VersionHelper::getRectorLevelSetListForPackage(
+        $levelSetList = Helper\VersionHelper::getRectorSetListForPackage(
             $this->phpVersion,
             RectorSet\ValueObject\LevelSetList::class,
             'UP_TO_PHP_%d',
