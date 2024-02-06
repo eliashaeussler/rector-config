@@ -27,7 +27,7 @@ use EliasHaeussler\RectorConfig\Entity;
 use EliasHaeussler\RectorConfig\Exception;
 use EliasHaeussler\RectorConfig\Set;
 use Rector\Config as RectorConfig;
-use Rector\Core;
+use Rector\Contract;
 use Rector\Php73;
 use Rector\Php74;
 
@@ -54,7 +54,7 @@ final class Config
     private array $skipPaths = [];
 
     /**
-     * @var array<class-string<Core\Contract\Rector\RectorInterface>, list<non-empty-string>>
+     * @var array<class-string<Contract\Rector\RectorInterface>, list<non-empty-string>>
      */
     private array $skippedRectors = [
         Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class => [],
@@ -152,8 +152,8 @@ final class Config
     }
 
     /**
-     * @param class-string<Core\Contract\Rector\RectorInterface> $rector
-     * @param list<non-empty-string>                             $paths
+     * @param class-string<Contract\Rector\RectorInterface> $rector
+     * @param list<non-empty-string>                        $paths
      */
     public function skip(string $rector, array $paths = [], bool $mergePaths = true): self
     {

@@ -1,0 +1,6 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Property EliasHaeussler\\\\RectorConfig\\\\Tests\\\\Config\\\\ConfigTest\\:\\:\\$container \\(Illuminate\\\\Container\\\\Container\\|null\\) does not accept RectorPrefix\\d+\\\\Illuminate\\\\Container\\\\Container\\.$#"
+			count: 1
+			path: tests/src/Config/ConfigTest.php
