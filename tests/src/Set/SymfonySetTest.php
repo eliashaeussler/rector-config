@@ -57,6 +57,13 @@ final class SymfonySetTest extends Framework\TestCase
     #[Framework\Attributes\Test]
     public function getReturnsSymfonySetWithSetList(): void
     {
+        $symfonyVersion = Src\Entity\Version::createFromInstalledPackage('symfony/config');
+
+        // @todo Remove once rules for Symfony v7 exist
+        if ($symfonyVersion->major >= 7) {
+            self::markTestSkipped('Test is not yet relevant for Symfony v7.');
+        }
+
         $actual = $this->subject->get();
 
         self::assertCount(4, $actual);
