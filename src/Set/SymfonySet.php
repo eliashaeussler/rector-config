@@ -52,7 +52,7 @@ final class SymfonySet implements Set
      * @throws Exception\RequiredPackageIsMissing
      * @throws Exception\VersionStringIsInvalid
      */
-    public function __construct(Entity\Version $version = null)
+    public function __construct(?Entity\Version $version = null)
     {
         $this->symfonyVersion = $version ?? $this->determineSymfonyVersion();
     }

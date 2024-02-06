@@ -43,7 +43,7 @@ trait RectorConfigTrait
     /**
      * @param callable(Config\RectorConfig): (mixed)|null $configCallable
      */
-    private function createRectorConfig(callable $configCallable = null): Config\RectorConfig
+    private function createRectorConfig(?callable $configCallable = null): Config\RectorConfig
     {
         $rectorConfig = null;
 
