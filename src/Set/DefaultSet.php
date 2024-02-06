@@ -41,7 +41,7 @@ final class DefaultSet implements Set
     /**
      * @throws Exception\VersionStringIsInvalid
      */
-    public function __construct(Entity\Version $version = null)
+    public function __construct(?Entity\Version $version = null)
     {
         $this->phpVersion = $version ?? Entity\Version::createFromVersionString(PHP_VERSION);
     }

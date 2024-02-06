@@ -76,7 +76,7 @@ final class Config
      */
     public static function create(
         RectorConfig\RectorConfig $rectorConfig,
-        Entity\Version|string|int $phpVersion = null,
+        Entity\Version|string|int|null $phpVersion = null,
     ): self {
         $phpVersion ??= PHP_VERSION;
 
@@ -94,7 +94,7 @@ final class Config
     /**
      * @throws Exception\RequiredPackageIsMissing
      */
-    public function withPHPUnit(Entity\Version $version = null): self
+    public function withPHPUnit(?Entity\Version $version = null): self
     {
         $this->sets[] = new Set\PHPUnitSet($version);
 
@@ -104,7 +104,7 @@ final class Config
     /**
      * @throws Exception\RequiredPackageIsMissing
      */
-    public function withSymfony(Entity\Version $version = null): self
+    public function withSymfony(?Entity\Version $version = null): self
     {
         $this->sets[] = new Set\SymfonySet($version);
 
@@ -115,7 +115,7 @@ final class Config
      * @throws Exception\RequiredPackageIsMissing
      * @throws Exception\VersionStringIsInvalid
      */
-    public function withTYPO3(Entity\Version $version = null): self
+    public function withTYPO3(?Entity\Version $version = null): self
     {
         $this->sets[] = new Set\TYPO3Set($version);
 

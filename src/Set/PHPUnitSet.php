@@ -43,7 +43,7 @@ final class PHPUnitSet implements Set
      * @throws Exception\RequiredPackageIsMissing
      * @throws Exception\VersionStringIsInvalid
      */
-    public function __construct(Entity\Version $version = null)
+    public function __construct(?Entity\Version $version = null)
     {
         $this->phpUnitVersion = $version ?? Entity\Version::createFromInstalledPackage('phpunit/phpunit');
     }

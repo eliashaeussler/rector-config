@@ -44,7 +44,7 @@ final class TYPO3Set implements Set
      * @throws Exception\RequiredPackageIsMissing
      * @throws Exception\VersionStringIsInvalid
      */
-    public function __construct(Entity\Version $version = null)
+    public function __construct(?Entity\Version $version = null)
     {
         // @codeCoverageIgnoreStart
         if (!class_exists(Core\Information\Typo3Version::class)) {
