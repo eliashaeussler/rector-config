@@ -209,9 +209,9 @@ final class ConfigTest extends Framework\TestCase
         );
 
         /* @see TYPO3Rector\Set\Typo3LevelSetList::UP_TO_TYPO3_11 */
-        self::assertTrue($this->container?->has(TYPO3Rector\Rector\v11\v0\ForwardResponseInsteadOfForwardMethodRector::class));
+        self::assertTrue($this->container?->has(TYPO3Rector\TYPO311\v0\ForwardResponseInsteadOfForwardMethodRector::class));
         /* @see TYPO3Rector\Set\Typo3LevelSetList::UP_TO_TYPO3_12 */
-        self::assertFalse($this->container->has(TYPO3Rector\Rector\v12\v0\tca\MigrateColsToSizeForTcaTypeNoneRector::class));
+        self::assertFalse($this->container->has(TYPO3Rector\TYPO312\v0\MigrateColsToSizeForTcaTypeNoneRector::class));
     }
 
     #[Framework\Attributes\Test]
@@ -226,7 +226,7 @@ final class ConfigTest extends Framework\TestCase
         );
 
         /* @see TYPO3Rector\Set\Typo3LevelSetList::UP_TO_TYPO3_12 */
-        self::assertTrue($this->container?->has(TYPO3Rector\Rector\v12\v0\tca\MigrateColsToSizeForTcaTypeNoneRector::class));
+        self::assertTrue($this->container?->has(TYPO3Rector\TYPO312\v0\MigrateColsToSizeForTcaTypeNoneRector::class));
     }
 
     #[Framework\Attributes\Test]
