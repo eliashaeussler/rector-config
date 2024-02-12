@@ -29,6 +29,7 @@ return PHPStanConfig\Config\Config::create(__DIR__)
         'tests/src',
     )
     ->withBleedingEdge()
+    ->withBaseline()
     ->maxLevel()
     ->toArray()
 ;

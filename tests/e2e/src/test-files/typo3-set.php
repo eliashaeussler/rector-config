@@ -26,9 +26,9 @@ use TYPO3\CMS\Core;
 /**
  * This class should convert a class constant usage.
  *
- * @see Ssch\TYPO3Rector\Set\Typo3LevelSetList::UP_TO_TYPO3_12
+ * @see Ssch\TYPO3Rector\Set\Typo3SetList::TYPO3_12
  */
-final class UpToTYPO3v12SetListTestClass
+final class TYPO3v12SetListTestClass
 {
     public function test(): void
     {

@@ -21,9 +21,11 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+use Rector\Set;
+
 /**
  * This class should be made final by Rector.
  *
- * @see Rector\Set\ValueObject\SetList::PRIVATIZATION
+ * @see Set\ValueObject\SetList::PRIVATIZATION
  */
 class DefaultPrivatizationSetTestClass {}

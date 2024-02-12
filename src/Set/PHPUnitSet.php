@@ -52,8 +52,8 @@ final class PHPUnitSet implements Set
     {
         $phpUnit10 = Entity\Version::createMajor(10);
         $set = [
-            PHPUnit\Set\PHPUnitSetList::PHPUNIT_EXCEPTION,
-            PHPUnit\Set\PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD,
+            PHPUnit\Set\PHPUnitSetList::PHPUNIT_60,
+            PHPUnit\Set\PHPUnitSetList::PHPUNIT_CODE_QUALITY,
         ];
 
         // Add PHPUnit 10.x sets
@@ -61,17 +61,17 @@ final class PHPUnitSet implements Set
             $set[] = PHPUnit\Set\PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES;
         }
 
-        // Determine level set list
-        $levelSetList = Helper\VersionHelper::getRectorLevelSetListForPackage(
+        // Determine set list
+        $setList = Helper\VersionHelper::getRectorSetListForPackage(
             $this->phpUnitVersion,
-            PHPUnit\Set\PHPUnitLevelSetList::class,
-            'UP_TO_PHPUNIT_%d',
+            PHPUnit\Set\PHPUnitSetList::class,
+            'PHPUNIT_%d',
             Enums\VersionRange::MajorDotZero,
         );
 
         // Add level set list, if available
-        if (null !== $levelSetList) {
-            $set[] = $levelSetList;
+        if (null !== $setList) {
+            $set[] = $setList;
         }
 
         return $set;

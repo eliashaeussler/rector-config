@@ -29,12 +29,13 @@ use Generator;
 use PHPUnit\Framework;
 use Rector\CodeQuality;
 use Rector\Config;
-use Rector\Core;
+use Rector\Configuration;
 use Rector\Php73;
 use Rector\Php74;
 use Rector\PHPUnit;
 use Rector\Set;
 use Rector\Symfony;
+use Rector\ValueObject;
 use Ssch\TYPO3Rector;
 
 use function count;
@@ -57,7 +58,7 @@ final class ConfigTest extends Framework\TestCase
 
         Src\Config\Config::create($rectorConfig);
 
-        self::assertSame([], $this->container?->getParameter(Core\Configuration\Option::SKIP));
+        self::assertSame([], Configuration\Parameter\SimpleParameterProvider::provideArrayParameter(Configuration\Option::SKIP));
     }
 
     /**
@@ -77,7 +78,7 @@ final class ConfigTest extends Framework\TestCase
 
         self::assertSame(
             $expected,
-            $this->container?->getParameter(Core\Configuration\Option::PHP_VERSION_FEATURES),
+            Configuration\Parameter\SimpleParameterProvider::provideIntParameter(Configuration\Option::PHP_VERSION_FEATURES),
         );
     }
 
@@ -95,8 +96,10 @@ final class ConfigTest extends Framework\TestCase
             [
                 Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
                 Php73\Rector\FuncCall\JsonThrowOnErrorRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
             ],
-            $this->container?->getParameter(Core\Configuration\Option::SKIP),
+            Configuration\Parameter\SimpleParameterProvider::provideArrayParameter(Configuration\Option::SKIP),
         );
     }
 
@@ -111,14 +114,14 @@ final class ConfigTest extends Framework\TestCase
             },
         );
 
-        /* @see PHPUnit\Set\PHPUnitLevelSetList::UP_TO_PHPUNIT_90 */
-        self::assertTrue($this->container?->has(PHPUnit\Rector\Class_\TestListenerToHooksRector::class));
-        /* @see PHPUnit\Set\PHPUnitLevelSetList::UP_TO_PHPUNIT_100 */
-        self::assertFalse($this->container->has(PHPUnit\Rector\Class_\StaticDataProviderClassMethodRector::class));
+        /* @see PHPUnit\Set\PHPUnitSetList::PHPUNIT_90 */
+        self::assertTrue($this->container?->has(PHPUnit\PHPUnit90\Rector\Class_\TestListenerToHooksRector::class));
+        /* @see PHPUnit\Set\PHPUnitSetList::PHPUNIT_100 */
+        self::assertFalse($this->container->has(PHPUnit\PHPUnit100\Rector\Class_\StaticDataProviderClassMethodRector::class));
     }
 
     #[Framework\Attributes\Test]
-    public function withPHPUnitImportsPHPUnitLevelSetListInRectorConfig(): void
+    public function withPHPUnitImportsPHPUnitSetListInRectorConfig(): void
     {
         $this->createRectorConfig(
             static function (Config\RectorConfig $rectorConfig) {
@@ -128,8 +131,8 @@ final class ConfigTest extends Framework\TestCase
             },
         );
 
-        /* @see PHPUnit\Set\PHPUnitLevelSetList::UP_TO_PHPUNIT_100 */
-        self::assertTrue($this->container?->has(PHPUnit\Rector\Class_\StaticDataProviderClassMethodRector::class));
+        /* @see PHPUnit\Set\PHPUnitSetList::PHPUNIT_100 */
+        self::assertTrue($this->container?->has(PHPUnit\PHPUnit100\Rector\Class_\StaticDataProviderClassMethodRector::class));
     }
 
     #[Framework\Attributes\Test]
@@ -144,7 +147,7 @@ final class ConfigTest extends Framework\TestCase
         );
 
         /* @see PHPUnit\Set\PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES */
-        self::assertTrue($this->container?->has(PHPUnit\Rector\ClassMethod\DataProviderAnnotationToAttributeRector::class));
+        self::assertTrue($this->container?->has(PHPUnit\AnnotationsToAttributes\Rector\ClassMethod\DataProviderAnnotationToAttributeRector::class));
     }
 
     #[Framework\Attributes\Test]
@@ -158,25 +161,25 @@ final class ConfigTest extends Framework\TestCase
             },
         );
 
-        /* @see Symfony\Set\SymfonyLevelSetList::UP_TO_SYMFONY_60 */
-        self::assertTrue($this->container?->has(Symfony\Rector\MethodCall\GetHelperControllerToServiceRector::class));
-        /* @see Symfony\Set\SymfonyLevelSetList::UP_TO_SYMFONY_62 */
-        self::assertFalse($this->container->has(Symfony\Rector\MethodCall\SimplifyFormRenderingRector::class));
+        /* @see Symfony\Set\SymfonySetList::SYMFONY_60 */
+        self::assertTrue($this->container?->has(Symfony\Symfony60\Rector\MethodCall\GetHelperControllerToServiceRector::class));
+        /* @see Symfony\Set\SymfonySetList::SYMFONY_62 */
+        self::assertFalse($this->container->has(Symfony\Symfony62\Rector\MethodCall\SimplifyFormRenderingRector::class));
     }
 
     #[Framework\Attributes\Test]
-    public function withSymfonyImportsSymfonyLevelSetListInRectorConfig(): void
+    public function withSymfonyImportsSymfonySetListInRectorConfig(): void
     {
         $this->createRectorConfig(
             static function (Config\RectorConfig $rectorConfig) {
                 $subject = Src\Config\Config::create($rectorConfig);
-                $subject->withSymfony();
+                $subject->withSymfony(Src\Entity\Version::createMinor(6, 2));
                 $subject->apply();
             },
         );
 
-        /* @see Symfony\Set\SymfonyLevelSetList::UP_TO_SYMFONY_62 */
-        self::assertTrue($this->container?->has(Symfony\Rector\MethodCall\SimplifyFormRenderingRector::class));
+        /* @see Symfony\Set\SymfonySetList::SYMFONY_62 */
+        self::assertTrue($this->container?->has(Symfony\Symfony62\Rector\MethodCall\SimplifyFormRenderingRector::class));
     }
 
     #[Framework\Attributes\Test]
@@ -191,7 +194,7 @@ final class ConfigTest extends Framework\TestCase
         );
 
         /* @see Symfony\Set\SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION */
-        self::assertTrue($this->container?->has(Symfony\Rector\MethodCall\ContainerGetToConstructorInjectionRector::class));
+        self::assertTrue($this->container?->has(Symfony\Symfony42\Rector\MethodCall\ContainerGetToConstructorInjectionRector::class));
     }
 
     #[Framework\Attributes\Test]
@@ -206,9 +209,9 @@ final class ConfigTest extends Framework\TestCase
         );
 
         /* @see TYPO3Rector\Set\Typo3LevelSetList::UP_TO_TYPO3_11 */
-        self::assertTrue($this->container?->has(TYPO3Rector\Rector\v11\v0\ForwardResponseInsteadOfForwardMethodRector::class));
+        self::assertTrue($this->container?->has(TYPO3Rector\TYPO311\v0\ForwardResponseInsteadOfForwardMethodRector::class));
         /* @see TYPO3Rector\Set\Typo3LevelSetList::UP_TO_TYPO3_12 */
-        self::assertFalse($this->container->has(TYPO3Rector\FileProcessor\Resources\Files\Rector\v12\v0\RenameExtTypoScriptFilesFileRector::class));
+        self::assertFalse($this->container->has(TYPO3Rector\TYPO312\v0\MigrateColsToSizeForTcaTypeNoneRector::class));
     }
 
     #[Framework\Attributes\Test]
@@ -223,7 +226,7 @@ final class ConfigTest extends Framework\TestCase
         );
 
         /* @see TYPO3Rector\Set\Typo3LevelSetList::UP_TO_TYPO3_12 */
-        self::assertTrue($this->container?->has(TYPO3Rector\FileProcessor\Resources\Files\Rector\v12\v0\RenameExtTypoScriptFilesFileRector::class));
+        self::assertTrue($this->container?->has(TYPO3Rector\TYPO312\v0\MigrateColsToSizeForTcaTypeNoneRector::class));
     }
 
     #[Framework\Attributes\Test]
@@ -251,12 +254,15 @@ final class ConfigTest extends Framework\TestCase
         $this->createRectorConfig(
             static function (Config\RectorConfig $rectorConfig) {
                 $subject = Src\Config\Config::create($rectorConfig);
-                $subject->in('foo', 'baz');
+                $subject->in('foo/*', 'baz/*');
                 $subject->apply();
             },
         );
 
-        self::assertSame(['foo', 'baz'], $this->container?->getParameter(Core\Configuration\Option::PATHS));
+        self::assertSame(
+            ['foo/*', 'baz/*'],
+            Configuration\Parameter\SimpleParameterProvider::provideArrayParameter(Configuration\Option::PATHS),
+        );
     }
 
     #[Framework\Attributes\Test]
@@ -270,9 +276,8 @@ final class ConfigTest extends Framework\TestCase
             },
         );
 
-        $actual = $this->container?->getParameter(Core\Configuration\Option::SKIP);
+        $actual = Configuration\Parameter\SimpleParameterProvider::provideArrayParameter(Configuration\Option::SKIP);
 
-        self::assertIsArray($actual);
         self::assertGreaterThanOrEqual(2, count($actual));
         self::assertSame('foo', $actual[0]);
         self::assertSame('baz', $actual[1]);
@@ -293,9 +298,11 @@ final class ConfigTest extends Framework\TestCase
             [
                 Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
                 Php73\Rector\FuncCall\JsonThrowOnErrorRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 Php74\Rector\Closure\ClosureToArrowFunctionRector::class,
             ],
-            $this->container?->getParameter(Core\Configuration\Option::SKIP),
+            Configuration\Parameter\SimpleParameterProvider::provideArrayParameter(Configuration\Option::SKIP),
         );
     }
 
@@ -314,9 +321,11 @@ final class ConfigTest extends Framework\TestCase
             [
                 Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
                 Php73\Rector\FuncCall\JsonThrowOnErrorRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 Php74\Rector\Closure\ClosureToArrowFunctionRector::class => ['foo', 'baz'],
             ],
-            $this->container?->getParameter(Core\Configuration\Option::SKIP),
+            Configuration\Parameter\SimpleParameterProvider::provideArrayParameter(Configuration\Option::SKIP),
         );
     }
 
@@ -336,9 +345,11 @@ final class ConfigTest extends Framework\TestCase
             [
                 Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
                 Php73\Rector\FuncCall\JsonThrowOnErrorRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 Php74\Rector\Closure\ClosureToArrowFunctionRector::class => ['foo', 'baz'],
             ],
-            $this->container?->getParameter(Core\Configuration\Option::SKIP),
+            Configuration\Parameter\SimpleParameterProvider::provideArrayParameter(Configuration\Option::SKIP),
         );
     }
 
@@ -358,9 +369,11 @@ final class ConfigTest extends Framework\TestCase
             [
                 Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
                 Php73\Rector\FuncCall\JsonThrowOnErrorRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class,
+                PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 Php74\Rector\Closure\ClosureToArrowFunctionRector::class => ['baz'],
             ],
-            $this->container?->getParameter(Core\Configuration\Option::SKIP),
+            Configuration\Parameter\SimpleParameterProvider::provideArrayParameter(Configuration\Option::SKIP),
         );
     }
 
@@ -369,8 +382,8 @@ final class ConfigTest extends Framework\TestCase
      */
     public static function createCanHandleCustomPHPVersionDataProvider(): Generator
     {
-        yield 'version string' => ['8.2.0', Core\ValueObject\PhpVersion::PHP_82];
-        yield 'version id' => [Core\ValueObject\PhpVersion::PHP_82, Core\ValueObject\PhpVersion::PHP_82];
+        yield 'version string' => ['8.2.0', ValueObject\PhpVersion::PHP_82];
+        yield 'version id' => [ValueObject\PhpVersion::PHP_82, ValueObject\PhpVersion::PHP_82];
     }
 
     protected function tearDown(): void

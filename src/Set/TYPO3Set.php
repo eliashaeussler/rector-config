@@ -65,7 +65,7 @@ final class TYPO3Set implements Set
         $set = [];
 
         // Determine level set list
-        $levelSetList = Helper\VersionHelper::getRectorLevelSetListForPackage(
+        $levelSetList = Helper\VersionHelper::getRectorSetListForPackage(
             $this->typo3Version,
             TYPO3Rector\Set\Typo3LevelSetList::class,
             'UP_TO_TYPO3_%d',

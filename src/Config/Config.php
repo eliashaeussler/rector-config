@@ -27,9 +27,11 @@ use EliasHaeussler\RectorConfig\Entity;
 use EliasHaeussler\RectorConfig\Exception;
 use EliasHaeussler\RectorConfig\Set;
 use Rector\Config as RectorConfig;
-use Rector\Core;
+use Rector\Contract;
 use Rector\Php73;
 use Rector\Php74;
+use Rector\PHPUnit;
+use Rector\ValueObject;
 
 use function array_values;
 use function is_int;
@@ -44,6 +46,11 @@ use function is_string;
 final class Config
 {
     /**
+     * @var list<Set\Set>
+     */
+    private array $sets;
+
+    /**
      * @var list<non-empty-string>
      */
     private array $paths = [];
@@ -54,20 +61,23 @@ final class Config
     private array $skipPaths = [];
 
     /**
-     * @var array<class-string<Core\Contract\Rector\RectorInterface>, list<non-empty-string>>
+     * @var array<class-string<Contract\Rector\RectorInterface>, list<non-empty-string>>
      */
     private array $skippedRectors = [
         Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class => [],
         Php73\Rector\FuncCall\JsonThrowOnErrorRector::class => [],
+        PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class => [],
+        PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class => [],
     ];
 
-    /**
-     * @param list<Set\Set> $sets
-     */
     private function __construct(
         private readonly RectorConfig\RectorConfig $rectorConfig,
-        private array $sets,
-    ) {}
+        private readonly Entity\Version $phpVersion,
+    ) {
+        $this->sets = [
+            new Set\DefaultSet($this->phpVersion),
+        ];
+    }
 
     /**
      * @param Entity\Version|non-empty-string|positive-int|null $phpVersion
@@ -88,7 +98,7 @@ final class Config
             $phpVersion = Entity\Version::createFromVersionId($phpVersion);
         }
 
-        return new self($rectorConfig, [new Set\DefaultSet($phpVersion)]);
+        return new self($rectorConfig, $phpVersion);
     }
 
     /**
@@ -152,8 +162,8 @@ final class Config
     }
 
     /**
-     * @param class-string<Core\Contract\Rector\RectorInterface> $rector
-     * @param list<non-empty-string>                             $paths
+     * @param class-string<Contract\Rector\RectorInterface> $rector
+     * @param list<non-empty-string>                        $paths
      */
     public function skip(string $rector, array $paths = [], bool $mergePaths = true): self
     {
@@ -191,6 +201,10 @@ final class Config
             }
         }
 
+        /** @var ValueObject\PhpVersion::* $phpVersionId */
+        $phpVersionId = $this->phpVersion->toVersionId();
+
+        $this->rectorConfig->phpVersion($phpVersionId);
         $this->rectorConfig->paths($this->paths);
         $this->rectorConfig->skip($skip);
 

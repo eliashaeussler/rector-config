@@ -51,17 +51,17 @@ final class PHPUnitSetTest extends Framework\TestCase
         $actual = $subject->get();
 
         self::assertCount(3, $actual);
-        self::assertStringEndsWith('/config/sets/level/up-to-phpunit-90.php', $actual[2]);
+        self::assertStringEndsWith('/config/sets/phpunit90.php', $actual[2]);
     }
 
     #[Framework\Attributes\Test]
-    public function getReturnsPHPUnitSetWithLevelSetList(): void
+    public function getReturnsPHPUnitSetWithSetList(): void
     {
         $actual = $this->subject->get();
 
         self::assertCount(4, $actual);
         self::assertMatchesRegularExpression(
-            '/config\\/sets\\/level\\/up-to-phpunit-10\\d+\\.php$/',
+            '/config\\/sets\\/phpunit10\\d+\\.php$/',
             $actual[3],
         );
     }

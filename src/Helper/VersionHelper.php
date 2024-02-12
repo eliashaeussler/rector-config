@@ -39,14 +39,14 @@ use function sprintf;
 final class VersionHelper
 {
     /**
-     * @param class-string     $levelSetList
+     * @param class-string     $setList
      * @param non-empty-string $constantPattern
      *
      * @return non-empty-string|null
      */
-    public static function getRectorLevelSetListForPackage(
+    public static function getRectorSetListForPackage(
         Entity\Version $packageVersion,
-        string $levelSetList,
+        string $setList,
         string $constantPattern,
         Enums\VersionRange $versionRange = Enums\VersionRange::MajorMinor,
         bool $fallBackToPreviousVersions = false,
@@ -55,7 +55,7 @@ final class VersionHelper
 
         $constant = sprintf(
             '%s::%s',
-            $levelSetList,
+            $setList,
             sprintf($constantPattern, $normalizedVersion->range($versionRange)),
         );
         $value = defined($constant) ? constant($constant) : null;
@@ -71,9 +71,9 @@ final class VersionHelper
         $previousVersion = self::resolvePreviousVersion($normalizedVersion, $versionRange);
 
         if (!$normalizedVersion->equals($previousVersion)) {
-            return self::getRectorLevelSetListForPackage(
+            return self::getRectorSetListForPackage(
                 $previousVersion,
-                $levelSetList,
+                $setList,
                 $constantPattern,
                 $versionRange,
                 true,
