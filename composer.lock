@@ -2636,7 +2636,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v10.40.0",
+            "version": "v10.43.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -2687,16 +2687,16 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v10.40.0",
+            "version": "v10.43.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "0b26d49d4bb0986da1ca30bcc701d5c22722576b"
+                "reference": "8d7152c4a1f5d9cf7da3e8b71f23e4556f6138ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/0b26d49d4bb0986da1ca30bcc701d5c22722576b",
-                "reference": "0b26d49d4bb0986da1ca30bcc701d5c22722576b",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/8d7152c4a1f5d9cf7da3e8b71f23e4556f6138ac",
+                "reference": "8d7152c4a1f5d9cf7da3e8b71f23e4556f6138ac",
                 "shasum": ""
             },
             "require": {
@@ -2731,7 +2731,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-12-28T16:46:25+00:00"
+            "time": "2024-01-15T18:52:32+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
