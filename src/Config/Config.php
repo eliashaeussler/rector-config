@@ -68,6 +68,7 @@ final class Config
         Php73\Rector\FuncCall\JsonThrowOnErrorRector::class => [],
         PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class => [],
         PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class => [],
+        PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector::class => [],
     ];
 
     private function __construct(
