@@ -218,6 +218,13 @@ final class ConfigTest extends Framework\TestCase
     #[Framework\Attributes\Test]
     public function withTYPO3AddsAdditionalTYPO3RulesToRectorConfig(): void
     {
+        $typo3version = Src\Entity\Version::createFromInstalledPackage('typo3/cms-core');
+
+        // @todo Remove once rules for TYPO3 v13 exist
+        if ($typo3version->major >= 13) {
+            self::markTestSkipped('Test is not yet relevant for TYPO3 v13.');
+        }
+
         $this->createRectorConfig(
             static function (Config\RectorConfig $rectorConfig) {
                 $subject = Src\Config\Config::create($rectorConfig);
