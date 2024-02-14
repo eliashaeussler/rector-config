@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.57",
+            "version": "1.10.58",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "1627b1d03446904aaa77593f370c5201d2ecc34e"
+                "reference": "a23518379ec4defd9e47cbf81019526861623ec2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/1627b1d03446904aaa77593f370c5201d2ecc34e",
-                "reference": "1627b1d03446904aaa77593f370c5201d2ecc34e",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/a23518379ec4defd9e47cbf81019526861623ec2",
+                "reference": "a23518379ec4defd9e47cbf81019526861623ec2",
                 "shasum": ""
             },
             "require": {
@@ -66,7 +66,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-24T11:51:34+00:00"
+            "time": "2024-02-12T20:02:57+00:00"
         },
         {
             "name": "rector/rector",
@@ -5651,16 +5651,16 @@
         },
         {
             "name": "ssch/typo3-rector",
-            "version": "v2.0.0",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3-rector.git",
-                "reference": "c4fba5a3454179bb1f1e1202fda9b50071f87039"
+                "reference": "f181a2108e759ac2f1a8b9589f205602974b0a95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/c4fba5a3454179bb1f1e1202fda9b50071f87039",
-                "reference": "c4fba5a3454179bb1f1e1202fda9b50071f87039",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/f181a2108e759ac2f1a8b9589f205602974b0a95",
+                "reference": "f181a2108e759ac2f1a8b9589f205602974b0a95",
                 "shasum": ""
             },
             "require": {
@@ -5753,7 +5753,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-02-12T14:23:00+00:00"
+            "time": "2024-02-14T14:27:43+00:00"
         },
         {
             "name": "symfony/cache",
@@ -8880,16 +8880,16 @@
         },
         {
             "name": "typo3/cms-core",
-            "version": "v12.4.10",
+            "version": "v12.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/core.git",
-                "reference": "13fb7b07b11c18b508e7a1a771cafb97c3b9bc07"
+                "reference": "5d9f3b7770ec3500adad7b5db04c9402664cb9ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/13fb7b07b11c18b508e7a1a771cafb97c3b9bc07",
-                "reference": "13fb7b07b11c18b508e7a1a771cafb97c3b9bc07",
+                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/5d9f3b7770ec3500adad7b5db04c9402664cb9ed",
+                "reference": "5d9f3b7770ec3500adad7b5db04c9402664cb9ed",
                 "shasum": ""
             },
             "require": {
@@ -8897,7 +8897,7 @@
                 "christian-riesen/base32": "^1.6",
                 "composer-runtime-api": "^2.1",
                 "doctrine/annotations": "^1.13.3 || ^2.0",
-                "doctrine/dbal": "^3.7.2",
+                "doctrine/dbal": "^3.8.1",
                 "doctrine/event-manager": "^2.0",
                 "doctrine/lexer": "^2.0 || ^3.0",
                 "egulias/email-validator": "^4.0",
@@ -8958,9 +8958,9 @@
                 "psr/http-message-implementation": "1.0"
             },
             "replace": {
-                "typo3/cms-lang": "*",
-                "typo3/cms-saltedpasswords": "*",
-                "typo3/cms-sv": "*"
+                "typo3/cms-lang": "self.version",
+                "typo3/cms-saltedpasswords": "self.version",
+                "typo3/cms-sv": "self.version"
             },
             "suggest": {
                 "ext-apcu": "Needed when non-default APCU based cache backends are used",
@@ -9016,7 +9016,7 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2024-01-16T08:57:46+00:00"
+            "time": "2024-02-13T09:54:21+00:00"
         },
         {
             "name": "typo3/html-sanitizer",
