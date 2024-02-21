@@ -69,6 +69,6 @@ final class CustomSet implements Set
 
     public function get(): array
     {
-        return array_values($this->sets);
+        return $this->sets;
     }
 }
