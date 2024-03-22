@@ -2,7 +2,7 @@
 
 # Rector config
 
-[![Coverage](https://img.shields.io/codecov/c/github/eliashaeussler/rector-config?logo=codecov&token=YcuK5zoSWw)](https://codecov.io/gh/eliashaeussler/rector-config)
+[![Coverage](https://img.shields.io/coverallsCoverage/github/eliashaeussler/rector-config?logo=coveralls)](https://coveralls.io/github/eliashaeussler/rector-config)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/eliashaeussler/rector-config?logo=codeclimate)](https://codeclimate.com/github/eliashaeussler/rector-config/maintainability)
 [![CGL](https://img.shields.io/github/actions/workflow/status/eliashaeussler/rector-config/cgl.yaml?label=cgl&logo=github)](https://github.com/eliashaeussler/rector-config/actions/workflows/cgl.yaml)
 [![Tests](https://img.shields.io/github/actions/workflow/status/eliashaeussler/rector-config/tests.yaml?label=tests&logo=github)](https://github.com/eliashaeussler/rector-config/actions/workflows/tests.yaml)
