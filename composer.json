@@ -24,7 +24,7 @@
 		"ergebnis/composer-normalize": "^2.30",
 		"illuminate/container": "^10.39",
 		"phpstan/extension-installer": "^1.2",
-		"phpunit/phpunit": "^11.0",
+		"phpunit/phpunit": "^10.1 || ^11.0",
 		"ssch/typo3-rector": "^2.0",
 		"symfony/config": "^5.4 || ^6.0 || ^7.0",
 		"typo3/cms-core": "^12.4 || ^13.0"
