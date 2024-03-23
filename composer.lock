@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.64",
+            "version": "1.10.65",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "fb9f270daffedcb5ff46275dcafe92538b1bc4bb"
+                "reference": "3c657d057a0b7ecae19cb12db446bbc99d8839c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/fb9f270daffedcb5ff46275dcafe92538b1bc4bb",
-                "reference": "fb9f270daffedcb5ff46275dcafe92538b1bc4bb",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/3c657d057a0b7ecae19cb12db446bbc99d8839c6",
+                "reference": "3c657d057a0b7ecae19cb12db446bbc99d8839c6",
                 "shasum": ""
             },
             "require": {
@@ -66,7 +66,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-21T09:57:47+00:00"
+            "time": "2024-03-23T10:30:26+00:00"
         },
         {
             "name": "rector/rector",
@@ -1595,16 +1595,16 @@
         },
         {
             "name": "eliashaeussler/phpstan-config",
-            "version": "2.4.0",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/phpstan-config.git",
-                "reference": "534556504f1acc54b2ebffcad4f2d35b7d830e1a"
+                "reference": "96e3b09ba73b2432edccaa159a788ff8d365d6a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/phpstan-config/zipball/534556504f1acc54b2ebffcad4f2d35b7d830e1a",
-                "reference": "534556504f1acc54b2ebffcad4f2d35b7d830e1a",
+                "url": "https://api.github.com/repos/eliashaeussler/phpstan-config/zipball/96e3b09ba73b2432edccaa159a788ff8d365d6a3",
+                "reference": "96e3b09ba73b2432edccaa159a788ff8d365d6a3",
                 "shasum": ""
             },
             "require": {
@@ -1614,11 +1614,11 @@
                 "phpstan/phpstan-strict-rules": "^1.4"
             },
             "require-dev": {
-                "armin/editorconfig-cli": "^1.5",
-                "eliashaeussler/php-cs-fixer-config": "^1.2",
-                "eliashaeussler/rector-config": "^2.0",
+                "armin/editorconfig-cli": "^1.8 || ^2.0",
+                "eliashaeussler/php-cs-fixer-config": "^2.0",
+                "eliashaeussler/rector-config": "^3.0",
                 "ergebnis/composer-normalize": "^2.29",
-                "phpunit/phpunit": "^10.1"
+                "phpunit/phpunit": "^10.1 || ^11.0"
             },
             "type": "library",
             "extra": {
@@ -1648,9 +1648,9 @@
             "description": "My personal configuration for PHPStan",
             "support": {
                 "issues": "https://github.com/eliashaeussler/phpstan-config/issues",
-                "source": "https://github.com/eliashaeussler/phpstan-config/tree/2.4.0"
+                "source": "https://github.com/eliashaeussler/phpstan-config/tree/2.5.0"
             },
-            "time": "2023-11-23T08:48:50+00:00"
+            "time": "2024-03-12T18:56:15+00:00"
         },
         {
             "name": "enshrined/svg-sanitize",
