@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f882656486b7e6af564cbe38ecf71f6b",
+    "content-hash": "e687155c2233d61b3b3829867ce416ae",
     "packages": [
         {
             "name": "phpstan/phpstan",
@@ -2637,7 +2637,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v10.48.10",
+            "version": "v10.48.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
