@@ -22,7 +22,7 @@
 		"eliashaeussler/php-cs-fixer-config": "^2.0",
 		"eliashaeussler/phpstan-config": "^2.0",
 		"ergebnis/composer-normalize": "^2.30",
-		"illuminate/container": "^10.39",
+		"illuminate/container": "^10.39 || ^11.0",
 		"phpstan/extension-installer": "^1.2",
 		"phpunit/phpunit": "^10.1 || ^11.0",
 		"ssch/typo3-rector": "^2.0",
