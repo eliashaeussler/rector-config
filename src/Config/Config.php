@@ -28,8 +28,6 @@ use EliasHaeussler\RectorConfig\Exception;
 use EliasHaeussler\RectorConfig\Set;
 use Rector\Config as RectorConfig;
 use Rector\Contract;
-use Rector\Php73;
-use Rector\Php74;
 use Rector\PHPUnit;
 use Rector\ValueObject;
 
@@ -64,9 +62,6 @@ final class Config
      * @var array<class-string<Contract\Rector\RectorInterface>, list<non-empty-string>>
      */
     private array $skippedRectors = [
-        Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class => [],
-        Php73\Rector\FuncCall\JsonThrowOnErrorRector::class => [],
-        PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class => [],
         PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class => [],
         PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector::class => [],
     ];

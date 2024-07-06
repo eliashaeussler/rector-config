@@ -30,7 +30,6 @@ use PHPUnit\Framework;
 use Rector\CodeQuality;
 use Rector\Config;
 use Rector\Configuration;
-use Rector\Php73;
 use Rector\Php74;
 use Rector\PHPUnit;
 use Rector\Set;
@@ -94,9 +93,6 @@ final class ConfigTest extends Framework\TestCase
 
         self::assertSame(
             [
-                Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
-                Php73\Rector\FuncCall\JsonThrowOnErrorRector::class,
-                PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class,
                 PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector::class,
             ],
@@ -304,9 +300,6 @@ final class ConfigTest extends Framework\TestCase
 
         self::assertSame(
             [
-                Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
-                Php73\Rector\FuncCall\JsonThrowOnErrorRector::class,
-                PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class,
                 PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector::class,
                 Php74\Rector\Closure\ClosureToArrowFunctionRector::class,
@@ -328,9 +321,6 @@ final class ConfigTest extends Framework\TestCase
 
         self::assertSame(
             [
-                Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
-                Php73\Rector\FuncCall\JsonThrowOnErrorRector::class,
-                PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class,
                 PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector::class,
                 Php74\Rector\Closure\ClosureToArrowFunctionRector::class => ['foo', 'baz'],
@@ -353,9 +343,6 @@ final class ConfigTest extends Framework\TestCase
 
         self::assertSame(
             [
-                Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
-                Php73\Rector\FuncCall\JsonThrowOnErrorRector::class,
-                PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class,
                 PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector::class,
                 Php74\Rector\Closure\ClosureToArrowFunctionRector::class => ['foo', 'baz'],
@@ -378,9 +365,6 @@ final class ConfigTest extends Framework\TestCase
 
         self::assertSame(
             [
-                Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
-                Php73\Rector\FuncCall\JsonThrowOnErrorRector::class,
-                PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class,
                 PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector::class,
                 Php74\Rector\Closure\ClosureToArrowFunctionRector::class => ['baz'],
