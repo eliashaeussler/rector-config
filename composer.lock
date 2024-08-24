@@ -1725,16 +1725,16 @@
         },
         {
             "name": "eliashaeussler/phpunit-attributes",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/phpunit-attributes.git",
-                "reference": "328d90965c8b94abb612d2b6c162b1867a314726"
+                "reference": "4acff6a59a62e4e2d9425667c1a45b2cfeba98f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/phpunit-attributes/zipball/328d90965c8b94abb612d2b6c162b1867a314726",
-                "reference": "328d90965c8b94abb612d2b6c162b1867a314726",
+                "url": "https://api.github.com/repos/eliashaeussler/phpunit-attributes/zipball/4acff6a59a62e4e2d9425667c1a45b2cfeba98f3",
+                "reference": "4acff6a59a62e4e2d9425667c1a45b2cfeba98f3",
                 "shasum": ""
             },
             "require": {
@@ -1744,7 +1744,7 @@
             "require-dev": {
                 "armin/editorconfig-cli": "^1.8 || ^2.0",
                 "eliashaeussler/php-cs-fixer-config": "^2.0",
-                "eliashaeussler/phpstan-config": "^2.0",
+                "eliashaeussler/phpstan-config": "^2.5.1",
                 "eliashaeussler/rector-config": "^3.0",
                 "ergebnis/composer-normalize": "^2.30",
                 "phpstan/extension-installer": "^1.2",
@@ -1772,9 +1772,9 @@
             "description": "Provides additional attributes for tests with PHPUnit",
             "support": {
                 "issues": "https://github.com/eliashaeussler/phpunit-attributes/issues",
-                "source": "https://github.com/eliashaeussler/phpunit-attributes/tree/1.0.0"
+                "source": "https://github.com/eliashaeussler/phpunit-attributes/tree/1.1.0"
             },
-            "time": "2024-08-24T10:20:55+00:00"
+            "time": "2024-08-24T12:19:48+00:00"
         },
         {
             "name": "enshrined/svg-sanitize",
