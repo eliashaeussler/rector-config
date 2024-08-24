@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "104f336fef3f4e7a9ab94e836300d72d",
+    "content-hash": "98f3dc64446550d81fb30fbfac0594b9",
     "packages": [
         {
             "name": "phpstan/phpstan",
@@ -1722,6 +1722,59 @@
                 "source": "https://github.com/eliashaeussler/phpstan-config/tree/2.5.0"
             },
             "time": "2024-03-12T18:56:15+00:00"
+        },
+        {
+            "name": "eliashaeussler/phpunit-attributes",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eliashaeussler/phpunit-attributes.git",
+                "reference": "328d90965c8b94abb612d2b6c162b1867a314726"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eliashaeussler/phpunit-attributes/zipball/328d90965c8b94abb612d2b6c162b1867a314726",
+                "reference": "328d90965c8b94abb612d2b6c162b1867a314726",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+                "phpunit/phpunit": "^10.4 || ^11.0"
+            },
+            "require-dev": {
+                "armin/editorconfig-cli": "^1.8 || ^2.0",
+                "eliashaeussler/php-cs-fixer-config": "^2.0",
+                "eliashaeussler/phpstan-config": "^2.0",
+                "eliashaeussler/rector-config": "^3.0",
+                "ergebnis/composer-normalize": "^2.30",
+                "phpstan/extension-installer": "^1.2",
+                "phpstan/phpstan-phpunit": "^1.1",
+                "phpunit/phpcov": "^9.0 || ^10.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EliasHaeussler\\PHPUnitAttributes\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Elias Häußler",
+                    "email": "elias@haeussler.dev",
+                    "homepage": "https://haeussler.dev",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Provides additional attributes for tests with PHPUnit",
+            "support": {
+                "issues": "https://github.com/eliashaeussler/phpunit-attributes/issues",
+                "source": "https://github.com/eliashaeussler/phpunit-attributes/tree/1.0.0"
+            },
+            "time": "2024-08-24T10:20:55+00:00"
         },
         {
             "name": "enshrined/svg-sanitize",

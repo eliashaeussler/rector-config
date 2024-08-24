@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\RectorConfig\Tests\Set;
 
+use EliasHaeussler\PHPUnitAttributes;
 use EliasHaeussler\RectorConfig as Src;
 use PHPUnit\Framework;
 
@@ -55,15 +56,9 @@ final class SymfonySetTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
+    #[PHPUnitAttributes\Attribute\RequiresPackage('symfony/config', '< 7')] // @todo Remove once rules for Symfony v7 exist
     public function getReturnsSymfonySetWithSetList(): void
     {
-        $symfonyVersion = Src\Entity\Version::createFromInstalledPackage('symfony/config');
-
-        // @todo Remove once rules for Symfony v7 exist
-        if ($symfonyVersion->major >= 7) {
-            self::markTestSkipped('Test is not yet relevant for Symfony v7.');
-        }
-
         $actual = $this->subject->get();
 
         self::assertCount(4, $actual);

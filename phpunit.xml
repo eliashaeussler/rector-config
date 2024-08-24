@@ -4,6 +4,9 @@
          bootstrap="vendor/autoload.php"
          colors="true"
 >
+    <extensions>
+        <bootstrap class="EliasHaeussler\PHPUnitAttributes\PHPUnitAttributesExtension" />
+    </extensions>
     <testsuites>
         <testsuite name="tests">
             <directory>tests/src</directory>

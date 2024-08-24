@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\RectorConfig\Tests\Set;
 
+use EliasHaeussler\PHPUnitAttributes;
 use EliasHaeussler\RectorConfig as Src;
 use PHPUnit\Framework;
 
@@ -55,15 +56,9 @@ final class TYPO3SetTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
+    #[PHPUnitAttributes\Attribute\RequiresPackage('typo3/cms-core', '< 13')] // @todo Remove once rules for TYPO3 v13 exist
     public function getReturnsTYPO3SetWithLevelSetList(): void
     {
-        $typo3version = Src\Entity\Version::createFromInstalledPackage('typo3/cms-core');
-
-        // @todo Remove once rules for TYPO3 v13 exist
-        if ($typo3version->major >= 13) {
-            self::markTestSkipped('Test is not yet relevant for TYPO3 v13.');
-        }
-
         $actual = $this->subject->get();
 
         self::assertCount(1, $actual);

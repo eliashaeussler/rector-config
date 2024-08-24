@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\RectorConfig\Tests\Config;
 
+use EliasHaeussler\PHPUnitAttributes;
 use EliasHaeussler\RectorConfig as Src;
 use EliasHaeussler\RectorConfig\Tests;
 use Generator;
@@ -212,15 +213,9 @@ final class ConfigTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
+    #[PHPUnitAttributes\Attribute\RequiresPackage('typo3/cms-core', '< 13')] // @todo Remove once rules for TYPO3 v13 exist
     public function withTYPO3AddsAdditionalTYPO3RulesToRectorConfig(): void
     {
-        $typo3version = Src\Entity\Version::createFromInstalledPackage('typo3/cms-core');
-
-        // @todo Remove once rules for TYPO3 v13 exist
-        if ($typo3version->major >= 13) {
-            self::markTestSkipped('Test is not yet relevant for TYPO3 v13.');
-        }
-
         $this->createRectorConfig(
             static function (Config\RectorConfig $rectorConfig) {
                 $subject = Src\Config\Config::create($rectorConfig);
