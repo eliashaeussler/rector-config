@@ -1725,16 +1725,16 @@
         },
         {
             "name": "eliashaeussler/phpunit-attributes",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/phpunit-attributes.git",
-                "reference": "4acff6a59a62e4e2d9425667c1a45b2cfeba98f3"
+                "reference": "a77e10fa8439d960aa668a1cb669393ca065fdd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/phpunit-attributes/zipball/4acff6a59a62e4e2d9425667c1a45b2cfeba98f3",
-                "reference": "4acff6a59a62e4e2d9425667c1a45b2cfeba98f3",
+                "url": "https://api.github.com/repos/eliashaeussler/phpunit-attributes/zipball/a77e10fa8439d960aa668a1cb669393ca065fdd4",
+                "reference": "a77e10fa8439d960aa668a1cb669393ca065fdd4",
                 "shasum": ""
             },
             "require": {
@@ -1749,7 +1749,8 @@
                 "ergebnis/composer-normalize": "^2.30",
                 "phpstan/extension-installer": "^1.2",
                 "phpstan/phpstan-phpunit": "^1.1",
-                "phpunit/phpcov": "^9.0 || ^10.0"
+                "phpunit/phpcov": "^9.0 || ^10.0",
+                "symfony/console": "^6.4 || ^7.0"
             },
             "type": "library",
             "autoload": {
@@ -1772,9 +1773,9 @@
             "description": "Provides additional attributes for tests with PHPUnit",
             "support": {
                 "issues": "https://github.com/eliashaeussler/phpunit-attributes/issues",
-                "source": "https://github.com/eliashaeussler/phpunit-attributes/tree/1.1.0"
+                "source": "https://github.com/eliashaeussler/phpunit-attributes/tree/1.2.0"
             },
-            "time": "2024-08-24T12:19:48+00:00"
+            "time": "2024-08-26T20:00:44+00:00"
         },
         {
             "name": "enshrined/svg-sanitize",
