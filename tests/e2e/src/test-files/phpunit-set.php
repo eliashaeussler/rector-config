@@ -34,7 +34,10 @@ final class PHPUnitAnnotationToAttributesSetListTestClass extends Framework\Test
     /**
      * @test
      */
-    public function testCase(): void {}
+    public function testCase(): void
+    {
+        self::assertTrue(true);
+    }
 }
 
 /**
@@ -48,7 +51,10 @@ final class PHPUnitExceptionSetListTestClass extends Framework\TestCase
      * @expectedException \Exception
      */
     #[Framework\Attributes\Test]
-    public function testCase(): void {}
+    public function testCase(): void
+    {
+        self::assertTrue(true);
+    }
 }
 
 /**

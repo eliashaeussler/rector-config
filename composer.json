@@ -82,8 +82,10 @@
 			"@test:unit"
 		],
 		"test:e2e": [
-			"@composer -d tests/e2e install",
-			"@composer -d tests/e2e test"
+			"tests/e2e/src/test.sh default-set PrivatizeFinalClassPropertyRector",
+			"tests/e2e/src/test.sh phpunit-set AnnotationToAttributeRector",
+			"tests/e2e/src/test.sh symfony-set AnnotationToAttributeRector",
+			"tests/e2e/src/test.sh typo3-set RenameClassConstFetchRector"
 		],
 		"test:unit": "@test:unit:coverage --no-coverage",
 		"test:unit:coverage": "phpunit -c phpunit.xml"

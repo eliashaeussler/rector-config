@@ -24,8 +24,13 @@ declare(strict_types=1);
 use Rector\Set;
 
 /**
- * This class should be made final by Rector.
+ * This class should convert a protected property to private visibility.
  *
  * @see Set\ValueObject\SetList::PRIVATIZATION
  */
-class DefaultPrivatizationSetTestClass {}
+final class DefaultPrivatizationSetTestClass
+{
+    public function __construct(
+        protected readonly string $foo,
+    ) {}
+}
