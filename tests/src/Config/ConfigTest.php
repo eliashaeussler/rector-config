@@ -94,6 +94,7 @@ final class ConfigTest extends Framework\TestCase
 
         self::assertSame(
             [
+                PHPUnit\CodeQuality\Rector\Class_\NarrowUnusedSetUpDefinedPropertyRector::class,
                 PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector::class,
             ],
@@ -295,6 +296,7 @@ final class ConfigTest extends Framework\TestCase
 
         self::assertSame(
             [
+                PHPUnit\CodeQuality\Rector\Class_\NarrowUnusedSetUpDefinedPropertyRector::class,
                 PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector::class,
                 Php74\Rector\Closure\ClosureToArrowFunctionRector::class,
@@ -316,6 +318,7 @@ final class ConfigTest extends Framework\TestCase
 
         self::assertSame(
             [
+                PHPUnit\CodeQuality\Rector\Class_\NarrowUnusedSetUpDefinedPropertyRector::class,
                 PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector::class,
                 Php74\Rector\Closure\ClosureToArrowFunctionRector::class => ['foo', 'baz'],
@@ -338,6 +341,7 @@ final class ConfigTest extends Framework\TestCase
 
         self::assertSame(
             [
+                PHPUnit\CodeQuality\Rector\Class_\NarrowUnusedSetUpDefinedPropertyRector::class,
                 PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector::class,
                 Php74\Rector\Closure\ClosureToArrowFunctionRector::class => ['foo', 'baz'],
@@ -360,6 +364,7 @@ final class ConfigTest extends Framework\TestCase
 
         self::assertSame(
             [
+                PHPUnit\CodeQuality\Rector\Class_\NarrowUnusedSetUpDefinedPropertyRector::class,
                 PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
                 PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector::class,
                 Php74\Rector\Closure\ClosureToArrowFunctionRector::class => ['baz'],
