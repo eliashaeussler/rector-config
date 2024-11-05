@@ -62,6 +62,7 @@ final class Config
      * @var array<class-string<Contract\Rector\RectorInterface>, list<non-empty-string>>
      */
     private array $skippedRectors = [
+        PHPUnit\CodeQuality\Rector\Class_\NarrowUnusedSetUpDefinedPropertyRector::class => [],
         PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class => [],
         PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector::class => [],
     ];
