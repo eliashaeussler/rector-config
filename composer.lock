@@ -438,16 +438,16 @@
         },
         {
             "name": "composer/class-map-generator",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/class-map-generator.git",
-                "reference": "98bbf6780e56e0fd2404fe4b82eb665a0f93b783"
+                "reference": "4b0a223cf5be7c9ee7e0ef1bc7db42b4a97c9915"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/class-map-generator/zipball/98bbf6780e56e0fd2404fe4b82eb665a0f93b783",
-                "reference": "98bbf6780e56e0fd2404fe4b82eb665a0f93b783",
+                "url": "https://api.github.com/repos/composer/class-map-generator/zipball/4b0a223cf5be7c9ee7e0ef1bc7db42b4a97c9915",
+                "reference": "4b0a223cf5be7c9ee7e0ef1bc7db42b4a97c9915",
                 "shasum": ""
             },
             "require": {
@@ -456,10 +456,10 @@
                 "symfony/finder": "^4.4 || ^5.3 || ^6 || ^7"
             },
             "require-dev": {
-                "phpstan/phpstan": "^1.6",
-                "phpstan/phpstan-deprecation-rules": "^1",
-                "phpstan/phpstan-phpunit": "^1",
-                "phpstan/phpstan-strict-rules": "^1.1",
+                "phpstan/phpstan": "^1.12 || ^2",
+                "phpstan/phpstan-deprecation-rules": "^1 || ^2",
+                "phpstan/phpstan-phpunit": "^1 || ^2",
+                "phpstan/phpstan-strict-rules": "^1.1 || ^2",
                 "phpunit/phpunit": "^8",
                 "symfony/filesystem": "^5.4 || ^6"
             },
@@ -491,7 +491,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/class-map-generator/issues",
-                "source": "https://github.com/composer/class-map-generator/tree/1.4.0"
+                "source": "https://github.com/composer/class-map-generator/tree/1.5.0"
             },
             "funding": [
                 {
@@ -507,7 +507,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-10-03T18:14:00+00:00"
+            "time": "2024-11-25T16:11:06+00:00"
         },
         {
             "name": "composer/composer",
@@ -1614,30 +1614,31 @@
         },
         {
             "name": "eliashaeussler/php-cs-fixer-config",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/php-cs-fixer-config.git",
-                "reference": "41d6cb771e3a5bf1d2f5abe80fff34c6f16fc3ac"
+                "reference": "472c2eb8296f561be8c8e5d36dea513b9b3eea44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/php-cs-fixer-config/zipball/41d6cb771e3a5bf1d2f5abe80fff34c6f16fc3ac",
-                "reference": "41d6cb771e3a5bf1d2f5abe80fff34c6f16fc3ac",
+                "url": "https://api.github.com/repos/eliashaeussler/php-cs-fixer-config/zipball/472c2eb8296f561be8c8e5d36dea513b9b3eea44",
+                "reference": "472c2eb8296f561be8c8e5d36dea513b9b3eea44",
                 "shasum": ""
             },
             "require": {
                 "friendsofphp/php-cs-fixer": "^3.14",
-                "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
                 "symfony/finder": "^5.4 || ^6.0 || ^7.0"
             },
             "require-dev": {
                 "armin/editorconfig-cli": "^1.5 || ^2.0",
                 "eliashaeussler/phpstan-config": "^2.0.0",
+                "eliashaeussler/phpunit-attributes": "^1.1",
                 "eliashaeussler/rector-config": "^3.0",
                 "ergebnis/composer-normalize": "^2.29",
                 "phpstan/extension-installer": "^1.2",
-                "phpunit/phpunit": "^10.1 || ^11.0"
+                "phpunit/phpunit": "^10.4 || ^11.0"
             },
             "type": "library",
             "autoload": {
@@ -1660,26 +1661,26 @@
             "description": "My personal configuration for PHP-CS-Fixer",
             "support": {
                 "issues": "https://github.com/eliashaeussler/php-cs-fixer-config/issues",
-                "source": "https://github.com/eliashaeussler/php-cs-fixer-config/tree/2.2.0"
+                "source": "https://github.com/eliashaeussler/php-cs-fixer-config/tree/2.2.1"
             },
-            "time": "2024-05-17T19:59:53+00:00"
+            "time": "2024-11-25T19:20:13+00:00"
         },
         {
             "name": "eliashaeussler/phpstan-config",
-            "version": "2.5.1",
+            "version": "2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/phpstan-config.git",
-                "reference": "145c61edf3517fcdd09c55ba6f9f276196bef6eb"
+                "reference": "9c930d1fb1876ec36cd78613e1fc07668bb754db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/phpstan-config/zipball/145c61edf3517fcdd09c55ba6f9f276196bef6eb",
-                "reference": "145c61edf3517fcdd09c55ba6f9f276196bef6eb",
+                "url": "https://api.github.com/repos/eliashaeussler/phpstan-config/zipball/9c930d1fb1876ec36cd78613e1fc07668bb754db",
+                "reference": "9c930d1fb1876ec36cd78613e1fc07668bb754db",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
                 "phpstan/phpstan": "^1.9",
                 "phpstan/phpstan-deprecation-rules": "^1.1",
                 "phpstan/phpstan-strict-rules": "^1.4"
@@ -1719,26 +1720,26 @@
             "description": "My personal configuration for PHPStan",
             "support": {
                 "issues": "https://github.com/eliashaeussler/phpstan-config/issues",
-                "source": "https://github.com/eliashaeussler/phpstan-config/tree/2.5.1"
+                "source": "https://github.com/eliashaeussler/phpstan-config/tree/2.5.2"
             },
-            "time": "2024-08-24T12:00:14+00:00"
+            "time": "2024-11-25T19:09:31+00:00"
         },
         {
             "name": "eliashaeussler/phpunit-attributes",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/phpunit-attributes.git",
-                "reference": "28ab0c1ff74954bc9ef867e625c92f9ad9cd921a"
+                "reference": "8f6d9cec9fed6876ba27e437d4a27221d483f929"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/phpunit-attributes/zipball/28ab0c1ff74954bc9ef867e625c92f9ad9cd921a",
-                "reference": "28ab0c1ff74954bc9ef867e625c92f9ad9cd921a",
+                "url": "https://api.github.com/repos/eliashaeussler/phpunit-attributes/zipball/8f6d9cec9fed6876ba27e437d4a27221d483f929",
+                "reference": "8f6d9cec9fed6876ba27e437d4a27221d483f929",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
                 "phpunit/phpunit": "^10.4 || ^11.0"
             },
             "require-dev": {
@@ -1750,6 +1751,7 @@
                 "phpstan/extension-installer": "^1.2",
                 "phpstan/phpstan-phpunit": "^1.1",
                 "phpunit/phpcov": "^9.0 || ^10.0",
+                "phpunit/phpunit": "^10.5.35 || ^11.4",
                 "symfony/console": "^6.4 || ^7.0"
             },
             "type": "library",
@@ -1773,9 +1775,9 @@
             "description": "Provides additional attributes for tests with PHPUnit",
             "support": {
                 "issues": "https://github.com/eliashaeussler/phpunit-attributes/issues",
-                "source": "https://github.com/eliashaeussler/phpunit-attributes/tree/1.2.1"
+                "source": "https://github.com/eliashaeussler/phpunit-attributes/tree/1.2.2"
             },
-            "time": "2024-09-08T15:04:24+00:00"
+            "time": "2024-11-25T19:37:09+00:00"
         },
         {
             "name": "enshrined/svg-sanitize",
@@ -2374,16 +2376,16 @@
         },
         {
             "name": "firebase/php-jwt",
-            "version": "v6.10.1",
+            "version": "v6.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/firebase/php-jwt.git",
-                "reference": "500501c2ce893c824c801da135d02661199f60c5"
+                "reference": "30c19ed0f3264cb660ea496895cfb6ef7ee3653b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/500501c2ce893c824c801da135d02661199f60c5",
-                "reference": "500501c2ce893c824c801da135d02661199f60c5",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/30c19ed0f3264cb660ea496895cfb6ef7ee3653b",
+                "reference": "30c19ed0f3264cb660ea496895cfb6ef7ee3653b",
                 "shasum": ""
             },
             "require": {
@@ -2431,22 +2433,22 @@
             ],
             "support": {
                 "issues": "https://github.com/firebase/php-jwt/issues",
-                "source": "https://github.com/firebase/php-jwt/tree/v6.10.1"
+                "source": "https://github.com/firebase/php-jwt/tree/v6.10.2"
             },
-            "time": "2024-05-18T18:05:11+00:00"
+            "time": "2024-11-24T11:22:49+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.64.0",
+            "version": "v3.65.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "58dd9c931c785a79739310aef5178928305ffa67"
+                "reference": "79d4f3e77b250a7d8043d76c6af8f0695e8a469f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/58dd9c931c785a79739310aef5178928305ffa67",
-                "reference": "58dd9c931c785a79739310aef5178928305ffa67",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/79d4f3e77b250a7d8043d76c6af8f0695e8a469f",
+                "reference": "79d4f3e77b250a7d8043d76c6af8f0695e8a469f",
                 "shasum": ""
             },
             "require": {
@@ -2456,7 +2458,7 @@
                 "ext-filter": "*",
                 "ext-json": "*",
                 "ext-tokenizer": "*",
-                "fidry/cpu-core-counter": "^1.0",
+                "fidry/cpu-core-counter": "^1.2",
                 "php": "^7.4 || ^8.0",
                 "react/child-process": "^0.6.5",
                 "react/event-loop": "^1.0",
@@ -2476,18 +2478,18 @@
                 "symfony/stopwatch": "^5.4 || ^6.0 || ^7.0"
             },
             "require-dev": {
-                "facile-it/paraunit": "^1.3 || ^2.3",
-                "infection/infection": "^0.29.5",
-                "justinrainbow/json-schema": "^5.2",
+                "facile-it/paraunit": "^1.3.1 || ^2.4",
+                "infection/infection": "^0.29.8",
+                "justinrainbow/json-schema": "^5.3 || ^6.0",
                 "keradus/cli-executor": "^2.1",
-                "mikey179/vfsstream": "^1.6.11",
+                "mikey179/vfsstream": "^1.6.12",
                 "php-coveralls/php-coveralls": "^2.7",
                 "php-cs-fixer/accessible-object": "^1.1",
                 "php-cs-fixer/phpunit-constraint-isidenticalstring": "^1.5",
                 "php-cs-fixer/phpunit-constraint-xmlmatchesxsd": "^1.5",
-                "phpunit/phpunit": "^9.6.19 || ^10.5.21 || ^11.2",
-                "symfony/var-dumper": "^5.4 || ^6.0 || ^7.0",
-                "symfony/yaml": "^5.4 || ^6.0 || ^7.0"
+                "phpunit/phpunit": "^9.6.21 || ^10.5.38 || ^11.4.3",
+                "symfony/var-dumper": "^5.4.47 || ^6.4.15 || ^7.1.8",
+                "symfony/yaml": "^5.4.45 || ^6.4.13 || ^7.1.6"
             },
             "suggest": {
                 "ext-dom": "For handling output formats in XML",
@@ -2528,7 +2530,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.64.0"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.65.0"
             },
             "funding": [
                 {
@@ -2536,7 +2538,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-08-30T23:09:38+00:00"
+            "time": "2024-11-25T00:39:24+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -10106,13 +10108,13 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
         "composer-runtime-api": "^2.0"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
