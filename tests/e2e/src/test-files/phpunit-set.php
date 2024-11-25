@@ -60,7 +60,7 @@ final class PHPUnitExceptionSetListTestClass extends Framework\TestCase
 /**
  * This class should convert specific PHPUnit methods.
  *
- * @see Rector\PHPUnit\Set\PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD
+ * @see PHPUnit\Set\PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD
  */
 final class PHPUnitSpecificMethodSetListTestClass extends Framework\TestCase
 {
