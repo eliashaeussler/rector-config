@@ -26,6 +26,7 @@ namespace EliasHaeussler\RectorConfig\Tests\Entity;
 use EliasHaeussler\RectorConfig as Src;
 use Generator;
 use PHPUnit\Framework;
+use PHPUnit\Runner;
 
 /**
  * VersionTest.
@@ -88,7 +89,7 @@ final class VersionTest extends Framework\TestCase
     {
         $actual = Src\Entity\Version::createFromInstalledPackage('phpunit/phpunit');
 
-        self::assertSame(10, $actual->major);
+        self::assertSame(Runner\Version::majorVersionNumber(), $actual->major);
     }
 
     #[Framework\Attributes\Test]
