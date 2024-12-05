@@ -10,13 +10,14 @@ on:
 
 jobs:
   tests:
-    name: Tests (PHP ${{ matrix.php-version }} & ${{ matrix.dependencies }} dependencies)
+    name: Tests (PHP ${{ matrix.php-version }}, Rector v${{ matrix.rector-version }} & ${{ matrix.dependencies }} dependencies)
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         php-version: ["8.1", "8.2", "8.3", "8.4"]
-        dependencies: ["locked", "highest", "lowest"]
+        rector-version: ["1", "2"]
+        dependencies: ["highest", "lowest"]
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
@@ -35,6 +36,7 @@ jobs:
         uses: ramsey/composer-install@v3
         with:
           dependency-versions: ${{ matrix.dependencies }}
+          composer-options: --with="rector/rector:^${{ matrix.rector-version }}"
 
       # Run tests
       - name: Run tests
