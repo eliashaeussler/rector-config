@@ -25,6 +25,9 @@ namespace EliasHaeussler\RectorConfig\Tests\Set;
 
 use EliasHaeussler\RectorConfig as Src;
 use PHPUnit\Framework;
+use PHPUnit\Runner;
+
+use function sprintf;
 
 /**
  * PHPUnitSetTest.
@@ -61,7 +64,7 @@ final class PHPUnitSetTest extends Framework\TestCase
 
         self::assertCount(4, $actual);
         self::assertMatchesRegularExpression(
-            '/config\\/sets\\/phpunit10\\d+\\.php$/',
+            sprintf('/config\\/sets\\/phpunit%d\\d\\.php$/', Runner\Version::majorVersionNumber()),
             $actual[3],
         );
     }
