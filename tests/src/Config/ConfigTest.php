@@ -39,6 +39,7 @@ use Rector\Symfony;
 use Rector\ValueObject;
 use Ssch\TYPO3Rector;
 
+use function class_exists;
 use function count;
 
 /**
@@ -199,7 +200,15 @@ final class ConfigTest extends Framework\TestCase
         );
 
         /* @see Symfony\Set\SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION */
-        self::assertTrue($this->container?->has(Symfony\DependencyInjection\Rector\Class_\ControllerGetByTypeToConstructorInjectionRector::class));
+        if (class_exists(Symfony\Symfony42\Rector\MethodCall\ContainerGetToConstructorInjectionRector::class)) {
+            // Rector 1.x
+            $expected = Symfony\Symfony42\Rector\MethodCall\ContainerGetToConstructorInjectionRector::class;
+        } else {
+            // Rector 2.x
+            $expected = Symfony\DependencyInjection\Rector\Class_\ControllerGetByTypeToConstructorInjectionRector::class;
+        }
+
+        self::assertTrue($this->container?->has($expected));
     }
 
     #[Framework\Attributes\Test]
