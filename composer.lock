@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5dbf896a9084cdaad38255d9926853db",
+    "content-hash": "19ad278bf1814c6040e76a255fa64c06",
     "packages": [
         {
             "name": "phpstan/phpstan",
@@ -1665,23 +1665,23 @@
         },
         {
             "name": "eliashaeussler/phpstan-config",
-            "version": "2.5.2",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/phpstan-config.git",
-                "reference": "9c930d1fb1876ec36cd78613e1fc07668bb754db"
+                "reference": "7a16ad2becbe9589a887c0a1d0b741e675ae4531"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/phpstan-config/zipball/9c930d1fb1876ec36cd78613e1fc07668bb754db",
-                "reference": "9c930d1fb1876ec36cd78613e1fc07668bb754db",
+                "url": "https://api.github.com/repos/eliashaeussler/phpstan-config/zipball/7a16ad2becbe9589a887c0a1d0b741e675ae4531",
+                "reference": "7a16ad2becbe9589a887c0a1d0b741e675ae4531",
                 "shasum": ""
             },
             "require": {
                 "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
-                "phpstan/phpstan": "^1.9",
-                "phpstan/phpstan-deprecation-rules": "^1.1",
-                "phpstan/phpstan-strict-rules": "^1.4"
+                "phpstan/phpstan": "^1.9 || ^2.0",
+                "phpstan/phpstan-deprecation-rules": "^1.1 || ^2.0",
+                "phpstan/phpstan-strict-rules": "^1.4 || ^2.0"
             },
             "require-dev": {
                 "armin/editorconfig-cli": "^1.8 || ^2.0",
@@ -1718,9 +1718,9 @@
             "description": "My personal configuration for PHPStan",
             "support": {
                 "issues": "https://github.com/eliashaeussler/phpstan-config/issues",
-                "source": "https://github.com/eliashaeussler/phpstan-config/tree/2.5.2"
+                "source": "https://github.com/eliashaeussler/phpstan-config/tree/2.6.0"
             },
-            "time": "2024-11-25T19:09:31+00:00"
+            "time": "2024-12-14T14:00:53+00:00"
         },
         {
             "name": "eliashaeussler/phpunit-attributes",
@@ -4292,16 +4292,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.38",
+            "version": "10.5.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a86773b9e887a67bc53efa9da9ad6e3f2498c132"
+                "reference": "4e89eff200b801db58f3d580ad7426431949eaa9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a86773b9e887a67bc53efa9da9ad6e3f2498c132",
-                "reference": "a86773b9e887a67bc53efa9da9ad6e3f2498c132",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4e89eff200b801db58f3d580ad7426431949eaa9",
+                "reference": "4e89eff200b801db58f3d580ad7426431949eaa9",
                 "shasum": ""
             },
             "require": {
@@ -4311,7 +4311,7 @@
                 "ext-mbstring": "*",
                 "ext-xml": "*",
                 "ext-xmlwriter": "*",
-                "myclabs/deep-copy": "^1.12.0",
+                "myclabs/deep-copy": "^1.12.1",
                 "phar-io/manifest": "^2.0.4",
                 "phar-io/version": "^3.2.1",
                 "php": ">=8.1",
@@ -4373,7 +4373,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.38"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.39"
             },
             "funding": [
                 {
@@ -4389,7 +4389,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-10-28T13:06:21+00:00"
+            "time": "2024-12-11T10:51:07+00:00"
         },
         {
             "name": "psr/cache",

@@ -28,6 +28,7 @@ use EliasHaeussler\RectorConfig as Src;
 use EliasHaeussler\RectorConfig\Tests;
 use Generator;
 use PHPUnit\Framework;
+use PHPUnit\Runner;
 use Rector\CodeQuality;
 use Rector\Config;
 use Rector\Configuration;
@@ -38,6 +39,7 @@ use Rector\Symfony;
 use Rector\ValueObject;
 use Ssch\TYPO3Rector;
 
+use function class_exists;
 use function count;
 
 /**
@@ -130,8 +132,13 @@ final class ConfigTest extends Framework\TestCase
             },
         );
 
-        /* @see PHPUnit\Set\PHPUnitSetList::PHPUNIT_100 */
-        self::assertTrue($this->container?->has(PHPUnit\PHPUnit100\Rector\Class_\StaticDataProviderClassMethodRector::class));
+        $expected = match (Runner\Version::majorVersionNumber()) {
+            /* @see PHPUnit\Set\PHPUnitSetList::PHPUNIT_100 */
+            10 => PHPUnit\PHPUnit100\Rector\Class_\StaticDataProviderClassMethodRector::class,
+            default => self::markTestSkipped('PHPUnit version is not supported yet.'),
+        };
+
+        self::assertTrue($this->container?->has($expected));
     }
 
     #[Framework\Attributes\Test]
@@ -193,7 +200,15 @@ final class ConfigTest extends Framework\TestCase
         );
 
         /* @see Symfony\Set\SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION */
-        self::assertTrue($this->container?->has(Symfony\Symfony42\Rector\MethodCall\ContainerGetToConstructorInjectionRector::class));
+        if (class_exists(Symfony\DependencyInjection\Rector\Class_\ControllerGetByTypeToConstructorInjectionRector::class)) {
+            // Rector 2.x
+            $expected = Symfony\DependencyInjection\Rector\Class_\ControllerGetByTypeToConstructorInjectionRector::class;
+        } else {
+            // Rector 1.x
+            $expected = Symfony\Symfony42\Rector\MethodCall\ContainerGetToConstructorInjectionRector::class;
+        }
+
+        self::assertTrue($this->container?->has($expected));
     }
 
     #[Framework\Attributes\Test]
