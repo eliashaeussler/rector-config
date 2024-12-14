@@ -20,7 +20,7 @@
 		"armin/editorconfig-cli": "^1.8 || ^2.0",
 		"composer/composer": "^2.0",
 		"eliashaeussler/php-cs-fixer-config": "^2.0",
-		"eliashaeussler/phpstan-config": "^2.0",
+		"eliashaeussler/phpstan-config": "^2.6",
 		"eliashaeussler/phpunit-attributes": "^1.0",
 		"ergebnis/composer-normalize": "^2.30",
 		"illuminate/container": "^10.39 || ^11.0",
