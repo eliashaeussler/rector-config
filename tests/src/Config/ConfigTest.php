@@ -200,12 +200,12 @@ final class ConfigTest extends Framework\TestCase
         );
 
         /* @see Symfony\Set\SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION */
-        if (class_exists(Symfony\Symfony42\Rector\MethodCall\ContainerGetToConstructorInjectionRector::class)) {
-            // Rector 1.x
-            $expected = Symfony\Symfony42\Rector\MethodCall\ContainerGetToConstructorInjectionRector::class;
-        } else {
+        if (class_exists(Symfony\DependencyInjection\Rector\Class_\ControllerGetByTypeToConstructorInjectionRector::class)) {
             // Rector 2.x
             $expected = Symfony\DependencyInjection\Rector\Class_\ControllerGetByTypeToConstructorInjectionRector::class;
+        } else {
+            // Rector 1.x
+            $expected = Symfony\Symfony42\Rector\MethodCall\ContainerGetToConstructorInjectionRector::class;
         }
 
         self::assertTrue($this->container?->has($expected));
