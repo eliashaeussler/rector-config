@@ -60,6 +60,7 @@ final class SymfonySet implements Set
     public function get(): array
     {
         $set = [
+            /* @phpstan-ignore classConstant.deprecated */
             Symfony\Set\SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES,
             Symfony\Set\SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
             Symfony\Set\SymfonySetList::SYMFONY_50_TYPES,
