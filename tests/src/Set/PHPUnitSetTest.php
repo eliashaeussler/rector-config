@@ -26,7 +26,9 @@ namespace EliasHaeussler\RectorConfig\Tests\Set;
 use EliasHaeussler\RectorConfig as Src;
 use PHPUnit\Framework;
 use PHPUnit\Runner;
+use Rector\PHPUnit;
 
+use function defined;
 use function sprintf;
 
 /**
@@ -60,12 +62,23 @@ final class PHPUnitSetTest extends Framework\TestCase
     #[Framework\Attributes\Test]
     public function getReturnsPHPUnitSetWithSetList(): void
     {
+        $phpUnitVersion = Runner\Version::majorVersionNumber();
+
         $actual = $this->subject->get();
 
-        self::assertCount(4, $actual);
-        self::assertMatchesRegularExpression(
-            sprintf('/config\\/sets\\/phpunit%d\\d\\.php$/', Runner\Version::majorVersionNumber()),
-            $actual[3],
-        );
+        if ($this->phpUnitSetListExists($phpUnitVersion)) {
+            self::assertCount(4, $actual);
+            self::assertMatchesRegularExpression(
+                sprintf('/config\\/sets\\/phpunit%d\\d\\.php$/', $phpUnitVersion),
+                $actual[3],
+            );
+        } else {
+            self::assertCount(3, $actual);
+        }
+    }
+
+    private function phpUnitSetListExists(int $phpUnitVersion): bool
+    {
+        return defined(sprintf('%s::PHPUNIT_%d0', PHPUnit\Set\PHPUnitSetList::class, $phpUnitVersion));
     }
 }
