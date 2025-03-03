@@ -28,7 +28,6 @@ use EliasHaeussler\RectorConfig as Src;
 use EliasHaeussler\RectorConfig\Tests;
 use Generator;
 use PHPUnit\Framework;
-use PHPUnit\Runner;
 use Rector\CodeQuality;
 use Rector\Config;
 use Rector\Configuration;
@@ -122,6 +121,7 @@ final class ConfigTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
+    #[PHPUnitAttributes\Attribute\RequiresPackage('phpunit/phpunit', '10')]
     public function withPHPUnitImportsPHPUnitSetListInRectorConfig(): void
     {
         $this->createRectorConfig(
@@ -132,13 +132,7 @@ final class ConfigTest extends Framework\TestCase
             },
         );
 
-        $expected = match (Runner\Version::majorVersionNumber()) {
-            /* @see PHPUnit\Set\PHPUnitSetList::PHPUNIT_100 */
-            10 => PHPUnit\PHPUnit100\Rector\Class_\StaticDataProviderClassMethodRector::class,
-            default => self::markTestSkipped('PHPUnit version is not supported yet.'),
-        };
-
-        self::assertTrue($this->container?->has($expected));
+        self::assertTrue($this->container?->has(PHPUnit\PHPUnit100\Rector\Class_\StaticDataProviderClassMethodRector::class));
     }
 
     #[Framework\Attributes\Test]
