@@ -1724,16 +1724,16 @@
         },
         {
             "name": "eliashaeussler/phpunit-attributes",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/phpunit-attributes.git",
-                "reference": "0cfe79710964ee71c89213783844a4fe37eb9329"
+                "reference": "4c0832e0c7577500bd00ce570b23812abbdf95c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/phpunit-attributes/zipball/0cfe79710964ee71c89213783844a4fe37eb9329",
-                "reference": "0cfe79710964ee71c89213783844a4fe37eb9329",
+                "url": "https://api.github.com/repos/eliashaeussler/phpunit-attributes/zipball/4c0832e0c7577500bd00ce570b23812abbdf95c2",
+                "reference": "4c0832e0c7577500bd00ce570b23812abbdf95c2",
                 "shasum": ""
             },
             "require": {
@@ -1772,9 +1772,9 @@
             "description": "Provides additional attributes for tests with PHPUnit",
             "support": {
                 "issues": "https://github.com/eliashaeussler/phpunit-attributes/issues",
-                "source": "https://github.com/eliashaeussler/phpunit-attributes/tree/1.6.0"
+                "source": "https://github.com/eliashaeussler/phpunit-attributes/tree/1.7.0"
             },
-            "time": "2025-03-06T19:18:27+00:00"
+            "time": "2025-03-07T22:01:25+00:00"
         },
         {
             "name": "enshrined/svg-sanitize",
