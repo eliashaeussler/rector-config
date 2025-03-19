@@ -54,7 +54,7 @@ final class RectorConfigInvoker
 
     public static function call(Config\RectorConfig $rectorConfig): void
     {
-        while ($callable = array_pop(self::$callables)) {
+        while (null !== ($callable = array_pop(self::$callables))) {
             $callable($rectorConfig);
         }
     }
