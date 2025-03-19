@@ -383,6 +383,18 @@ final class ConfigTest extends Framework\TestCase
         );
     }
 
+    #[Framework\Attributes\Test]
+    public function applyReturnsInitialRectorConfig(): void
+    {
+        $this->createRectorConfig(
+            static function (Config\RectorConfig $rectorConfig) {
+                $subject = Src\Config\Config::create($rectorConfig);
+
+                self::assertSame($rectorConfig, $subject->apply());
+            },
+        );
+    }
+
     /**
      * @return Generator<string, array{non-empty-string|positive-int, positive-int}>
      */

@@ -185,7 +185,7 @@ final class Config
     /**
      * Apply all rector configurations.
      */
-    public function apply(): void
+    public function apply(): RectorConfig\RectorConfig
     {
         $skip = $this->skipPaths;
 
@@ -208,5 +208,7 @@ final class Config
         foreach ($this->sets as $set) {
             $this->rectorConfig->sets($set->get());
         }
+
+        return $this->rectorConfig;
     }
 }
