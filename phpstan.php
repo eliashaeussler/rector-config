@@ -31,5 +31,6 @@ return PHPStanConfig\Config\Config::create(__DIR__)
     ->withBleedingEdge()
     ->withBaseline()
     ->maxLevel()
+    ->ignoreError(path: 'tests/src/Config/ConfigTest.php', identifier: 'classConstant.internal')
     ->toArray()
 ;
