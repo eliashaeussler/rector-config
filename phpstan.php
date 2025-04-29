@@ -28,9 +28,10 @@ return PHPStanConfig\Config\Config::create(__DIR__)
         'src',
         'tests/src',
     )
-    ->withBleedingEdge()
+    ->withBleedingEdge([
+        'internalTag' => false,
+    ])
     ->withBaseline()
     ->maxLevel()
-    ->ignoreError(path: 'tests/src/Config/ConfigTest.php', identifier: 'classConstant.internal')
     ->toArray()
 ;
