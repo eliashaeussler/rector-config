@@ -21,9 +21,10 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-use EliasHaeussler\RectorConfig\Tests;
+namespace EliasHaeussler\RectorConfig\Tests;
+
 use Rector\Config;
 
 return static function (Config\RectorConfig $rectorConfig): void {
-    Tests\RectorConfigInvoker::call($rectorConfig);
+    RectorConfigInvoker::call($rectorConfig);
 };
