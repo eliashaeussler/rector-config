@@ -60,15 +60,18 @@ final class SymfonySet implements Set
     public function get(): array
     {
         $set = [
-            /* @phpstan-ignore classConstant.deprecated */
+            /* @phpstan-ignore classConstant.deprecatedClass */
             Symfony\Set\SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES,
+            /* @phpstan-ignore classConstant.deprecatedClass */
             Symfony\Set\SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
+            /* @phpstan-ignore classConstant.deprecatedClass */
             Symfony\Set\SymfonySetList::SYMFONY_50_TYPES,
         ];
 
         // Determine set list
         $setList = Helper\VersionHelper::getRectorSetListForPackage(
             $this->symfonyVersion,
+            /* @phpstan-ignore classConstant.deprecatedClass */
             Symfony\Set\SymfonySetList::class,
             'SYMFONY_%d',
             Enums\VersionRange::MajorMinor,
