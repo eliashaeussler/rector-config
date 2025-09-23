@@ -23,9 +23,11 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\RectorConfig\Tests\Set;
 
-use EliasHaeussler\PHPUnitAttributes;
 use EliasHaeussler\RectorConfig as Src;
 use PHPUnit\Framework;
+use TYPO3\CMS\Core;
+
+use function sprintf;
 
 /**
  * TYPO3SetTest.
@@ -56,14 +58,13 @@ final class TYPO3SetTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
-    #[PHPUnitAttributes\Attribute\RequiresPackage('typo3/cms-core', '< 13')] // @todo Remove once rules for TYPO3 v13 exist
     public function getReturnsTYPO3SetWithLevelSetList(): void
     {
         $actual = $this->subject->get();
 
         self::assertCount(1, $actual);
         self::assertMatchesRegularExpression(
-            '/config\\/level\\/up-to-typo3-12\\.php$/',
+            sprintf('/config\\/level\\/up-to-typo3-%d\\.php$/', (new Core\Information\Typo3Version())->getMajorVersion()),
             $actual[0],
         );
     }

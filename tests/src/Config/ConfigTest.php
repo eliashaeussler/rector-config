@@ -23,11 +23,11 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\RectorConfig\Tests\Config;
 
-use EliasHaeussler\PHPUnitAttributes;
 use EliasHaeussler\RectorConfig as Src;
 use EliasHaeussler\RectorConfig\Tests;
 use Generator;
 use PHPUnit\Framework;
+use PHPUnit\Runner;
 use Rector\CodeQuality;
 use Rector\Config;
 use Rector\Configuration;
@@ -37,6 +37,7 @@ use Rector\Set;
 use Rector\Symfony;
 use Rector\ValueObject;
 use Ssch\TYPO3Rector;
+use TYPO3\CMS\Core;
 
 use function class_exists;
 use function count;
@@ -121,9 +122,15 @@ final class ConfigTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
-    #[PHPUnitAttributes\Attribute\RequiresPackage('phpunit/phpunit', '10')]
     public function withPHPUnitImportsPHPUnitSetListInRectorConfig(): void
     {
+        $expected = match (Runner\Version::majorVersionNumber()) {
+            10 => PHPUnit\PHPUnit100\Rector\Class_\StaticDataProviderClassMethodRector::class,
+            11 => PHPUnit\PHPUnit110\Rector\Class_\NamedArgumentForDataProviderRector::class,
+            12 => PHPUnit\PHPUnit120\Rector\Class_\RemoveOverrideFinalConstructTestCaseRector::class,
+            default => self::markTestSkipped('PHPUnit version is not supported.'),
+        };
+
         $this->createRectorConfig(
             static function (Config\RectorConfig $rectorConfig) {
                 $subject = Src\Config\Config::create($rectorConfig);
@@ -132,7 +139,7 @@ final class ConfigTest extends Framework\TestCase
             },
         );
 
-        self::assertTrue($this->container?->has(PHPUnit\PHPUnit100\Rector\Class_\StaticDataProviderClassMethodRector::class));
+        self::assertTrue($this->container?->has($expected));
     }
 
     #[Framework\Attributes\Test]
@@ -224,9 +231,14 @@ final class ConfigTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
-    #[PHPUnitAttributes\Attribute\RequiresPackage('typo3/cms-core', '< 13')] // @todo Remove once rules for TYPO3 v13 exist
     public function withTYPO3AddsAdditionalTYPO3RulesToRectorConfig(): void
     {
+        $expected = match ((new Core\Information\Typo3Version())->getMajorVersion()) {
+            12 => TYPO3Rector\TYPO312\v0\MigrateColsToSizeForTcaTypeNoneRector::class,
+            13 => TYPO3Rector\TYPO313\v0\AddMethodGetAllPageNumbersToPaginationInterfaceRector::class,
+            default => self::markTestSkipped('TYPO3 version is not supported.'),
+        };
+
         $this->createRectorConfig(
             static function (Config\RectorConfig $rectorConfig) {
                 $subject = Src\Config\Config::create($rectorConfig);
@@ -235,8 +247,7 @@ final class ConfigTest extends Framework\TestCase
             },
         );
 
-        /* @see TYPO3Rector\Set\Typo3LevelSetList::UP_TO_TYPO3_12 */
-        self::assertTrue($this->container?->has(TYPO3Rector\TYPO312\v0\MigrateColsToSizeForTcaTypeNoneRector::class));
+        self::assertTrue($this->container?->has($expected));
     }
 
     #[Framework\Attributes\Test]

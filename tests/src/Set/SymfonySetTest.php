@@ -23,9 +23,10 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\RectorConfig\Tests\Set;
 
-use EliasHaeussler\PHPUnitAttributes;
 use EliasHaeussler\RectorConfig as Src;
 use PHPUnit\Framework;
+
+use function sprintf;
 
 /**
  * SymfonySetTest.
@@ -52,18 +53,19 @@ final class SymfonySetTest extends Framework\TestCase
         $actual = $subject->get();
 
         self::assertCount(4, $actual);
-        self::assertStringEndsWith('/config/sets/symfony/symfony54.php', $actual[3]);
+        self::assertStringEndsWith('/symfony54.php', $actual[3]);
     }
 
     #[Framework\Attributes\Test]
-    #[PHPUnitAttributes\Attribute\RequiresPackage('symfony/config', '< 7')] // @todo Remove once rules for Symfony v7 exist
     public function getReturnsSymfonySetWithSetList(): void
     {
+        $symfonyVersion = Src\Entity\Version::createFromInstalledPackage('symfony/config');
+
         $actual = $this->subject->get();
 
         self::assertCount(4, $actual);
         self::assertMatchesRegularExpression(
-            '/config\\/sets\\/symfony\\/symfony6\\d+\\.php$/',
+            sprintf('/\\/symfony%d\\d\\.php$/', $symfonyVersion->major),
             $actual[3],
         );
     }
