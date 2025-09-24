@@ -206,7 +206,7 @@ final class ConfigTest extends Framework\TestCase
             $expected = Symfony\DependencyInjection\Rector\Class_\ControllerGetByTypeToConstructorInjectionRector::class;
         } else {
             // Rector 1.x
-            /* @phpstan-ignore classConstant.deprecatedClass */
+            /* @phpstan-ignore class.notFound */
             $expected = Symfony\Symfony42\Rector\MethodCall\ContainerGetToConstructorInjectionRector::class;
         }
 
