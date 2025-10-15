@@ -10054,16 +10054,16 @@
         },
         {
             "name": "typo3/cms-core",
-            "version": "v12.4.37",
+            "version": "v12.4.38",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/core.git",
-                "reference": "a5ac2580573e44933bfbb9a795715c5a0e775985"
+                "reference": "e4ae20187675532e674d85a715be00edb5a78d6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/a5ac2580573e44933bfbb9a795715c5a0e775985",
-                "reference": "a5ac2580573e44933bfbb9a795715c5a0e775985",
+                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/e4ae20187675532e674d85a715be00edb5a78d6b",
+                "reference": "e4ae20187675532e674d85a715be00edb5a78d6b",
                 "shasum": ""
             },
             "require": {
@@ -10191,7 +10191,7 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2025-09-09T08:25:54+00:00"
+            "time": "2025-10-14T11:01:11+00:00"
         },
         {
             "name": "typo3/html-sanitizer",
