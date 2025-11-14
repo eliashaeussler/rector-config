@@ -1506,21 +1506,21 @@
         },
         {
             "name": "eliashaeussler/php-cs-fixer-config",
-            "version": "2.3.0",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/php-cs-fixer-config.git",
-                "reference": "130111f9aef350910bd2224cd244e6e1b8b5ba82"
+                "reference": "b2a2e4f659ad17d6a052edf412181f5cb93b5d90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/php-cs-fixer-config/zipball/130111f9aef350910bd2224cd244e6e1b8b5ba82",
-                "reference": "130111f9aef350910bd2224cd244e6e1b8b5ba82",
+                "url": "https://api.github.com/repos/eliashaeussler/php-cs-fixer-config/zipball/b2a2e4f659ad17d6a052edf412181f5cb93b5d90",
+                "reference": "b2a2e4f659ad17d6a052edf412181f5cb93b5d90",
                 "shasum": ""
             },
             "require": {
                 "friendsofphp/php-cs-fixer": "^3.14",
-                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
                 "symfony/finder": "^5.4 || ^6.0 || ^7.0"
             },
             "require-dev": {
@@ -1553,26 +1553,26 @@
             "description": "My personal configuration for PHP-CS-Fixer",
             "support": {
                 "issues": "https://github.com/eliashaeussler/php-cs-fixer-config/issues",
-                "source": "https://github.com/eliashaeussler/php-cs-fixer-config/tree/2.3.0"
+                "source": "https://github.com/eliashaeussler/php-cs-fixer-config/tree/2.4.0"
             },
-            "time": "2025-05-18T14:45:22+00:00"
+            "time": "2025-11-14T10:43:52+00:00"
         },
         {
             "name": "eliashaeussler/phpstan-config",
-            "version": "2.9.0",
+            "version": "2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/phpstan-config.git",
-                "reference": "715bc0cdb811d4237445f7f2f694257f9cc87df5"
+                "reference": "b3f34fb85828790237c3d7bf60da5cd89f337a52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/phpstan-config/zipball/715bc0cdb811d4237445f7f2f694257f9cc87df5",
-                "reference": "715bc0cdb811d4237445f7f2f694257f9cc87df5",
+                "url": "https://api.github.com/repos/eliashaeussler/phpstan-config/zipball/b3f34fb85828790237c3d7bf60da5cd89f337a52",
+                "reference": "b3f34fb85828790237c3d7bf60da5cd89f337a52",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
                 "phpstan/phpstan": "^1.9 || ^2.0",
                 "phpstan/phpstan-deprecation-rules": "^1.1 || ^2.0",
                 "phpstan/phpstan-strict-rules": "^1.4 || ^2.0"
@@ -1614,27 +1614,27 @@
             "description": "My personal configuration for PHPStan",
             "support": {
                 "issues": "https://github.com/eliashaeussler/phpstan-config/issues",
-                "source": "https://github.com/eliashaeussler/phpstan-config/tree/2.9.0"
+                "source": "https://github.com/eliashaeussler/phpstan-config/tree/2.10.0"
             },
-            "time": "2025-04-28T16:43:48+00:00"
+            "time": "2025-11-14T11:29:08+00:00"
         },
         {
             "name": "eliashaeussler/phpunit-attributes",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/phpunit-attributes.git",
-                "reference": "4c0832e0c7577500bd00ce570b23812abbdf95c2"
+                "reference": "de30e8334965d5489f8c98cfdf27224429a0515f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/phpunit-attributes/zipball/4c0832e0c7577500bd00ce570b23812abbdf95c2",
-                "reference": "4c0832e0c7577500bd00ce570b23812abbdf95c2",
+                "url": "https://api.github.com/repos/eliashaeussler/phpunit-attributes/zipball/de30e8334965d5489f8c98cfdf27224429a0515f",
+                "reference": "de30e8334965d5489f8c98cfdf27224429a0515f",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
-                "phpunit/phpunit": "^10.5.35 || ^11.4 || ^12.0"
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+                "phpunit/phpunit": "^10.5.53 || ^11.5.34 || ^12.3.6"
             },
             "require-dev": {
                 "armin/editorconfig-cli": "^1.8 || ^2.0",
@@ -1668,9 +1668,9 @@
             "description": "Provides additional attributes for tests with PHPUnit",
             "support": {
                 "issues": "https://github.com/eliashaeussler/phpunit-attributes/issues",
-                "source": "https://github.com/eliashaeussler/phpunit-attributes/tree/1.7.0"
+                "source": "https://github.com/eliashaeussler/phpunit-attributes/tree/1.8.0"
             },
-            "time": "2025-03-07T22:01:25+00:00"
+            "time": "2025-11-14T11:54:49+00:00"
         },
         {
             "name": "enshrined/svg-sanitize",
@@ -7810,16 +7810,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v6.4.26",
+            "version": "v6.4.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "369241591d92bb5dfb4c6ccd6ee94378a45b1521"
+                "reference": "b03d11e015552a315714c127d8d1e0f9e970ec88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/369241591d92bb5dfb4c6ccd6ee94378a45b1521",
-                "reference": "369241591d92bb5dfb4c6ccd6ee94378a45b1521",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/b03d11e015552a315714c127d8d1e0f9e970ec88",
+                "reference": "b03d11e015552a315714c127d8d1e0f9e970ec88",
                 "shasum": ""
             },
             "require": {
@@ -7867,7 +7867,7 @@
             "description": "Defines an object-oriented layer for the HTTP specification",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-foundation/tree/v6.4.26"
+                "source": "https://github.com/symfony/http-foundation/tree/v6.4.29"
             },
             "funding": [
                 {
@@ -7887,7 +7887,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-09-16T08:22:30+00:00"
+            "time": "2025-11-08T16:40:12+00:00"
         },
         {
             "name": "symfony/mailer",
@@ -10055,16 +10055,16 @@
         },
         {
             "name": "typo3/cms-core",
-            "version": "v12.4.38",
+            "version": "v12.4.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/core.git",
-                "reference": "e4ae20187675532e674d85a715be00edb5a78d6b"
+                "reference": "6d135d50334b91a151e0d6844b929e7d73dac07a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/e4ae20187675532e674d85a715be00edb5a78d6b",
-                "reference": "e4ae20187675532e674d85a715be00edb5a78d6b",
+                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/6d135d50334b91a151e0d6844b929e7d73dac07a",
+                "reference": "6d135d50334b91a151e0d6844b929e7d73dac07a",
                 "shasum": ""
             },
             "require": {
@@ -10192,7 +10192,7 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2025-10-14T11:01:11+00:00"
+            "time": "2025-11-11T10:44:17+00:00"
         },
         {
             "name": "typo3/html-sanitizer",
