@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         php-version: ["8.2", "8.3", "8.4", "8.5"]
-        rector-version: ["1", "2"]
+        rector-version: ["2"]
         dependencies: ["highest", "lowest"]
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
