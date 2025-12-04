@@ -125,7 +125,6 @@ final class ConfigTest extends Framework\TestCase
     public function withPHPUnitImportsPHPUnitSetListInRectorConfig(): void
     {
         $expected = match (Runner\Version::majorVersionNumber()) {
-            10 => PHPUnit\PHPUnit100\Rector\Class_\StaticDataProviderClassMethodRector::class,
             11 => PHPUnit\PHPUnit110\Rector\Class_\NamedArgumentForDataProviderRector::class,
             12 => PHPUnit\PHPUnit120\Rector\Class_\RemoveOverrideFinalConstructTestCaseRector::class,
             default => self::markTestSkipped('PHPUnit version is not supported.'),
