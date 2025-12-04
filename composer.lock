@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eeacd1e798c28c071d129e8d9dcc8577",
+    "content-hash": "e5b3abec054ecac6df51e4f0be8d11b5",
     "packages": [
         {
             "name": "phpstan/phpstan",
@@ -1620,60 +1620,6 @@
             "time": "2025-11-21T19:08:21+00:00"
         },
         {
-            "name": "eliashaeussler/phpunit-attributes",
-            "version": "1.8.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/eliashaeussler/phpunit-attributes.git",
-                "reference": "de30e8334965d5489f8c98cfdf27224429a0515f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/phpunit-attributes/zipball/de30e8334965d5489f8c98cfdf27224429a0515f",
-                "reference": "de30e8334965d5489f8c98cfdf27224429a0515f",
-                "shasum": ""
-            },
-            "require": {
-                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
-                "phpunit/phpunit": "^10.5.53 || ^11.5.34 || ^12.3.6"
-            },
-            "require-dev": {
-                "armin/editorconfig-cli": "^1.8 || ^2.0",
-                "eliashaeussler/php-cs-fixer-config": "^2.0",
-                "eliashaeussler/phpstan-config": "^2.5.1",
-                "eliashaeussler/rector-config": "^3.0",
-                "ergebnis/composer-normalize": "^2.30",
-                "phpstan/extension-installer": "^1.2",
-                "phpstan/phpstan-phpunit": "^2.0",
-                "phpunit/phpcov": "^9.0 || ^10.0 || ^11.0",
-                "symfony/console": "^6.4 || ^7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "EliasHaeussler\\PHPUnitAttributes\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Elias Häußler",
-                    "email": "elias@haeussler.dev",
-                    "homepage": "https://haeussler.dev",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "Provides additional attributes for tests with PHPUnit",
-            "support": {
-                "issues": "https://github.com/eliashaeussler/phpunit-attributes/issues",
-                "source": "https://github.com/eliashaeussler/phpunit-attributes/tree/1.8.0"
-            },
-            "time": "2025-11-14T11:54:49+00:00"
-        },
-        {
             "name": "enshrined/svg-sanitize",
             "version": "0.22.0",
             "source": {
@@ -2832,30 +2778,40 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v10.49.0",
+            "version": "v12.41.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "b4956de5de18524c21ef36221a8ffd7fa3b534db"
+                "reference": "0489bc396de1537537750babec3a03ee7b753d1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/b4956de5de18524c21ef36221a8ffd7fa3b534db",
-                "reference": "b4956de5de18524c21ef36221a8ffd7fa3b534db",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/0489bc396de1537537750babec3a03ee7b753d1f",
+                "reference": "0489bc396de1537537750babec3a03ee7b753d1f",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "^10.0",
-                "php": "^8.1",
-                "psr/container": "^1.1.1|^2.0.1"
+                "illuminate/contracts": "^12.0",
+                "php": "^8.2",
+                "psr/container": "^1.1.1|^2.0.1",
+                "symfony/polyfill-php84": "^1.33",
+                "symfony/polyfill-php85": "^1.33"
             },
             "provide": {
                 "psr/container-implementation": "1.1|2.0"
             },
+            "suggest": {
+                "illuminate/auth": "Required to use the Auth attribute",
+                "illuminate/cache": "Required to use the Cache attribute",
+                "illuminate/config": "Required to use the Config attribute",
+                "illuminate/database": "Required to use the DB attribute",
+                "illuminate/filesystem": "Required to use the Storage attribute",
+                "illuminate/log": "Required to use the Log or Context attributes"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "10.x-dev"
+                    "dev-master": "12.x-dev"
                 }
             },
             "autoload": {
@@ -2879,31 +2835,31 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-03-24T11:47:24+00:00"
+            "time": "2025-11-28T18:51:53+00:00"
         },
         {
             "name": "illuminate/contracts",
-            "version": "v10.49.0",
+            "version": "v12.41.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "2393ef579e020d88e24283913c815c3e2c143323"
+                "reference": "19e8938edb73047017cfbd443b96844b86da4a59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/2393ef579e020d88e24283913c815c3e2c143323",
-                "reference": "2393ef579e020d88e24283913c815c3e2c143323",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/19e8938edb73047017cfbd443b96844b86da4a59",
+                "reference": "19e8938edb73047017cfbd443b96844b86da4a59",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.1",
+                "php": "^8.2",
                 "psr/container": "^1.1.1|^2.0.1",
                 "psr/simple-cache": "^1.0|^2.0|^3.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "10.x-dev"
+                    "dev-master": "12.x-dev"
                 }
             },
             "autoload": {
@@ -2927,7 +2883,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-03-24T11:47:24+00:00"
+            "time": "2025-11-26T21:36:01+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -9050,6 +9006,86 @@
                 }
             ],
             "time": "2025-06-24T13:30:11+00:00"
+        },
+        {
+            "name": "symfony/polyfill-php85",
+            "version": "v1.33.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php85.git",
+                "reference": "d4e5fcd4ab3d998ab16c0db48e6cbb9a01993f91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php85/zipball/d4e5fcd4ab3d998ab16c0db48e6cbb9a01993f91",
+                "reference": "d4e5fcd4ab3d998ab16c0db48e6cbb9a01993f91",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "type": "library",
+            "extra": {
+                "thanks": {
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php85\\": ""
+                },
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 8.5+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php85/tree/v1.33.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2025-06-23T16:12:55+00:00"
         },
         {
             "name": "symfony/polyfill-uuid",

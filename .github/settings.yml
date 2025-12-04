@@ -90,35 +90,19 @@ rulesets:
           required_status_checks:
             - context: 'cgl'
               integration_id: 15368
-            - context: 'Tests (PHP 8.2, Rector v1 & highest dependencies)'
-              integration_id: 15368
             - context: 'Tests (PHP 8.2, Rector v2 & highest dependencies)'
-              integration_id: 15368
-            - context: 'Tests (PHP 8.2, Rector v1 & lowest dependencies)'
               integration_id: 15368
             - context: 'Tests (PHP 8.2, Rector v2 & lowest dependencies)'
               integration_id: 15368
-            - context: 'Tests (PHP 8.3, Rector v1 & highest dependencies)'
-              integration_id: 15368
             - context: 'Tests (PHP 8.3, Rector v2 & highest dependencies)'
-              integration_id: 15368
-            - context: 'Tests (PHP 8.3, Rector v1 & lowest dependencies)'
               integration_id: 15368
             - context: 'Tests (PHP 8.3, Rector v2 & lowest dependencies)'
               integration_id: 15368
-            - context: 'Tests (PHP 8.4, Rector v1 & highest dependencies)'
-              integration_id: 15368
             - context: 'Tests (PHP 8.4, Rector v2 & highest dependencies)'
-              integration_id: 15368
-            - context: 'Tests (PHP 8.4, Rector v1 & lowest dependencies)'
               integration_id: 15368
             - context: 'Tests (PHP 8.4, Rector v2 & lowest dependencies)'
               integration_id: 15368
-            - context: 'Tests (PHP 8.5, Rector v1 & highest dependencies)'
-              integration_id: 15368
             - context: 'Tests (PHP 8.5, Rector v2 & highest dependencies)'
-              integration_id: 15368
-            - context: 'Tests (PHP 8.5, Rector v1 & lowest dependencies)'
               integration_id: 15368
             - context: 'Tests (PHP 8.5, Rector v2 & lowest dependencies)'
               integration_id: 15368
