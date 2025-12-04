@@ -38,14 +38,14 @@ use function version_compare;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class Version implements Stringable
+final readonly class Version implements Stringable
 {
     private const VERSION_PATTERN = '/^v?(?P<major>\\d+)(?:\\.(?P<minor>\\d+)(?:\\.(?P<patch>\\d+))?)?/';
 
     private function __construct(
-        public readonly int $major,
-        public readonly int $minor = 0,
-        public readonly int $patch = 0,
+        public int $major,
+        public int $minor = 0,
+        public int $patch = 0,
     ) {}
 
     public static function createMajor(int $major): self

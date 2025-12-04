@@ -34,9 +34,9 @@ use Rector\Set as RectorSet;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class DefaultSet implements Set
+final readonly class DefaultSet implements Set
 {
-    private readonly Entity\Version $phpVersion;
+    private Entity\Version $phpVersion;
 
     /**
      * @throws Exception\VersionStringIsInvalid

@@ -35,7 +35,7 @@ use Rector\Symfony;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class SymfonySet implements Set
+final readonly class SymfonySet implements Set
 {
     private const POSSIBLE_PACKAGES = [
         'symfony/symfony',
@@ -46,7 +46,7 @@ final class SymfonySet implements Set
         'symfony/runtime',
     ];
 
-    private readonly Entity\Version $symfonyVersion;
+    private Entity\Version $symfonyVersion;
 
     /**
      * @throws Exception\RequiredPackageIsMissing

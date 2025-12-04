@@ -36,9 +36,9 @@ use TYPO3\CMS\Core;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class TYPO3Set implements Set
+final readonly class TYPO3Set implements Set
 {
-    private readonly Entity\Version $typo3Version;
+    private Entity\Version $typo3Version;
 
     /**
      * @throws Exception\RequiredPackageIsMissing
