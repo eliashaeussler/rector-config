@@ -27,7 +27,7 @@
 		"phpunit/phpunit": "^11.0 || ^12.0",
 		"ssch/typo3-rector": "^3.0",
 		"symfony/config": "^6.4 || ^7.0",
-		"typo3/cms-core": "^13.4"
+		"typo3/cms-core": "^13.4 || ^14.0"
 	},
 	"suggest": {
 		"ssch/typo3-rector": "Configures additional Rector rules for TYPO3 CMS projects (^3.0)"
