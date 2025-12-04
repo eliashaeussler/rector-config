@@ -31,7 +31,6 @@ return PHPStanConfig\Config\Config::create(__DIR__)
     ->withBleedingEdge([
         'internalTag' => false,
     ])
-    ->withBaseline()
     ->maxLevel()
     ->toArray()
 ;

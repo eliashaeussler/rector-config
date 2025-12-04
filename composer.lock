@@ -8,11 +8,11 @@
     "packages": [
         {
             "name": "phpstan/phpstan",
-            "version": "2.1.31",
+            "version": "2.1.32",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/ead89849d879fe203ce9292c6ef5e7e76f867b96",
-                "reference": "ead89849d879fe203ce9292c6ef5e7e76f867b96",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/e126cad1e30a99b137b8ed75a85a676450ebb227",
+                "reference": "e126cad1e30a99b137b8ed75a85a676450ebb227",
                 "shasum": ""
             },
             "require": {
@@ -57,25 +57,25 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-10-10T14:14:11+00:00"
+            "time": "2025-11-11T15:18:17+00:00"
         },
         {
             "name": "rector/rector",
-            "version": "2.2.5",
+            "version": "2.2.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "fb9418af7777dfb1c87a536dc58398b5b07c74b9"
+                "reference": "7bd21a40b0332b93d4bfee284093d7400696902d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/fb9418af7777dfb1c87a536dc58398b5b07c74b9",
-                "reference": "fb9418af7777dfb1c87a536dc58398b5b07c74b9",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/7bd21a40b0332b93d4bfee284093d7400696902d",
+                "reference": "7bd21a40b0332b93d4bfee284093d7400696902d",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.4|^8.0",
-                "phpstan/phpstan": "^2.1.26"
+                "phpstan/phpstan": "^2.1.32"
             },
             "conflict": {
                 "rector/rector-doctrine": "*",
@@ -109,7 +109,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/2.2.5"
+                "source": "https://github.com/rectorphp/rector/tree/2.2.11"
             },
             "funding": [
                 {
@@ -117,7 +117,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-10-23T11:22:37+00:00"
+            "time": "2025-12-02T11:23:46+00:00"
         }
     ],
     "packages-dev": [
@@ -6665,16 +6665,16 @@
         },
         {
             "name": "ssch/typo3-rector",
-            "version": "v3.8.0",
+            "version": "v3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3-rector.git",
-                "reference": "87d8126d5279a75a04c66cf3b56830353d5547a1"
+                "reference": "0604ea41bfdfaf73c379aad6335ec78a82a5a1d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/87d8126d5279a75a04c66cf3b56830353d5547a1",
-                "reference": "87d8126d5279a75a04c66cf3b56830353d5547a1",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/0604ea41bfdfaf73c379aad6335ec78a82a5a1d4",
+                "reference": "0604ea41bfdfaf73c379aad6335ec78a82a5a1d4",
                 "shasum": ""
             },
             "require": {
@@ -6685,7 +6685,7 @@
                 "nikic/php-parser": "^5.3.1",
                 "php": "^7.4 || ^8.0",
                 "phpstan/phpstan": "^2.0.3",
-                "rector/rector": "^2.0.11",
+                "rector/rector": "^2.2.9",
                 "symfony/console": "^5.4 || ^6.4 || ^7.0",
                 "symfony/filesystem": "^5.4 || ^6.4 || ^7.0",
                 "symfony/finder": "^5.4 || ^6.4 || ^7.0",
@@ -6777,7 +6777,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-11-11T22:53:58+00:00"
+            "time": "2025-12-02T10:59:49+00:00"
         },
         {
             "name": "staabm/side-effects-detector",

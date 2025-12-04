@@ -23,7 +23,6 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\RectorConfig\Tests;
 
-use Illuminate\Container;
 use Rector\Config;
 use Rector\DependencyInjection;
 use Rector\ValueObject;
@@ -36,10 +35,7 @@ use Rector\ValueObject;
  */
 trait RectorConfigTrait
 {
-    /**
-     * @var Container\Container|null
-     */
-    private ?object $container = null;
+    private ?Config\RectorConfig $container = null;
 
     /**
      * @param callable(Config\RectorConfig): (mixed)|null $configCallable
