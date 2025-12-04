@@ -106,6 +106,8 @@ rulesets:
               integration_id: 15368
             - context: 'Tests (PHP 8.5, Rector v2 & lowest dependencies)'
               integration_id: 15368
+            - context: 'Tests (E2E)'
+              integration_id: 15368
             - context: 'Test coverage'
               integration_id: 15368
     bypass_actors:
