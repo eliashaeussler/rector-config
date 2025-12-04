@@ -35,9 +35,9 @@ use Rector\PHPUnit;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class PHPUnitSet implements Set
+final readonly class PHPUnitSet implements Set
 {
-    private readonly Entity\Version $phpUnitVersion;
+    private Entity\Version $phpUnitVersion;
 
     /**
      * @throws Exception\RequiredPackageIsMissing
