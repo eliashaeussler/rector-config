@@ -67,14 +67,13 @@ final class VersionHelperTest extends Framework\TestCase
     #[Framework\Attributes\Test]
     public function getRectorSetListForPackageForPackageReturnsSetListForPreviousVersion(): void
     {
-        /* @phpstan-ignore classConstant.deprecatedClass */
+        /* @phpstan-ignore classConstant.deprecated */
         $expected = Symfony\Set\SymfonySetList::SYMFONY_54;
 
         self::assertSame(
             $expected,
             Src\Helper\VersionHelper::getRectorSetListForPackage(
                 Src\Entity\Version::createFromVersionString('5.99.99'),
-                /* @phpstan-ignore classConstant.deprecatedClass */
                 Symfony\Set\SymfonySetList::class,
                 'SYMFONY_%d',
                 Src\Enums\VersionRange::MajorMinor,
