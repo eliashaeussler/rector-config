@@ -32,7 +32,12 @@ $header = PhpCsFixerConfig\Rules\Header::create(
     PhpCsFixerConfig\Package\License::GPL3OrLater,
 );
 
+$noPrivatizationRule = PhpCsFixerConfig\Rules\RuleSet::fromArray([
+    'protected_to_private' => false,
+]);
+
 return PhpCsFixerConfig\Config::create()
     ->withRule($header)
+    ->withRule($noPrivatizationRule)
     ->withFinder(static fn (Finder\Finder $finder) => $finder->in(__DIR__))
 ;
