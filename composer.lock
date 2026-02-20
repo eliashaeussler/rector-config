@@ -61,16 +61,16 @@
         },
         {
             "name": "rector/rector",
-            "version": "2.3.6",
+            "version": "2.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "ca9ebb81d280cd362ea39474dabd42679e32ca6b"
+                "reference": "9c46ad17f57963932c9788fd1b0f1d07ff450370"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/ca9ebb81d280cd362ea39474dabd42679e32ca6b",
-                "reference": "ca9ebb81d280cd362ea39474dabd42679e32ca6b",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/9c46ad17f57963932c9788fd1b0f1d07ff450370",
+                "reference": "9c46ad17f57963932c9788fd1b0f1d07ff450370",
                 "shasum": ""
             },
             "require": {
@@ -109,7 +109,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/2.3.6"
+                "source": "https://github.com/rectorphp/rector/tree/2.3.7"
             },
             "funding": [
                 {
@@ -117,7 +117,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-02-06T14:25:06+00:00"
+            "time": "2026-02-19T14:44:16+00:00"
         }
     ],
     "packages-dev": [
@@ -6897,16 +6897,16 @@
         },
         {
             "name": "ssch/typo3-rector",
-            "version": "v3.11.0",
+            "version": "v3.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3-rector.git",
-                "reference": "51f9278abf4a40683aad6fbc6b4312d64ccf8b3e"
+                "reference": "467915ba1069e1391910b31e82cfbcf95746a547"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/51f9278abf4a40683aad6fbc6b4312d64ccf8b3e",
-                "reference": "51f9278abf4a40683aad6fbc6b4312d64ccf8b3e",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/467915ba1069e1391910b31e82cfbcf95746a547",
+                "reference": "467915ba1069e1391910b31e82cfbcf95746a547",
                 "shasum": ""
             },
             "require": {
@@ -6916,8 +6916,8 @@
                 "nette/utils": "^3.2.10 || ^4.0.4",
                 "nikic/php-parser": "^5.7.0",
                 "php": "^7.4 || ^8.0",
-                "phpstan/phpstan": "^2.0.3",
-                "rector/rector": "^2.3.1",
+                "phpstan/phpstan": "^2.1.34",
+                "rector/rector": "^2.3.7",
                 "symfony/console": "^5.4 || ^6.4 || ^7.0",
                 "symfony/filesystem": "^5.4 || ^6.4 || ^7.0",
                 "symfony/finder": "^5.4 || ^6.4 || ^7.0",
@@ -7009,7 +7009,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-01-14T15:26:09+00:00"
+            "time": "2026-02-19T16:48:21+00:00"
         },
         {
             "name": "staabm/side-effects-detector",
