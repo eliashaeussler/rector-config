@@ -29,7 +29,7 @@ jobs:
 
       # Install dependencies
       - name: Install Composer dependencies
-        uses: ramsey/composer-install@v3
+        uses: ramsey/composer-install@4.0.0
         with:
           dependency-versions: ${{ matrix.dependencies }}
           composer-options: --with="rector/rector:^${{ matrix.rector-version }}"
@@ -56,7 +56,7 @@ jobs:
 
       # Install dependencies
       - name: Install Composer dependencies
-        uses: ramsey/composer-install@v3
+        uses: ramsey/composer-install@4.0.0
 
       # Run tests
       - name: Build coverage directory
@@ -115,7 +115,7 @@ jobs:
 
       # Install dependencies
       - name: Install Composer dependencies
-        uses: ramsey/composer-install@v3
+        uses: ramsey/composer-install@4.0.0
 
       # Run tests
       - name: Run tests
