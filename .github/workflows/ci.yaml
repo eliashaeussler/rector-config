@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    name: 'Prepare workflow'
+    uses: eliashaeussler/gha/.github/workflows/preparation.yaml@39747882312d1fbeaff9792b2a8e2eb00ddc640f # 0.6.2
+
+  checks:
+    name: 'Checks'
+
+    needs: [prepare]
+    if: ${{ needs.prepare.outputs.continue == 'true' }}
+
+    permissions:
+      security-events: write
+
+    uses: eliashaeussler/gha/.github/workflows/checks.yaml@39747882312d1fbeaff9792b2a8e2eb00ddc640f # 0.6.2
+    with:
+      # We use the minimum supported PHP version
+      php-version: 8.2 # renovate-ignore
+
+  unit-tests:
+    name: 'Unit tests (PHP ${{ matrix.php-version }}, Rector v${{ matrix.rector-version }} & ${{ matrix.dependencies }} dependencies)'
+
+    needs: [prepare]
+    if: ${{ needs.prepare.outputs.continue == 'true' }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ["8.2", "8.3", "8.4", "8.5"]
+        rector-version: ["2"]
+        dependencies: ["highest", "lowest"]
+
+    uses: eliashaeussler/gha/.github/workflows/composer-tests.yaml@39747882312d1fbeaff9792b2a8e2eb00ddc640f # 0.6.2
+    with:
+      php-version: ${{ matrix.php-version }}
+      composer-version: ${{ matrix.composer-version }}
+      dependencies: ${{ matrix.dependencies }}
+      command: 'test:unit'
+      composer-options: '--with=rector/rector:^${{ matrix.rector-version }}'
+
+  e2e-tests:
+    name: 'E2E tests'
+
+    needs: [prepare]
+    if: ${{ needs.prepare.outputs.continue == 'true' }}
+
+    uses: eliashaeussler/gha/.github/workflows/composer-tests.yaml@39747882312d1fbeaff9792b2a8e2eb00ddc640f # 0.6.2
+    with:
+      command: 'test:e2e'
+
+  test-coverage:
+    name: 'Test coverage'
+
+    needs: [prepare]
+    if: ${{ needs.prepare.outputs.continue == 'true' }}
+
+    uses: eliashaeussler/gha/.github/workflows/composer-test-coverage.yaml@39747882312d1fbeaff9792b2a8e2eb00ddc640f # 0.6.2

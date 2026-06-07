@@ -21,15 +21,23 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-use EliasHaeussler\RectorConfig\Config\Config;
-use Rector\Config\RectorConfig;
-use Rector\ValueObject\PhpVersion;
+use Rector\Symfony\Symfony42\Rector\MethodCall\ContainerGetToConstructorInjectionRector;
+use ShipMonk\ComposerDependencyAnalyser;
 
-return static function (RectorConfig $rectorConfig): void {
-    Config::create($rectorConfig, PhpVersion::PHP_82)
-        ->in(__DIR__.'/src', __DIR__.'/tests/src')
-        ->withPHPUnit()
-        ->withSymfony()
-        ->apply()
-    ;
-};
+$configuration = new ComposerDependencyAnalyser\Config\Configuration();
+$configuration
+    ->ignoreErrorsOnPackages(
+        [
+            'ssch/typo3-rector',
+            'typo3/cms-core',
+        ],
+        [
+            ComposerDependencyAnalyser\Config\ErrorType::DEV_DEPENDENCY_IN_PROD,
+        ],
+    )
+    ->ignoreUnknownClasses([
+        ContainerGetToConstructorInjectionRector::class,
+    ])
+;
+
+return $configuration;
