@@ -39,5 +39,5 @@ $noPrivatizationRule = PhpCsFixerConfig\Rules\RuleSet::fromArray([
 return PhpCsFixerConfig\Config::create()
     ->withRule($header)
     ->withRule($noPrivatizationRule)
-    ->withFinder(static fn (Finder\Finder $finder) => $finder->in(__DIR__))
+    ->withFinder(static fn (Finder\Finder $finder) => $finder->in(dirname(__DIR__, 2)))
 ;

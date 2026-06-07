@@ -88,27 +88,29 @@ rulesets:
           strict_required_status_checks_policy: true
           do_not_enforce_on_create: false
           required_status_checks:
-            - context: 'cgl'
+            - context: 'Checks / Perform Composer checks'
               integration_id: 15368
-            - context: 'Tests (PHP 8.2, Rector v2 & highest dependencies)'
+            - context: 'Checks / Perform repository checks'
               integration_id: 15368
-            - context: 'Tests (PHP 8.2, Rector v2 & lowest dependencies)'
+            - context: 'Unit tests (PHP 8.2, Rector v2 & highest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.3, Rector v2 & highest dependencies)'
+            - context: 'Unit tests (PHP 8.2, Rector v2 & lowest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.3, Rector v2 & lowest dependencies)'
+            - context: 'Unit tests (PHP 8.3, Rector v2 & highest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.4, Rector v2 & highest dependencies)'
+            - context: 'Unit tests (PHP 8.3, Rector v2 & lowest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.4, Rector v2 & lowest dependencies)'
+            - context: 'Unit tests (PHP 8.4, Rector v2 & highest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.5, Rector v2 & highest dependencies)'
+            - context: 'Unit tests (PHP 8.4, Rector v2 & lowest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.5, Rector v2 & lowest dependencies)'
+            - context: 'Unit tests (PHP 8.5, Rector v2 & highest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (E2E)'
+            - context: 'Unit tests (PHP 8.5, Rector v2 & lowest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Test coverage'
+            - context: 'E2E tests / Run tests'
+              integration_id: 15368
+            - context: 'Test coverage / Collect test coverage'
               integration_id: 15368
     bypass_actors:
       - actor_id: 5
