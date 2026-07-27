@@ -233,8 +233,8 @@ final class ConfigTest extends Framework\TestCase
     public function withTYPO3AddsAdditionalTYPO3RulesToRectorConfig(): void
     {
         $expected = match ((new Core\Information\Typo3Version())->getMajorVersion()) {
-            12 => TYPO3Rector\TYPO312\v0\MigrateColsToSizeForTcaTypeNoneRector::class,
             13 => TYPO3Rector\TYPO313\v0\AddMethodGetAllPageNumbersToPaginationInterfaceRector::class,
+            14 => TYPO3Rector\TYPO314\v0\MigrateSingleDataStructureConfigurationRector::class,
             default => self::markTestSkipped('TYPO3 version is not supported.'),
         };
 
