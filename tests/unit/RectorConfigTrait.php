@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\RectorConfig\Tests;
 
+use Composer\Autoload;
 use Rector\Config;
 use Rector\DependencyInjection;
 use Rector\ValueObject;
@@ -59,6 +60,19 @@ trait RectorConfigTrait
 
         self::assertInstanceOf(Config\RectorConfig::class, $rectorConfig);
 
+        $this->unregisterInterferingClassLoaders();
+
         return $rectorConfig;
+    }
+
+    private function unregisterInterferingClassLoaders(): void
+    {
+        $classLoaders = Autoload\ClassLoader::getRegisteredLoaders();
+
+        foreach ($classLoaders as $vendorDir => $classLoader) {
+            if (str_contains($vendorDir, 'phpstan.phar')) {
+                $classLoader->unregister();
+            }
+        }
     }
 }
