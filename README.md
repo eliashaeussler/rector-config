@@ -3,8 +3,7 @@
 # Rector config
 
 [![Coverage](https://img.shields.io/coverallsCoverage/github/eliashaeussler/rector-config?logo=coveralls)](https://coveralls.io/github/eliashaeussler/rector-config)
-[![CGL](https://img.shields.io/github/actions/workflow/status/eliashaeussler/rector-config/cgl.yaml?label=cgl&logo=github)](https://github.com/eliashaeussler/rector-config/actions/workflows/cgl.yaml)
-[![Tests](https://img.shields.io/github/actions/workflow/status/eliashaeussler/rector-config/tests.yaml?label=tests&logo=github)](https://github.com/eliashaeussler/rector-config/actions/workflows/tests.yaml)
+[![CI](https://img.shields.io/github/actions/workflow/status/eliashaeussler/rector-config/ci.yaml?label=CI&logo=github)](https://github.com/eliashaeussler/rector-config/actions/workflows/ci.yaml)
 [![Supported PHP Versions](https://img.shields.io/packagist/dependency-v/eliashaeussler/rector-config/php?logo=php)](https://packagist.org/packages/eliashaeussler/rector-config)
 
 </div>
