@@ -170,7 +170,7 @@ final class ConfigTest extends Framework\TestCase
         /* @see Symfony\Set\SymfonySetList::SYMFONY_60 */
         self::assertTrue($this->container?->has(Symfony\Symfony60\Rector\MethodCall\GetHelperControllerToServiceRector::class));
         /* @see Symfony\Set\SymfonySetList::SYMFONY_62 */
-        self::assertFalse($this->container->has(Symfony\Symfony62\Rector\MethodCall\SimplifyFormRenderingRector::class));
+        self::assertFalse($this->container->has(Symfony\Symfony62\Rector\ClassMethod\ParamConverterAttributeToMapEntityAttributeRector::class));
     }
 
     #[Framework\Attributes\Test]
@@ -185,7 +185,7 @@ final class ConfigTest extends Framework\TestCase
         );
 
         /* @see Symfony\Set\SymfonySetList::SYMFONY_62 */
-        self::assertTrue($this->container?->has(Symfony\Symfony62\Rector\MethodCall\SimplifyFormRenderingRector::class));
+        self::assertTrue($this->container?->has(Symfony\Symfony62\Rector\ClassMethod\ParamConverterAttributeToMapEntityAttributeRector::class));
     }
 
     #[Framework\Attributes\Test]
