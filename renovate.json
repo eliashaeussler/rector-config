@@ -8,6 +8,6 @@
 		"ext-sodium"
 	],
 	"constraints": {
-		"php": "8.2.*"
+		"php": "8.6.*"
 	}
 }
